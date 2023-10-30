@@ -1,0 +1,44 @@
+Basic Blocks in C code 
+Basic Block complex bb0
+bb0 Line 10   while(a < 30)
+bb0::2:::1 Line 10   while(a < 30)
+Basic Block complex bb4
+bb4 Line 10   while(a < 30)
+Basic Block complex bb5
+bb5 Line 12       while(b < a)
+bb5::0:::1 Line 12       while(b < a)
+Basic Block complex bb6
+bb6 Line 12       while(b < a)
+Basic Block complex bb8
+bb8 Line 14 	  if(b > 5) 
+Basic Block complex bb10
+bb10 Line 15 	    b = b * 3; 
+bb10::2 Line 15 	    b = b * 3; 
+bb10::2:::1 Line 15 	    b = b * 3; 
+Basic Block complex bb12
+bb12 Line 17 	    b = b + 2;
+Basic Block complex bb14
+bb14 Line 18 	  if(b >= 10 && b <= 12) 
+Basic Block complex bb16
+bb16 Line 18 	  if(b >= 10 && b <= 12) 
+Basic Block complex bb18
+bb18 Line 19 	    a = a + 10;
+bb18::2 Line 19 	    a = a + 10;
+bb18::2:::1 Line 19 	    a = a + 10;
+Basic Block complex bb20
+bb20 Line 21 	    a = a + 1;
+Basic Block complex bb22
+bb22 Line 22 	}
+bb22::1:::1 Line 22 	}
+bb22::1:::2 Line 22 	}
+Basic Block complex bb23
+bb23 Line 23       a = a + 2; 
+bb23::2 Line 24       b = b - 10; 
+bb23::4 Line 25     }
+bb23::4:::1 Line 25     }
+bb23::4:::2 Line 25     }
+Basic Block complex bb26
+bb26 Line 26   return 1;
+Basic Block main bb0
+bb0 Line 33   answer = complex(a, b);
+bb0::5 Line 34   return answer;

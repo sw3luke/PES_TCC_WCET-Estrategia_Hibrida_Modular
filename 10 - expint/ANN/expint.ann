@@ -1,0 +1,17 @@
+/* --------------------------------------------------------- */
+/* Annotation templates for imported data (frefs)            */
+/* --------------------------------------------------------- */
+
+/* Given annotations should provide a safe upper bounds on what
+   value a data, or specific fields of a data, may hold.       
+   The annotations should be valid for any execution of the    
+   program (for all its possible input value combinations).    
+   Please run: sweet -h topic=annot  for annotation syntax   */
+
+//VOLATILE ASSIGN $null <type> <val> ;
+
+//VOLATILE ASSIGN $mem <type> <val> ;
+
+FUNC_ENTRY "binary_search" ASSIGN "%x" INT 0 50;
+FUNC_ENTRY "binary_search" ASSIGN "%n" INT 0 50;
+

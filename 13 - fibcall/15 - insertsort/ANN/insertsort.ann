@@ -1,0 +1,24 @@
+/* --------------------------------------------------------- */
+/* Annotation templates for imported data (frefs)            */
+/* --------------------------------------------------------- */
+
+/* Given annotations should provide a safe upper bounds on what
+   value a data, or specific fields of a data, may hold.       
+   The annotations should be valid for any execution of the    
+   program (for all its possible input value combinations).    
+   Please run: sweet -h topic=annot  for annotation syntax   */
+
+STMT_EXIT "main" "main::bb" ASSIGN "a" 0 32 INT 0 10; 
+STMT_EXIT "main" "main::bb::1" ASSIGN "a" 32 32 INT 0 11; 
+STMT_EXIT "main" "main::bb::2" ASSIGN "a" 64 32 INT 0 12; 
+STMT_EXIT "main" "main::bb::3" ASSIGN "a" 96 32 INT 0 13;
+STMT_EXIT "main" "main::bb::4" ASSIGN "a" 128 32 INT 0 14;
+STMT_EXIT "main" "main::bb::5" ASSIGN "a" 160 32 INT 0 15;
+STMT_EXIT "main" "main::bb::6" ASSIGN "a" 192 32 INT 0 16;
+STMT_EXIT "main" "main::bb::7" ASSIGN "a" 224 32 INT 0 17;
+STMT_EXIT "main" "main::bb::8" ASSIGN "a" 256 32 INT 0 18;
+STMT_EXIT "main" "main::bb::9" ASSIGN "a" 288 32 INT 0 19;
+STMT_EXIT "main" "main::bb::10" ASSIGN "a" 320 32 INT 0 20;
+
+
+

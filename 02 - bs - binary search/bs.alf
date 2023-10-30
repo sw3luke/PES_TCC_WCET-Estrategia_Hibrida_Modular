@@ -1,0 +1,354 @@
+{ alf
+ { macro_defs }
+ { least_addr_unit 8 }
+ little_endian
+ { exports
+  { frefs
+   { fref 64 "data" }
+  }
+  { lrefs { lref 64 "main" } { lref 64 "binary_search" } }
+ }
+ { imports
+  { frefs
+   { fref 64 "$null" }
+   { fref 64 "$mem" }
+  }
+  { lrefs }
+ }
+ { decls
+  { alloc 64 "data" 960 }
+ }
+ { inits
+  { init { ref "data" { dec_unsigned 64 0 } } { dec_unsigned 32 1 } }
+  { init { ref "data" { dec_unsigned 64 4 } } { dec_unsigned 32 100 } }
+  { init { ref "data" { dec_unsigned 64 8 } } { dec_unsigned 32 5 } }
+  { init { ref "data" { dec_unsigned 64 12 } } { dec_unsigned 32 200 } }
+  { init { ref "data" { dec_unsigned 64 16 } } { dec_unsigned 32 6 } }
+  { init { ref "data" { dec_unsigned 64 20 } } { dec_unsigned 32 300 } }
+  { init { ref "data" { dec_unsigned 64 24 } } { dec_unsigned 32 7 } }
+  { init { ref "data" { dec_unsigned 64 28 } } { dec_unsigned 32 700 } }
+  { init { ref "data" { dec_unsigned 64 32 } } { dec_unsigned 32 8 } }
+  { init { ref "data" { dec_unsigned 64 36 } } { dec_unsigned 32 900 } }
+  { init { ref "data" { dec_unsigned 64 40 } } { dec_unsigned 32 9 } }
+  { init { ref "data" { dec_unsigned 64 44 } } { dec_unsigned 32 250 } }
+  { init { ref "data" { dec_unsigned 64 48 } } { dec_unsigned 32 10 } }
+  { init { ref "data" { dec_unsigned 64 52 } } { dec_unsigned 32 400 } }
+  { init { ref "data" { dec_unsigned 64 56 } } { dec_unsigned 32 11 } }
+  { init { ref "data" { dec_unsigned 64 60 } } { dec_unsigned 32 600 } }
+  { init { ref "data" { dec_unsigned 64 64 } } { dec_unsigned 32 12 } }
+  { init { ref "data" { dec_unsigned 64 68 } } { dec_unsigned 32 800 } }
+  { init { ref "data" { dec_unsigned 64 72 } } { dec_unsigned 32 13 } }
+  { init { ref "data" { dec_unsigned 64 76 } } { dec_unsigned 32 1500 } }
+  { init { ref "data" { dec_unsigned 64 80 } } { dec_unsigned 32 14 } }
+  { init { ref "data" { dec_unsigned 64 84 } } { dec_unsigned 32 1200 } }
+  { init { ref "data" { dec_unsigned 64 88 } } { dec_unsigned 32 15 } }
+  { init { ref "data" { dec_unsigned 64 92 } } { dec_unsigned 32 110 } }
+  { init { ref "data" { dec_unsigned 64 96 } } { dec_unsigned 32 16 } }
+  { init { ref "data" { dec_unsigned 64 100 } } { dec_unsigned 32 140 } }
+  { init { ref "data" { dec_unsigned 64 104 } } { dec_unsigned 32 17 } }
+  { init { ref "data" { dec_unsigned 64 108 } } { dec_unsigned 32 133 } }
+  { init { ref "data" { dec_unsigned 64 112 } } { dec_unsigned 32 18 } }
+  { init { ref "data" { dec_unsigned 64 116 } } { dec_unsigned 32 10 } }
+ }
+ { funcs
+
+  /* Definition of function main */
+  { func
+   { label 64 { lref 64 "main" } { dec_unsigned 64 0 } }
+   { arg_decls }
+   { scope
+    { decls
+     { alloc 64 "%tmp" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+    }
+    { inits }
+    { stmts
+
+     /* --------- BASIC BLOCK bb ---------- */
+     { label 64 { lref 64 "main::bb" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT main::bb::1
+      *   %tmp = call i32 @binary_search(i32 1), !dbg !27 */
+     { call { label 64 { lref 64 "binary_search" } { dec_unsigned 64 0 } } { dec_unsigned 32 1 } result { addr 64 { fref 64 "%tmp" } { dec_unsigned 64 0 } } }
+
+     /* STATEMENT main::bb::2
+      *   ret i32 0, !dbg !28 */
+     { label 64 { lref 64 "main::bb::2" } { dec_unsigned 64 0 } }
+     { return { dec_unsigned 32 0 } }
+    }
+   }
+  }
+
+  /* Definition of function binary_search */
+  { func
+   { label 64 { lref 64 "binary_search" } { dec_unsigned 64 0 } }
+   { arg_decls
+    { alloc 64 "%x" 32 }
+   }
+   { scope
+    { decls
+     { alloc 64 "%up.0" 32 } /* Local Variable (PHI node) */ 
+     { alloc 64 "%fvalue.0" 32 } /* Local Variable (PHI node) */ 
+     { alloc 64 "%low.0" 32 } /* Local Variable (PHI node) */ 
+     { alloc 64 "%tmp4" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp7" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp10" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp13" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp17" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp20" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp22" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%up.1" 32 } /* Local Variable (PHI node) */ 
+     { alloc 64 "%low.1" 32 } /* Local Variable (PHI node) */ 
+     { alloc 64 "%up.2" 32 } /* Local Variable (PHI node) */ 
+     { alloc 64 "%fvalue.1" 32 } /* Local Variable (PHI node) */ 
+     { alloc 64 "%low.2" 32 } /* Local Variable (PHI node) */ 
+    }
+    { inits }
+    { stmts
+
+     /* --------- BASIC BLOCK bb ---------- */
+     { label 64 { lref 64 "binary_search::bb" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT binary_search::bb::4
+      *   br label %bb1, !dbg !34 */
+     { store { addr 64 { fref 64 "%up.0" } { dec_unsigned 64 0 } } with { dec_unsigned 32 14 } }
+
+     { label 64 { lref 64 "binary_search::bb::4:::1" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%fvalue.0" } { dec_unsigned 64 0 } } with { dec_signed 32 { minus 1 } } }
+
+     { label 64 { lref 64 "binary_search::bb::4:::2" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%low.0" } { dec_unsigned 64 0 } } with { dec_unsigned 32 0 } }
+
+     /* --------- BASIC BLOCK bb1 ---------- */
+     { label 64 { lref 64 "binary_search::bb1" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT binary_search::bb1::4
+      *   %tmp = icmp sgt i32 %low.0, %up.0, !dbg !34
+      *   br i1 %tmp, label %bb25, label %bb2, !dbg !34 */
+     { switch
+      { s_gt 32 { load 32 { addr 64 { fref 64 "%low.0" } { dec_unsigned 64 0 } } } { load 32 { addr 64 { fref 64 "%up.0" } { dec_unsigned 64 0 } } } }
+      { target { dec_signed 1 { minus 1 } }
+       { label 64 { lref 64 "binary_search::bb25" } { dec_unsigned 64 0 } }
+      }
+      { default
+       { label 64 { lref 64 "binary_search::bb2" } { dec_unsigned 64 0 } }
+      }
+     }
+
+     /* --------- BASIC BLOCK bb2 ---------- */
+     { label 64 { lref 64 "binary_search::bb2" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT binary_search::bb2::1
+      *   %tmp3 = add nsw i32 %low.0, %up.0, !dbg !35
+      *   %tmp4 = ashr i32 %tmp3, 1, !dbg !35 */
+     { store { addr 64 { fref 64 "%tmp4" } { dec_unsigned 64 0 } } with
+      { r_shift_a 32 32
+       { add 32 { load 32 { addr 64 { fref 64 "%low.0" } { dec_unsigned 64 0 } } } { load 32 { addr 64 { fref 64 "%up.0" } { dec_unsigned 64 0 } } } { dec_unsigned 1 0 } }
+       { dec_unsigned 32 1 }
+      }
+     }
+
+     /* STATEMENT binary_search::bb2::5
+      *   %tmp5 = sext i32 %tmp4 to i64, !dbg !38
+      *   %tmp6 = getelementptr inbounds [15 x %struct.DATA]* @data, i64 0, i64 %tmp5, i32 0, !dbg !38
+      *   %tmp7 = load i32* %tmp6, align 8, !dbg !38 */
+     { label 64 { lref 64 "binary_search::bb2::5" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp7" } { dec_unsigned 64 0 } } with
+      { load 32
+       { add 64 { addr 64 { fref 64 "data" } { dec_unsigned 64 0 } }
+        { select 128 0 63
+         { u_mul 64 64
+          { s_ext 32 64 { load 32 { addr 64 { fref 64 "%tmp4" } { dec_unsigned 64 0 } } } }
+          { dec_unsigned 64 8 }
+         }
+        }
+        { dec_unsigned 1 0 }
+       }
+      }
+     }
+
+     /* STATEMENT binary_search::bb2::7
+      *   %tmp8 = icmp eq i32 %tmp7, %x, !dbg !38
+      *   br i1 %tmp8, label %bb9, label %bb14, !dbg !38 */
+     { label 64 { lref 64 "binary_search::bb2::7" } { dec_unsigned 64 0 } }
+     { switch
+      { eq 32 { load 32 { addr 64 { fref 64 "%tmp7" } { dec_unsigned 64 0 } } } { load 32 { addr 64 { fref 64 "%x" } { dec_unsigned 64 0 } } } }
+      { target { dec_signed 1 { minus 1 } }
+       { label 64 { lref 64 "binary_search::bb9" } { dec_unsigned 64 0 } }
+      }
+      { default
+       { label 64 { lref 64 "binary_search::bb14" } { dec_unsigned 64 0 } }
+      }
+     }
+
+     /* --------- BASIC BLOCK bb9 ---------- */
+     { label 64 { lref 64 "binary_search::bb9" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT binary_search::bb9::0
+      *   %tmp10 = add nsw i32 %low.0, -1, !dbg !40 */
+     { store { addr 64 { fref 64 "%tmp10" } { dec_unsigned 64 0 } } with
+      { add 32 { load 32 { addr 64 { fref 64 "%low.0" } { dec_unsigned 64 0 } } } { dec_signed 32 { minus 1 } } { dec_unsigned 1 0 } }
+     }
+
+     /* STATEMENT binary_search::bb9::4
+      *   %tmp11 = sext i32 %tmp4 to i64, !dbg !42
+      *   %tmp12 = getelementptr inbounds [15 x %struct.DATA]* @data, i64 0, i64 %tmp11, i32 1, !dbg !42
+      *   %tmp13 = load i32* %tmp12, align 4, !dbg !42 */
+     { label 64 { lref 64 "binary_search::bb9::4" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp13" } { dec_unsigned 64 0 } } with
+      { load 32
+       { add 64 { addr 64 { fref 64 "data" } { dec_unsigned 64 4 } }
+        { select 128 0 63
+         { u_mul 64 64
+          { s_ext 32 64 { load 32 { addr 64 { fref 64 "%tmp4" } { dec_unsigned 64 0 } } } }
+          { dec_unsigned 64 8 }
+         }
+        }
+        { dec_unsigned 1 0 }
+       }
+      }
+     }
+
+     /* STATEMENT binary_search::bb9::6
+      *   br label %bb24, !dbg !43 */
+     { label 64 { lref 64 "binary_search::bb9::6" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%up.2" } { dec_unsigned 64 0 } } with { load 32 { addr 64 { fref 64 "%tmp10" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "binary_search::bb9::6:::1" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%fvalue.1" } { dec_unsigned 64 0 } } with { load 32 { addr 64 { fref 64 "%tmp13" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "binary_search::bb9::6:::2" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%low.2" } { dec_unsigned 64 0 } } with { load 32 { addr 64 { fref 64 "%low.0" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "binary_search::bb9::6:::3" } { dec_unsigned 64 0 } }
+     { jump
+      { label 64 { lref 64 "binary_search::bb24" } { dec_unsigned 64 0 } }
+      leaving
+      0
+     }
+
+     /* --------- BASIC BLOCK bb14 ---------- */
+     { label 64 { lref 64 "binary_search::bb14" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT binary_search::bb14::2
+      *   %tmp15 = sext i32 %tmp4 to i64, !dbg !44
+      *   %tmp16 = getelementptr inbounds [15 x %struct.DATA]* @data, i64 0, i64 %tmp15, i32 0, !dbg !44
+      *   %tmp17 = load i32* %tmp16, align 8, !dbg !44 */
+     { store { addr 64 { fref 64 "%tmp17" } { dec_unsigned 64 0 } } with
+      { load 32
+       { add 64 { addr 64 { fref 64 "data" } { dec_unsigned 64 0 } }
+        { select 128 0 63
+         { u_mul 64 64
+          { s_ext 32 64 { load 32 { addr 64 { fref 64 "%tmp4" } { dec_unsigned 64 0 } } } }
+          { dec_unsigned 64 8 }
+         }
+        }
+        { dec_unsigned 1 0 }
+       }
+      }
+     }
+
+     /* STATEMENT binary_search::bb14::4
+      *   %tmp18 = icmp sgt i32 %tmp17, %x, !dbg !44
+      *   br i1 %tmp18, label %bb19, label %bb21, !dbg !44 */
+     { label 64 { lref 64 "binary_search::bb14::4" } { dec_unsigned 64 0 } }
+     { switch
+      { s_gt 32 { load 32 { addr 64 { fref 64 "%tmp17" } { dec_unsigned 64 0 } } } { load 32 { addr 64 { fref 64 "%x" } { dec_unsigned 64 0 } } } }
+      { target { dec_signed 1 { minus 1 } }
+       { label 64 { lref 64 "binary_search::bb19" } { dec_unsigned 64 0 } }
+      }
+      { default
+       { label 64 { lref 64 "binary_search::bb21" } { dec_unsigned 64 0 } }
+      }
+     }
+
+     /* --------- BASIC BLOCK bb19 ---------- */
+     { label 64 { lref 64 "binary_search::bb19" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT binary_search::bb19::0
+      *   %tmp20 = add nsw i32 %tmp4, -1, !dbg !46 */
+     { store { addr 64 { fref 64 "%tmp20" } { dec_unsigned 64 0 } } with
+      { add 32 { load 32 { addr 64 { fref 64 "%tmp4" } { dec_unsigned 64 0 } } } { dec_signed 32 { minus 1 } } { dec_unsigned 1 0 } }
+     }
+
+     /* STATEMENT binary_search::bb19::2
+      *   br label %bb23, !dbg !48 */
+     { label 64 { lref 64 "binary_search::bb19::2" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%up.1" } { dec_unsigned 64 0 } } with { load 32 { addr 64 { fref 64 "%tmp20" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "binary_search::bb19::2:::1" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%low.1" } { dec_unsigned 64 0 } } with { load 32 { addr 64 { fref 64 "%low.0" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "binary_search::bb19::2:::2" } { dec_unsigned 64 0 } }
+     { jump
+      { label 64 { lref 64 "binary_search::bb23" } { dec_unsigned 64 0 } }
+      leaving
+      0
+     }
+
+     /* --------- BASIC BLOCK bb21 ---------- */
+     { label 64 { lref 64 "binary_search::bb21" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT binary_search::bb21::0
+      *   %tmp22 = add nsw i32 %tmp4, 1, !dbg !49 */
+     { store { addr 64 { fref 64 "%tmp22" } { dec_unsigned 64 0 } } with
+      { add 32 { load 32 { addr 64 { fref 64 "%tmp4" } { dec_unsigned 64 0 } } } { dec_unsigned 32 1 } { dec_unsigned 1 0 } }
+     }
+
+     /* STATEMENT binary_search::bb21::2
+      *   br label %bb23 */
+     { label 64 { lref 64 "binary_search::bb21::2" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%up.1" } { dec_unsigned 64 0 } } with { load 32 { addr 64 { fref 64 "%up.0" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "binary_search::bb21::2:::1" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%low.1" } { dec_unsigned 64 0 } } with { load 32 { addr 64 { fref 64 "%tmp22" } { dec_unsigned 64 0 } } } }
+
+     /* --------- BASIC BLOCK bb23 ---------- */
+     { label 64 { lref 64 "binary_search::bb23" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT binary_search::bb23::2
+      *   br label %bb24 */
+     { store { addr 64 { fref 64 "%up.2" } { dec_unsigned 64 0 } } with { load 32 { addr 64 { fref 64 "%up.1" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "binary_search::bb23::2:::1" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%fvalue.1" } { dec_unsigned 64 0 } } with
+      { load 32 { addr 64 { fref 64 "%fvalue.0" } { dec_unsigned 64 0 } } }
+     }
+
+     { label 64 { lref 64 "binary_search::bb23::2:::2" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%low.2" } { dec_unsigned 64 0 } } with { load 32 { addr 64 { fref 64 "%low.1" } { dec_unsigned 64 0 } } } }
+
+     /* --------- BASIC BLOCK bb24 ---------- */
+     { label 64 { lref 64 "binary_search::bb24" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT binary_search::bb24::3
+      *   br label %bb1, !dbg !51 */
+     { store { addr 64 { fref 64 "%up.0" } { dec_unsigned 64 0 } } with { load 32 { addr 64 { fref 64 "%up.2" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "binary_search::bb24::3:::1" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%fvalue.0" } { dec_unsigned 64 0 } } with
+      { load 32 { addr 64 { fref 64 "%fvalue.1" } { dec_unsigned 64 0 } } }
+     }
+
+     { label 64 { lref 64 "binary_search::bb24::3:::2" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%low.0" } { dec_unsigned 64 0 } } with { load 32 { addr 64 { fref 64 "%low.2" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "binary_search::bb24::3:::3" } { dec_unsigned 64 0 } }
+     { jump
+      { label 64 { lref 64 "binary_search::bb1" } { dec_unsigned 64 0 } }
+      leaving
+      0
+     }
+
+     /* --------- BASIC BLOCK bb25 ---------- */
+     { label 64 { lref 64 "binary_search::bb25" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT binary_search::bb25::0
+      *   ret i32 %fvalue.0, !dbg !52 */
+     { return
+      { load 32 { addr 64 { fref 64 "%fvalue.0" } { dec_unsigned 64 0 } } }
+     }
+    }
+   }
+  }
+ }
+}
