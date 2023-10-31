@@ -12,5 +12,5 @@
 
 //VOLATILE ASSIGN $mem <type> <val> ;
 
-FUNC_ENTRY swi10 ASSIGN "%c" INT 0 50;
+FUNC_ENTRY swi10 ASSIGN "%c" INT 0 5;
 
