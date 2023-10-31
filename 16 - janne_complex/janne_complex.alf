@@ -110,7 +110,7 @@
      }
 
      /* STATEMENT complex::bb10::2
-      *   br label %bb14, !dbg !25 */
+      *   br label %bb14, !dbg !27 */
      { label 64 { lref 64 "complex::bb10::2" } { dec_unsigned 64 0 } }
      { store { addr 64 { fref 64 "%.23" } { dec_unsigned 64 0 } } with { load 32 { addr 64 { fref 64 "%tmp11" } { dec_unsigned 64 0 } } } }
 
@@ -121,7 +121,7 @@
      { label 64 { lref 64 "complex::bb12" } { dec_unsigned 64 0 } }
 
      /* STATEMENT complex::bb12::0
-      *   %tmp13 = add nsw i32 %.12, 2, !dbg !26 */
+      *   %tmp13 = add nsw i32 %.12, 2, !dbg !28 */
      { store { addr 64 { fref 64 "%tmp13" } { dec_unsigned 64 0 } } with
       { add 32 { load 32 { addr 64 { fref 64 "%.12" } { dec_unsigned 64 0 } } } { dec_unsigned 32 2 } { dec_unsigned 1 0 } }
      }
@@ -135,8 +135,8 @@
      { label 64 { lref 64 "complex::bb14" } { dec_unsigned 64 0 } }
 
      /* STATEMENT complex::bb14::2
-      *   %tmp15 = icmp sgt i32 %.23, 9, !dbg !27
-      *   br i1 %tmp15, label %bb16, label %bb20, !dbg !27 */
+      *   %tmp15 = icmp sgt i32 %.23, 9, !dbg !30
+      *   br i1 %tmp15, label %bb16, label %bb20, !dbg !30 */
      { switch
       { s_gt 32 { load 32 { addr 64 { fref 64 "%.23" } { dec_unsigned 64 0 } } } { dec_unsigned 32 9 } }
       { target { dec_signed 1 { minus 1 } } { label 64 { lref 64 "complex::bb16" } { dec_unsigned 64 0 } } }
@@ -147,8 +147,8 @@
      { label 64 { lref 64 "complex::bb16" } { dec_unsigned 64 0 } }
 
      /* STATEMENT complex::bb16::1
-      *   %tmp17 = icmp slt i32 %.23, 13, !dbg !27
-      *   br i1 %tmp17, label %bb18, label %bb20, !dbg !27 */
+      *   %tmp17 = icmp slt i32 %.23, 13, !dbg !30
+      *   br i1 %tmp17, label %bb18, label %bb20, !dbg !30 */
      { switch
       { s_lt 32 { load 32 { addr 64 { fref 64 "%.23" } { dec_unsigned 64 0 } } } { dec_unsigned 32 13 } }
       { target { dec_signed 1 { minus 1 } } { label 64 { lref 64 "complex::bb18" } { dec_unsigned 64 0 } } }
@@ -159,13 +159,13 @@
      { label 64 { lref 64 "complex::bb18" } { dec_unsigned 64 0 } }
 
      /* STATEMENT complex::bb18::0
-      *   %tmp19 = add nsw i32 %.1, 10, !dbg !29 */
+      *   %tmp19 = add nsw i32 %.1, 10, !dbg !32 */
      { store { addr 64 { fref 64 "%tmp19" } { dec_unsigned 64 0 } } with
       { add 32 { load 32 { addr 64 { fref 64 "%.1" } { dec_unsigned 64 0 } } } { dec_unsigned 32 10 } { dec_unsigned 1 0 } }
      }
 
      /* STATEMENT complex::bb18::2
-      *   br label %bb22, !dbg !29 */
+      *   br label %bb22, !dbg !34 */
      { label 64 { lref 64 "complex::bb18::2" } { dec_unsigned 64 0 } }
      { store { addr 64 { fref 64 "%.2" } { dec_unsigned 64 0 } } with { load 32 { addr 64 { fref 64 "%tmp19" } { dec_unsigned 64 0 } } } }
 
@@ -176,7 +176,7 @@
      { label 64 { lref 64 "complex::bb20" } { dec_unsigned 64 0 } }
 
      /* STATEMENT complex::bb20::0
-      *   %tmp21 = add nsw i32 %.1, 1, !dbg !30 */
+      *   %tmp21 = add nsw i32 %.1, 1, !dbg !35 */
      { store { addr 64 { fref 64 "%tmp21" } { dec_unsigned 64 0 } } with
       { add 32 { load 32 { addr 64 { fref 64 "%.1" } { dec_unsigned 64 0 } } } { dec_unsigned 32 1 } { dec_unsigned 1 0 } }
      }
@@ -190,7 +190,7 @@
      { label 64 { lref 64 "complex::bb22" } { dec_unsigned 64 0 } }
 
      /* STATEMENT complex::bb22::1
-      *   br label %bb6, !dbg !31 */
+      *   br label %bb6, !dbg !37 */
      { store { addr 64 { fref 64 "%.12" } { dec_unsigned 64 0 } } with { load 32 { addr 64 { fref 64 "%.23" } { dec_unsigned 64 0 } } } }
 
      { label 64 { lref 64 "complex::bb22::1:::1" } { dec_unsigned 64 0 } }
@@ -203,20 +203,20 @@
      { label 64 { lref 64 "complex::bb23" } { dec_unsigned 64 0 } }
 
      /* STATEMENT complex::bb23::0
-      *   %tmp24 = add nsw i32 %.1, 2, !dbg !32 */
+      *   %tmp24 = add nsw i32 %.1, 2, !dbg !38 */
      { store { addr 64 { fref 64 "%tmp24" } { dec_unsigned 64 0 } } with
       { add 32 { load 32 { addr 64 { fref 64 "%.1" } { dec_unsigned 64 0 } } } { dec_unsigned 32 2 } { dec_unsigned 1 0 } }
      }
 
      /* STATEMENT complex::bb23::2
-      *   %tmp25 = add nsw i32 %.12, -10, !dbg !33 */
+      *   %tmp25 = add nsw i32 %.12, -10, !dbg !39 */
      { label 64 { lref 64 "complex::bb23::2" } { dec_unsigned 64 0 } }
      { store { addr 64 { fref 64 "%tmp25" } { dec_unsigned 64 0 } } with
       { add 32 { load 32 { addr 64 { fref 64 "%.12" } { dec_unsigned 64 0 } } } { dec_signed 32 { minus 10 } } { dec_unsigned 1 0 } }
      }
 
      /* STATEMENT complex::bb23::4
-      *   br label %bb4, !dbg !34 */
+      *   br label %bb4, !dbg !40 */
      { label 64 { lref 64 "complex::bb23::4" } { dec_unsigned 64 0 } }
      { store { addr 64 { fref 64 "%.01" } { dec_unsigned 64 0 } } with { load 32 { addr 64 { fref 64 "%tmp25" } { dec_unsigned 64 0 } } } }
 
@@ -230,7 +230,7 @@
      { label 64 { lref 64 "complex::bb26" } { dec_unsigned 64 0 } }
 
      /* STATEMENT complex::bb26::0
-      *   ret i32 1, !dbg !35 */
+      *   ret i32 1, !dbg !41 */
      { return { dec_unsigned 32 1 } }
     }
    }
