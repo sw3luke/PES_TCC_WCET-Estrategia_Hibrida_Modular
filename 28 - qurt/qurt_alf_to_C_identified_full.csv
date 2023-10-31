@@ -1,0 +1,185 @@
+Basic Block main bb0
+bb0;Line;55;"	preencheArray(v,b,c);
+"
+bb0::1;Line;62;"	qurt();
+"
+bb0::2;Line;64;"  return 0;
+"
+Basic Block preencheArray bb0
+bb0;Line;45;"	a[0] =  (double)v;
+"
+bb0::6;Line;46;"	a[1] =  (double)b;
+"
+bb0::8;Line;47;"	a[2] =  (double)c;
+"
+bb0::9;Line;49;"}
+"
+Basic Block qurt bb0
+bb0;Line;70;"	if(a[0] == 0.0) return(999);
+"
+bb0::2;Line;70;"	if(a[0] == 0.0) return(999);
+"
+Basic Block qurt bb2
+bb2;Line;70;"	if(a[0] == 0.0) return(999);
+"
+bb2::0:::1;Line;70;"	if(a[0] == 0.0) return(999);
+"
+Basic Block qurt bb3
+bb3;Line;71;"	d = a[1]*a[1] - 4 * a[0] * a[2];
+"
+bb3::10;Line;73;"	w2 = qurt_sqrt(qurt_fabs(d));
+"
+bb3::11;Line;73;"	w2 = qurt_sqrt(qurt_fabs(d));
+"
+bb3::14;Line;74;"	if(d > 0.0)
+"
+bb3::2;Line;71;"	d = a[1]*a[1] - 4 * a[0] * a[2];
+"
+bb3::4;Line;71;"	d = a[1]*a[1] - 4 * a[0] * a[2];
+"
+bb3::6;Line;71;"	d = a[1]*a[1] - 4 * a[0] * a[2];
+"
+bb3::8;Line;72;"	w1 = 2.0 * a[0];
+"
+Basic Block qurt bb15
+bb15;Line;76;"		 flag = 1;
+"
+bb15::1;Line;77;"		 x1[0] = (-a[1] + w2) / w1;
+"
+bb15::10;Line;79;"		 x2[0] = (-a[1] - w2) / w1;
+"
+bb15::11;Line;80;"		 x2[1] = 0.0;
+"
+bb15::12;Line;81;"		 return(0);
+"
+bb15::12:::1;Line;81;"		 return(0);
+"
+bb15::4;Line;77;"		 x1[0] = (-a[1] + w2) / w1;
+"
+bb15::5;Line;78;"		 x1[1] = 0.0;
+"
+bb15::6;Line;79;"		 x2[0] = (-a[1] - w2) / w1;
+"
+Basic Block qurt bb23
+bb23;Line;83;"	else if(d == 0.0)
+"
+Basic Block qurt bb25
+bb25;Line;85;"		 flag = 0;
+"
+bb25::1;Line;86;"		 x1[0] = -a[1] / w1;
+"
+bb25::4;Line;86;"		 x1[0] = -a[1] / w1;
+"
+bb25::5;Line;87;"		 x1[1] = 0.0;
+"
+bb25::6;Line;88;"		 x2[0] = x1[0];
+"
+bb25::7;Line;88;"		 x2[0] = x1[0];
+"
+bb25::8;Line;89;"		 x2[1] = 0.0;
+"
+bb25::9;Line;90;"		 return(0);
+"
+bb25::9:::1;Line;90;"		 return(0);
+"
+Basic Block qurt bb30
+bb30;Line;94;"		 flag = -1;
+"
+bb30::1;Line;95;"		 w2 /= w1;
+"
+bb30::11;Line;99;"		 x2[1] = -w2;
+"
+bb30::12;Line;100;"		 return(0);
+"
+bb30::3;Line;96;"		 x1[0] = -a[1] / w1;
+"
+bb30::6;Line;96;"		 x1[0] = -a[1] / w1;
+"
+bb30::7;Line;97;"		 x1[1] = w2;
+"
+bb30::8;Line;98;"		 x2[0] = x1[0];
+"
+bb30::9;Line;98;"		 x2[0] = x1[0];
+"
+Basic Block qurt bb37
+bb37;Line;102;"}
+"
+Basic Block qurt_fabs bb0
+bb0;Line;10;"  if (n >= 0) f = n;
+"
+Basic Block qurt_fabs bb1
+bb1;Line;10;"  if (n >= 0) f = n;
+"
+bb1::1:::1;Line;10;"  if (n >= 0) f = n;
+"
+Basic Block qurt_fabs bb2
+bb2;Line;11;"  else f = -n;
+"
+Basic Block qurt_fabs bb4
+bb4;Line;12;"  return f;
+"
+Basic Block qurt_sqrt bb0
+bb0;Line;28;"  if (val == 0 ) x = 0;
+"
+Basic Block qurt_sqrt bb1
+bb1;Line;28;"  if (val == 0 ) x = 0;
+"
+bb1::1:::1;Line;28;"  if (val == 0 ) x = 0;
+"
+Basic Block qurt_sqrt bb2
+bb2;Line;18;"  double x = val/10;
+"
+bb2::2;Line;30;"    for (i=1;i<20;i++)
+"
+bb2::2:::1;Line;30;"    for (i=1;i<20;i++)
+"
+bb2::2:::2;Line;30;"    for (i=1;i<20;i++)
+"
+Basic Block qurt_sqrt bb4
+bb4;Line;30;"    for (i=1;i<20;i++)
+"
+Basic Block qurt_sqrt bb6
+bb6;Line;32;"	if (!flag) {
+"
+bb6::1::qurt_sqrt::bb20;Line;32;"	if (!flag) {
+"
+bb6::1::qurt_sqrt::bb20:::1;Line;32;"	if (!flag) {
+"
+bb6::1::qurt_sqrt::bb20:::2;Line;32;"	if (!flag) {
+"
+Basic Block qurt_sqrt bb8
+bb8;Line;34;"	  x = x + dx;
+"
+bb8::10;Line;36;"	  if (qurt_fabs(diff) <= min_tol) flag = 1;
+"
+bb8::12;Line;36;"	  if (qurt_fabs(diff) <= min_tol) flag = 1;
+"
+bb8::12::qurt_sqrt::bb19;Line;36;"	  if (qurt_fabs(diff) <= min_tol) flag = 1;
+"
+bb8::12::qurt_sqrt::bb19:::1;Line;36;"	  if (qurt_fabs(diff) <= min_tol) flag = 1;
+"
+Basic Block qurt_sqrt bb18
+bb18;Line;36;"	  if (qurt_fabs(diff) <= min_tol) flag = 1;
+"
+Basic Block qurt_sqrt bb19
+bb19;Line;37;"	}
+"
+bb19::1:::1;Line;37;"	}
+"
+Basic Block qurt_sqrt bb20
+bb20;Line;38;"      }
+"
+Basic Block qurt_sqrt bb21
+bb21;Line;30;"    for (i=1;i<20;i++)
+"
+bb21::2;Line;30;"    for (i=1;i<20;i++)
+"
+bb21::2:::1;Line;30;"    for (i=1;i<20;i++)
+"
+bb21::2:::2;Line;30;"    for (i=1;i<20;i++)
+"
+bb21::2:::3;Line;30;"    for (i=1;i<20;i++)
+"
+Basic Block qurt_sqrt bb24
+bb24;Line;40;"  return (x);
+"

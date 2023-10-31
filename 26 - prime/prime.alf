@@ -1,0 +1,394 @@
+{ alf
+ { macro_defs }
+ { least_addr_unit 8 }
+ little_endian
+ { exports
+  { frefs }
+  { lrefs { lref 64 "divides" } { lref 64 "even" } { lref 64 "prime" } { lref 64 "swap" } { lref 64 "main" } }
+ }
+ { imports
+  { frefs
+   { fref 64 "$null" }
+   { fref 64 "$mem" }
+  }
+  { lrefs }
+ }
+ { decls }
+ { inits }
+ { funcs
+
+  /* Definition of function divides */
+  { func
+   { label 64 { lref 64 "divides" } { dec_unsigned 64 0 } }
+   { arg_decls
+    { alloc 64 "%n" 32 }
+    { alloc 64 "%m" 32 }
+   }
+   { scope
+    { decls }
+    { inits }
+    { stmts
+
+     /* --------- BASIC BLOCK bb ---------- */
+     { label 64 { lref 64 "divides::bb" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT divides::bb::5
+      *   %tmp = urem i32 %m, %n, !dbg !31
+      *   %tmp1 = icmp eq i32 %tmp, 0, !dbg !31
+      *   %tmp2 = zext i1 %tmp1 to i8, !dbg !31
+      *   ret i8 %tmp2, !dbg !31 */
+     { return
+      { conc 7 1 { dec_unsigned 7 0 }
+       { eq 32
+        { u_mod 32 32 { load 32 { addr 64 { fref 64 "%m" } { dec_unsigned 64 0 } } } { load 32 { addr 64 { fref 64 "%n" } { dec_unsigned 64 0 } } } }
+        { dec_unsigned 32 0 }
+       }
+      }
+     }
+    }
+   }
+  }
+
+  /* Definition of function even */
+  { func
+   { label 64 { lref 64 "even" } { dec_unsigned 64 0 } }
+   { arg_decls
+    { alloc 64 "%n" 32 }
+   }
+   { scope
+    { decls
+     { alloc 64 "%tmp" 8 } /* Local Variable (Non-Inlinable Instruction) */ 
+    }
+    { inits }
+    { stmts
+
+     /* --------- BASIC BLOCK bb ---------- */
+     { label 64 { lref 64 "even::bb" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT even::bb::1
+      *   %tmp = call zeroext i8 @divides(i32 2, i32 %n), !dbg !29 */
+     { call { label 64 { lref 64 "divides" } { dec_unsigned 64 0 } } { dec_unsigned 32 2 } { load 32 { addr 64 { fref 64 "%n" } { dec_unsigned 64 0 } } } result { addr 64 { fref 64 "%tmp" } { dec_unsigned 64 0 } } }
+
+     /* STATEMENT even::bb::2
+      *   ret i8 %tmp, !dbg !29 */
+     { label 64 { lref 64 "even::bb::2" } { dec_unsigned 64 0 } }
+     { return { load 8 { addr 64 { fref 64 "%tmp" } { dec_unsigned 64 0 } } } }
+    }
+   }
+  }
+
+  /* Definition of function prime */
+  { func
+   { label 64 { lref 64 "prime" } { dec_unsigned 64 0 } }
+   { arg_decls
+    { alloc 64 "%n" 32 }
+   }
+   { scope
+    { decls
+     { alloc 64 "%tmp" 8 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp4" 8 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%i.0" 32 } /* Local Variable (PHI node) */ 
+     { alloc 64 "%tmp10" 8 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp15" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp18" 8 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%.0" 8 } /* Local Variable (PHI node) */ 
+    }
+    { inits }
+    { stmts
+
+     /* --------- BASIC BLOCK bb ---------- */
+     { label 64 { lref 64 "prime::bb" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT prime::bb::1
+      *   %tmp = call zeroext i8 @even(i32 %n), !dbg !29 */
+     { call { label 64 { lref 64 "even" } { dec_unsigned 64 0 } } { load 32 { addr 64 { fref 64 "%n" } { dec_unsigned 64 0 } } } result { addr 64 { fref 64 "%tmp" } { dec_unsigned 64 0 } } }
+
+     /* STATEMENT prime::bb::3
+      *   %tmp1 = icmp eq i8 %tmp, 0, !dbg !29
+      *   br i1 %tmp1, label %bb5, label %bb2, !dbg !29 */
+     { label 64 { lref 64 "prime::bb::3" } { dec_unsigned 64 0 } }
+     { switch
+      { eq 8 { load 8 { addr 64 { fref 64 "%tmp" } { dec_unsigned 64 0 } } } { dec_unsigned 8 0 } }
+      { target { dec_signed 1 { minus 1 } } { label 64 { lref 64 "prime::bb5" } { dec_unsigned 64 0 } } }
+      { default { label 64 { lref 64 "prime::bb2" } { dec_unsigned 64 0 } } }
+     }
+
+     /* --------- BASIC BLOCK bb2 ---------- */
+     { label 64 { lref 64 "prime::bb2" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT prime::bb2::1
+      *   %tmp3 = icmp eq i32 %n, 2, !dbg !31
+      *   %tmp4 = zext i1 %tmp3 to i8, !dbg !31 */
+     { store { addr 64 { fref 64 "%tmp4" } { dec_unsigned 64 0 } } with
+      { conc 7 1 { dec_unsigned 7 0 }
+       { eq 32 { load 32 { addr 64 { fref 64 "%n" } { dec_unsigned 64 0 } } } { dec_unsigned 32 2 } }
+      }
+     }
+
+     /* STATEMENT prime::bb2::2
+      *   br label %bb19, !dbg !31 */
+     { label 64 { lref 64 "prime::bb2::2" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%.0" } { dec_unsigned 64 0 } } with { load 8 { addr 64 { fref 64 "%tmp4" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "prime::bb2::2:::1" } { dec_unsigned 64 0 } }
+     { jump { label 64 { lref 64 "prime::bb19" } { dec_unsigned 64 0 } } leaving 0 }
+
+     /* --------- BASIC BLOCK bb5 ---------- */
+     { label 64 { lref 64 "prime::bb5" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT prime::bb5::1
+      *   br label %bb6, !dbg !35 */
+     { store { addr 64 { fref 64 "%i.0" } { dec_unsigned 64 0 } } with { dec_unsigned 32 3 } }
+
+     /* --------- BASIC BLOCK bb6 ---------- */
+     { label 64 { lref 64 "prime::bb6" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT prime::bb6::3
+      *   %tmp7 = mul i32 %i.0, %i.0, !dbg !35
+      *   %tmp8 = icmp ugt i32 %tmp7, %n, !dbg !35
+      *   br i1 %tmp8, label %bb16, label %bb9, !dbg !35 */
+     { switch
+      { u_gt 32
+       { select 64 0 31
+        { u_mul 32 32 { load 32 { addr 64 { fref 64 "%i.0" } { dec_unsigned 64 0 } } } { load 32 { addr 64 { fref 64 "%i.0" } { dec_unsigned 64 0 } } } }
+       }
+       { load 32 { addr 64 { fref 64 "%n" } { dec_unsigned 64 0 } } }
+      }
+      { target { dec_signed 1 { minus 1 } } { label 64 { lref 64 "prime::bb16" } { dec_unsigned 64 0 } } }
+      { default { label 64 { lref 64 "prime::bb9" } { dec_unsigned 64 0 } } }
+     }
+
+     /* --------- BASIC BLOCK bb9 ---------- */
+     { label 64 { lref 64 "prime::bb9" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT prime::bb9::0
+      *   %tmp10 = call zeroext i8 @divides(i32 %i.0, i32 %n), !dbg !37 */
+     { call { label 64 { lref 64 "divides" } { dec_unsigned 64 0 } } { load 32 { addr 64 { fref 64 "%i.0" } { dec_unsigned 64 0 } } } { load 32 { addr 64 { fref 64 "%n" } { dec_unsigned 64 0 } } } result { addr 64 { fref 64 "%tmp10" } { dec_unsigned 64 0 } } }
+
+     /* STATEMENT prime::bb9::2
+      *   %tmp11 = icmp eq i8 %tmp10, 0, !dbg !37
+      *   br i1 %tmp11, label %bb13, label %bb12, !dbg !37 */
+     { label 64 { lref 64 "prime::bb9::2" } { dec_unsigned 64 0 } }
+     { switch
+      { eq 8 { load 8 { addr 64 { fref 64 "%tmp10" } { dec_unsigned 64 0 } } } { dec_unsigned 8 0 } }
+      { target { dec_signed 1 { minus 1 } } { label 64 { lref 64 "prime::bb13" } { dec_unsigned 64 0 } } }
+      { default { label 64 { lref 64 "prime::bb12" } { dec_unsigned 64 0 } } }
+     }
+
+     /* --------- BASIC BLOCK bb12 ---------- */
+     { label 64 { lref 64 "prime::bb12" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT prime::bb12::0
+      *   br label %bb19, !dbg !40 */
+     { store { addr 64 { fref 64 "%.0" } { dec_unsigned 64 0 } } with { dec_unsigned 8 0 } }
+
+     { label 64 { lref 64 "prime::bb12::0:::1" } { dec_unsigned 64 0 } }
+     { jump { label 64 { lref 64 "prime::bb19" } { dec_unsigned 64 0 } } leaving 0 }
+
+     /* --------- BASIC BLOCK bb13 ---------- */
+     { label 64 { lref 64 "prime::bb13" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT prime::bb13::0
+      *   br label %bb14, !dbg !42 */
+     { jump { label 64 { lref 64 "prime::bb14" } { dec_unsigned 64 0 } } leaving 0 }
+
+     /* --------- BASIC BLOCK bb14 ---------- */
+     { label 64 { lref 64 "prime::bb14" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT prime::bb14::0
+      *   %tmp15 = add i32 %i.0, 2, !dbg !43 */
+     { store { addr 64 { fref 64 "%tmp15" } { dec_unsigned 64 0 } } with
+      { add 32 { load 32 { addr 64 { fref 64 "%i.0" } { dec_unsigned 64 0 } } } { dec_unsigned 32 2 } { dec_unsigned 1 0 } }
+     }
+
+     /* STATEMENT prime::bb14::2
+      *   br label %bb6, !dbg !43 */
+     { label 64 { lref 64 "prime::bb14::2" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%i.0" } { dec_unsigned 64 0 } } with { load 32 { addr 64 { fref 64 "%tmp15" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "prime::bb14::2:::1" } { dec_unsigned 64 0 } }
+     { jump { label 64 { lref 64 "prime::bb6" } { dec_unsigned 64 0 } } leaving 0 }
+
+     /* --------- BASIC BLOCK bb16 ---------- */
+     { label 64 { lref 64 "prime::bb16" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT prime::bb16::1
+      *   %tmp17 = icmp ugt i32 %n, 1, !dbg !44
+      *   %tmp18 = zext i1 %tmp17 to i8, !dbg !44 */
+     { store { addr 64 { fref 64 "%tmp18" } { dec_unsigned 64 0 } } with
+      { conc 7 1 { dec_unsigned 7 0 }
+       { u_gt 32 { load 32 { addr 64 { fref 64 "%n" } { dec_unsigned 64 0 } } } { dec_unsigned 32 1 } }
+      }
+     }
+
+     /* STATEMENT prime::bb16::2
+      *   br label %bb19, !dbg !44 */
+     { label 64 { lref 64 "prime::bb16::2" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%.0" } { dec_unsigned 64 0 } } with { load 8 { addr 64 { fref 64 "%tmp18" } { dec_unsigned 64 0 } } } }
+
+     /* --------- BASIC BLOCK bb19 ---------- */
+     { label 64 { lref 64 "prime::bb19" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT prime::bb19::1
+      *   ret i8 %.0, !dbg !45 */
+     { return { load 8 { addr 64 { fref 64 "%.0" } { dec_unsigned 64 0 } } } }
+    }
+   }
+  }
+
+  /* Definition of function swap */
+  { func
+   { label 64 { lref 64 "swap" } { dec_unsigned 64 0 } }
+   { arg_decls
+    { alloc 64 "%a" 64 }
+    { alloc 64 "%b" 64 }
+   }
+   { scope
+    { decls
+     { alloc 64 "%tmp" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp1" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+    }
+    { inits }
+    { stmts
+
+     /* --------- BASIC BLOCK bb ---------- */
+     { label 64 { lref 64 "swap::bb" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT swap::bb::2
+      *   %tmp = load i32* %a, align 4, !dbg !31 */
+     { store { addr 64 { fref 64 "%tmp" } { dec_unsigned 64 0 } } with
+      { load 32 { load 64 { addr 64 { fref 64 "%a" } { dec_unsigned 64 0 } } } }
+     }
+
+     /* STATEMENT swap::bb::4
+      *   %tmp1 = load i32* %b, align 4, !dbg !33 */
+     { label 64 { lref 64 "swap::bb::4" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp1" } { dec_unsigned 64 0 } } with
+      { load 32 { load 64 { addr 64 { fref 64 "%b" } { dec_unsigned 64 0 } } } }
+     }
+
+     /* STATEMENT swap::bb::5
+      *   store i32 %tmp1, i32* %a, align 4, !dbg !33 */
+     { label 64 { lref 64 "swap::bb::5" } { dec_unsigned 64 0 } }
+     { store { load 64 { addr 64 { fref 64 "%a" } { dec_unsigned 64 0 } } } with { load 32 { addr 64 { fref 64 "%tmp1" } { dec_unsigned 64 0 } } } }
+
+     /* STATEMENT swap::bb::6
+      *   store i32 %tmp, i32* %b, align 4, !dbg !34 */
+     { label 64 { lref 64 "swap::bb::6" } { dec_unsigned 64 0 } }
+     { store { load 64 { addr 64 { fref 64 "%b" } { dec_unsigned 64 0 } } } with { load 32 { addr 64 { fref 64 "%tmp" } { dec_unsigned 64 0 } } } }
+
+     /* STATEMENT swap::bb::7
+      *   ret void, !dbg !35 */
+     { label 64 { lref 64 "swap::bb::7" } { dec_unsigned 64 0 } }
+     { return }
+    }
+   }
+  }
+
+  /* Definition of function main */
+  { func
+   { label 64 { lref 64 "main" } { dec_unsigned 64 0 } }
+   { arg_decls }
+   { scope
+    { decls
+     { alloc 64 "%x" 32 } /* Alloca'd memory */ 
+     { alloc 64 "%y" 32 } /* Alloca'd memory */ 
+     { alloc 64 "%tmp" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp1" 8 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp4" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp5" 8 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%phitmp" 1 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp7" 1 } /* Local Variable (PHI node) */ 
+    }
+    { inits }
+    { stmts
+
+     /* --------- BASIC BLOCK bb ---------- */
+     { label 64 { lref 64 "main::bb" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT main::bb::4
+      *   %x = alloca i32, align 4
+      *   store i32 21649, i32* %x, align 4, !dbg !30 */
+     { store { addr 64 { fref 64 "%x" } { dec_unsigned 64 0 } } with { dec_unsigned 32 21649 } }
+
+     /* STATEMENT main::bb::7
+      *   %y = alloca i32, align 4
+      *   store i32 513239, i32* %y, align 4, !dbg !34 */
+     { label 64 { lref 64 "main::bb::7" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%y" } { dec_unsigned 64 0 } } with { dec_unsigned 32 513239 } }
+
+     /* STATEMENT main::bb::8
+      *   %x = alloca i32, align 4
+      *   %y = alloca i32, align 4
+      *   call void @swap(i32* %x, i32* %y), !dbg !35 */
+     { label 64 { lref 64 "main::bb::8" } { dec_unsigned 64 0 } }
+     { call { label 64 { lref 64 "swap" } { dec_unsigned 64 0 } } { addr 64 { fref 64 "%x" } { dec_unsigned 64 0 } } { addr 64 { fref 64 "%y" } { dec_unsigned 64 0 } } result }
+
+     /* STATEMENT main::bb::10
+      *   %x = alloca i32, align 4
+      *   %tmp = load i32* %x, align 4, !dbg !36 */
+     { label 64 { lref 64 "main::bb::10" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp" } { dec_unsigned 64 0 } } with { load 32 { addr 64 { fref 64 "%x" } { dec_unsigned 64 0 } } } }
+
+     /* STATEMENT main::bb::11
+      *   %tmp1 = call zeroext i8 @prime(i32 %tmp), !dbg !36 */
+     { label 64 { lref 64 "main::bb::11" } { dec_unsigned 64 0 } }
+     { call { label 64 { lref 64 "prime" } { dec_unsigned 64 0 } } { load 32 { addr 64 { fref 64 "%tmp" } { dec_unsigned 64 0 } } } result { addr 64 { fref 64 "%tmp1" } { dec_unsigned 64 0 } } }
+
+     /* STATEMENT main::bb::13
+      *   %tmp2 = icmp eq i8 %tmp1, 0, !dbg !36
+      *   br i1 %tmp2, label %bb6, label %bb3, !dbg !36 */
+     { label 64 { lref 64 "main::bb::13" } { dec_unsigned 64 0 } }
+     { switch
+      { eq 8 { load 8 { addr 64 { fref 64 "%tmp1" } { dec_unsigned 64 0 } } } { dec_unsigned 8 0 } }
+      { target { dec_signed 1 { minus 1 } }
+       { label 64 { lref 64 "main::bb::13::main::bb6" } { dec_unsigned 64 0 } }
+      }
+      { default { label 64 { lref 64 "main::bb3" } { dec_unsigned 64 0 } } }
+     }
+
+     { label 64 { lref 64 "main::bb::13::main::bb6" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp7" } { dec_unsigned 64 0 } } with { dec_signed 1 { minus 1 } } }
+
+     { label 64 { lref 64 "main::bb::13::main::bb6:::1" } { dec_unsigned 64 0 } }
+     { jump { label 64 { lref 64 "main::bb6" } { dec_unsigned 64 0 } } leaving 0 }
+
+     /* --------- BASIC BLOCK bb3 ---------- */
+     { label 64 { lref 64 "main::bb3" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT main::bb3::1
+      *   %y = alloca i32, align 4
+      *   %tmp4 = load i32* %y, align 4, !dbg !37 */
+     { store { addr 64 { fref 64 "%tmp4" } { dec_unsigned 64 0 } } with { load 32 { addr 64 { fref 64 "%y" } { dec_unsigned 64 0 } } } }
+
+     /* STATEMENT main::bb3::2
+      *   %tmp5 = call zeroext i8 @prime(i32 %tmp4), !dbg !37 */
+     { label 64 { lref 64 "main::bb3::2" } { dec_unsigned 64 0 } }
+     { call { label 64 { lref 64 "prime" } { dec_unsigned 64 0 } } { load 32 { addr 64 { fref 64 "%tmp4" } { dec_unsigned 64 0 } } } result { addr 64 { fref 64 "%tmp5" } { dec_unsigned 64 0 } } }
+
+     /* STATEMENT main::bb3::3
+      *   %phitmp = icmp eq i8 %tmp5, 0 */
+     { label 64 { lref 64 "main::bb3::3" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%phitmp" } { dec_unsigned 64 0 } } with
+      { eq 8 { load 8 { addr 64 { fref 64 "%tmp5" } { dec_unsigned 64 0 } } } { dec_unsigned 8 0 } }
+     }
+
+     /* STATEMENT main::bb3::4
+      *   br label %bb6 */
+     { label 64 { lref 64 "main::bb3::4" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp7" } { dec_unsigned 64 0 } } with { load 1 { addr 64 { fref 64 "%phitmp" } { dec_unsigned 64 0 } } } }
+
+     /* --------- BASIC BLOCK bb6 ---------- */
+     { label 64 { lref 64 "main::bb6" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT main::bb6::2
+      *   %tmp8 = zext i1 %tmp7 to i32
+      *   ret i32 %tmp8, !dbg !38 */
+     { return
+      { conc 31 1 { dec_unsigned 31 0 } { load 1 { addr 64 { fref 64 "%tmp7" } { dec_unsigned 64 0 } } } }
+     }
+    }
+   }
+  }
+ }
+}
