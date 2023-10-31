@@ -1,13 +1,10 @@
 int a[11];
-
-void insertsort()
-{
+void insertsort(){
   int  i,j, temp;
   i = 2;
   while(i <= 10){
       j = i;
-      while (a[j] < a[j-1])
-      {
+      while (a[j] < a[j-1]){
 	temp = a[j];
 	a[j] = a[j-1];
 	a[j-1] = temp;
@@ -16,10 +13,7 @@ void insertsort()
       i++;
   }
 }
-
-int main()
-{
-
+int main(){
   a[0] = 0;   /* assume all data is positive */
   a[1] = 11; 
   a[2]=10;
@@ -36,4 +30,3 @@ int main()
   
   return 1;
 }
-
