@@ -412,7 +412,7 @@
      }
 
      /* STATEMENT expint::bb39::5
-      *   br label %bb57, !dbg !75 */
+      *   br label %bb57, !dbg !73 */
      { label 64 { lref 64 "expint::bb39::5" } { dec_unsigned 64 0 } }
      { store { addr 64 { fref 64 "%del.0" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%tmp43" } { dec_unsigned 64 0 } } } }
 
@@ -423,7 +423,7 @@
      { label 64 { lref 64 "expint::bb44" } { dec_unsigned 64 0 } }
 
      /* STATEMENT expint::bb44::2
-      *   br label %bb45, !dbg !81 */
+      *   br label %bb45, !dbg !79 */
      { store { addr 64 { fref 64 "%ii.0" } { dec_unsigned 64 0 } } with { dec_unsigned 32 1 } }
 
      { label 64 { lref 64 "expint::bb44::2:::1" } { dec_unsigned 64 0 } }
@@ -433,8 +433,8 @@
      { label 64 { lref 64 "expint::bb45" } { dec_unsigned 64 0 } }
 
      /* STATEMENT expint::bb45::3
-      *   %tmp46 = icmp sgt i32 %ii.0, %tmp, !dbg !81
-      *   br i1 %tmp46, label %bb53, label %bb47, !dbg !81 */
+      *   %tmp46 = icmp sgt i32 %ii.0, %tmp, !dbg !79
+      *   br i1 %tmp46, label %bb53, label %bb47, !dbg !79 */
      { switch
       { s_gt 32 { load 32 { addr 64 { fref 64 "%ii.0" } { dec_unsigned 64 0 } } } { load 32 { addr 64 { fref 64 "%tmp" } { dec_unsigned 64 0 } } } }
       { target { dec_signed 1 { minus 1 } } { label 64 { lref 64 "expint::bb53" } { dec_unsigned 64 0 } } }
@@ -445,16 +445,16 @@
      { label 64 { lref 64 "expint::bb47" } { dec_unsigned 64 0 } }
 
      /* STATEMENT expint::bb47::1
-      *   br label %bb48, !dbg !85 */
+      *   br label %bb48, !dbg !81 */
      { jump { label 64 { lref 64 "expint::bb48" } { dec_unsigned 64 0 } } leaving 0 }
 
      /* --------- BASIC BLOCK bb48 ---------- */
      { label 64 { lref 64 "expint::bb48" } { dec_unsigned 64 0 } }
 
      /* STATEMENT expint::bb48::2
-      *   %tmp49 = add nsw i32 %ii.0, %tmp, !dbg !83
-      *   %tmp50 = sext i32 %tmp49 to i64, !dbg !83
-      *   %tmp51 = add nsw i64 %psi.0, %tmp50, !dbg !83 */
+      *   %tmp49 = add nsw i32 %ii.0, %tmp, !dbg !81
+      *   %tmp50 = sext i32 %tmp49 to i64, !dbg !81
+      *   %tmp51 = add nsw i64 %psi.0, %tmp50, !dbg !81 */
      { store { addr 64 { fref 64 "%tmp51" } { dec_unsigned 64 0 } } with
       { add 64 { load 64 { addr 64 { fref 64 "%psi.0" } { dec_unsigned 64 0 } } }
        { s_ext 32 64
@@ -465,14 +465,14 @@
      }
 
      /* STATEMENT expint::bb48::3
-      *   %tmp52 = add nsw i32 %ii.0, 1, !dbg !86 */
+      *   %tmp52 = add nsw i32 %ii.0, 1, !dbg !82 */
      { label 64 { lref 64 "expint::bb48::3" } { dec_unsigned 64 0 } }
      { store { addr 64 { fref 64 "%tmp52" } { dec_unsigned 64 0 } } with
       { add 32 { load 32 { addr 64 { fref 64 "%ii.0" } { dec_unsigned 64 0 } } } { dec_unsigned 32 1 } { dec_unsigned 1 0 } }
      }
 
      /* STATEMENT expint::bb48::5
-      *   br label %bb45, !dbg !86 */
+      *   br label %bb45, !dbg !82 */
      { label 64 { lref 64 "expint::bb48::5" } { dec_unsigned 64 0 } }
      { store { addr 64 { fref 64 "%ii.0" } { dec_unsigned 64 0 } } with { load 32 { addr 64 { fref 64 "%tmp52" } { dec_unsigned 64 0 } } } }
 
@@ -486,12 +486,12 @@
      { label 64 { lref 64 "expint::bb53" } { dec_unsigned 64 0 } }
 
      /* STATEMENT expint::bb53::0
-      *   %tmp54 = call i64 @foo(i64 %x), !dbg !87 */
+      *   %tmp54 = call i64 @foo(i64 %x), !dbg !83 */
      { call { label 64 { lref 64 "foo" } { dec_unsigned 64 0 } } { load 64 { addr 64 { fref 64 "%x" } { dec_unsigned 64 0 } } } result { addr 64 { fref 64 "%tmp54" } { dec_unsigned 64 0 } } }
 
      /* STATEMENT expint::bb53::2
-      *   %tmp55 = mul nsw i64 %tmp37, %tmp54, !dbg !87
-      *   %tmp56 = add nsw i64 %psi.0, %tmp55, !dbg !87 */
+      *   %tmp55 = mul nsw i64 %tmp37, %tmp54, !dbg !83
+      *   %tmp56 = add nsw i64 %psi.0, %tmp55, !dbg !83 */
      { label 64 { lref 64 "expint::bb53::2" } { dec_unsigned 64 0 } }
      { store { addr 64 { fref 64 "%tmp56" } { dec_unsigned 64 0 } } with
       { add 64 { load 64 { addr 64 { fref 64 "%psi.0" } { dec_unsigned 64 0 } } }
@@ -511,27 +511,27 @@
      { label 64 { lref 64 "expint::bb57" } { dec_unsigned 64 0 } }
 
      /* STATEMENT expint::bb57::2
-      *   br label %bb58, !dbg !89 */
+      *   br label %bb58, !dbg !85 */
      { jump { label 64 { lref 64 "expint::bb58" } { dec_unsigned 64 0 } } leaving 0 }
 
      /* --------- BASIC BLOCK bb58 ---------- */
      { label 64 { lref 64 "expint::bb58" } { dec_unsigned 64 0 } }
 
      /* STATEMENT expint::bb58::0
-      *   %tmp59 = add nsw i64 %ans.0, %del.0, !dbg !88 */
+      *   %tmp59 = add nsw i64 %ans.0, %del.0, !dbg !84 */
      { store { addr 64 { fref 64 "%tmp59" } { dec_unsigned 64 0 } } with
       { add 64 { load 64 { addr 64 { fref 64 "%ans.0" } { dec_unsigned 64 0 } } } { load 64 { addr 64 { fref 64 "%del.0" } { dec_unsigned 64 0 } } } { dec_unsigned 1 0 } }
      }
 
      /* STATEMENT expint::bb58::1
-      *   %tmp60 = add nsw i32 %i.1, 1, !dbg !90 */
+      *   %tmp60 = add nsw i32 %i.1, 1, !dbg !86 */
      { label 64 { lref 64 "expint::bb58::1" } { dec_unsigned 64 0 } }
      { store { addr 64 { fref 64 "%tmp60" } { dec_unsigned 64 0 } } with
       { add 32 { load 32 { addr 64 { fref 64 "%i.1" } { dec_unsigned 64 0 } } } { dec_unsigned 32 1 } { dec_unsigned 1 0 } }
      }
 
      /* STATEMENT expint::bb58::3
-      *   br label %bb31, !dbg !90 */
+      *   br label %bb31, !dbg !86 */
      { label 64 { lref 64 "expint::bb58::3" } { dec_unsigned 64 0 } }
      { store { addr 64 { fref 64 "%fact.0" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%tmp37" } { dec_unsigned 64 0 } } } }
 
@@ -555,14 +555,14 @@
      { label 64 { lref 64 "expint::bb62" } { dec_unsigned 64 0 } }
 
      /* STATEMENT expint::bb62::1
-      *   br label %bb63, !dbg !91 */
+      *   br label %bb63, !dbg !87 */
      { store { addr 64 { fref 64 "%.0" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%ans.1" } { dec_unsigned 64 0 } } } }
 
      /* --------- BASIC BLOCK bb63 ---------- */
      { label 64 { lref 64 "expint::bb63" } { dec_unsigned 64 0 } }
 
      /* STATEMENT expint::bb63::1
-      *   ret i64 %.0, !dbg !92 */
+      *   ret i64 %.0, !dbg !88 */
      { return { load 64 { addr 64 { fref 64 "%.0" } { dec_unsigned 64 0 } } } }
     }
    }
