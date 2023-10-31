@@ -4,8 +4,7 @@ int flag;
 int  qurt();
 
 
-double qurt_fabs(double n)
-{
+double qurt_fabs(double n){
   double f;
 
   if (n >= 0) f = n;
@@ -36,8 +35,6 @@ double val;
 	  diff = val - (x*x);
 	  if (qurt_fabs(diff) <= min_tol) flag = 1;
 	}
-	else {} /* JG */
-/*	  x =x; */
       }
   }
   return (x);
@@ -51,8 +48,7 @@ void preencheArray(int v,int b, int c){
 
 }
 
-int main()
-{
+int main(){
 
 	int v,b,c;
 	
@@ -68,8 +64,7 @@ int main()
   return 0;
 }
 
-int  qurt()
-{
+int  qurt(){
 	double  d, w1, w2;
 
 	if(a[0] == 0.0) return(999);

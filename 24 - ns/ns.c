@@ -437,26 +437,25 @@ int answer[5][5][5][5] =
 };
 
 
-int foo(int x)
-{
+int foo(int x){
   int i,j,k,l;
 
-  for(i=0; i<5; i++)
-    for(j=0 ; j<5 ; j++)
-      for(k=0 ; k<5 ; k++)
-        for(l=0 ; l<5 ; l++)
-        {
-          if( keys[i][j][k][l] == x )
-            {
+  for(i=0; i<5; i++){
+    for(j=0 ; j<5 ; j++){
+      for(k=0 ; k<5 ; k++){
+                for(l=0 ; l<5 ; l++){
+          if( keys[i][j][k][l] == x ){
               return answer[i][j][k][l] + keys[i][j][k][l];
             }
         }
+      }
+    }
+  }
   return -1;
 }
 
 
-int main(void)
-{
+int main(void){
   foo(400);
   return 0;
 }

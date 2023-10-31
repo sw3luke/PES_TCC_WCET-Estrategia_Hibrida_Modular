@@ -1,7 +1,5 @@
-unsigned char num_to_lcd(unsigned char a)
-{
-  switch(a)
-    {
+unsigned char num_to_lcd(unsigned char a){
+  switch(a){
     case 0x00: return 0;
     case 0x01: return 0x24;
     case 0x02: return 1+4+8+16+64;
@@ -25,22 +23,19 @@ unsigned char num_to_lcd(unsigned char a)
 unsigned char IN;
 unsigned char OUT;
 
-int main(void)
-{
+int main(void){
   int           i;
   unsigned char a;
   int  n; /* JG */
 
   n = 10;
-  for(i=0; i< n; i++)
-    {
+  for(i=0; i< n; i++){
       //a = IN;                   /* scan port */
       a = 0;
-      if(i<5)
-        {
+      if(i<5){
           a = a &0x0F;
           OUT = num_to_lcd(a);
-        }
+      }
     }
   return 0;
 }
