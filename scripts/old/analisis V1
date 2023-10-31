@@ -1,0 +1,9 @@
+echo "Gerando o Bitcode $1.ll"
+clang34 -g -gcolumn-info -Wall -emit-llvm -S -o - $1.c | opt -mem2reg -instcombine -instsimplify -instnamer | llvm-dis -o $1.ll
+echo "Gerando ALF e arquivo de mapeamento $1.alf and $1.map"
+llc $1.ll -march=alf -o=$1.alf -alf-map-file=$1.map
+echo "Gerando CFG $1.dot e $1.pdf"
+mkdir ./CFG
+sweet --input-files=$1.alf --dot-print file=./CFG/$1 g=cfg
+dot -Tpdf ./CFG/$1.dot > ./CFG/$1.pdf
+rm $1.ll

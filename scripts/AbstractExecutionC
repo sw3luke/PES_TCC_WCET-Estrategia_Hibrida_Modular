@@ -1,0 +1,8 @@
+echo "Gerando o WCEP e WCET"
+echo -e "\nRodando a Execução Abstrata sem merge:\n"
+sweet -i=$1.alf annot=./ANN/$1.ann -ae pu bbc=./TDB/$1.tdb merge=none bbcpaths | tee SWEETAEoutput.txt
+echo -e "\nConvertendo WCEP para instruções em C.\n"
+python ../../Programas/Python/bb_identifier_completo.py ./$1.map ./$1.c -f -o=.txt -p SWEETAEoutput.txt > temporario01
+echo -e "\nFeito.\n"
+
+rm temporario01
