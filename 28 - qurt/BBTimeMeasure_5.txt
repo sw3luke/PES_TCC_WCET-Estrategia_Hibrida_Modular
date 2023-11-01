@@ -1,0 +1,7 @@
+qurt_fabs::bb0 71
+qurt_sqrt::bb2:1 90
+qurt_sqrt::bb0 63
+qurt::bb23 156
+qurt::bb25 504
+SystemClock::Endless stopped
+number of cpu cycles simulated: 20963
