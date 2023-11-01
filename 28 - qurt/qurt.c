@@ -25,17 +25,20 @@ double val;
   int i, flag;
 
   flag = 0;
-  if (val == 0 ) x = 0;
+  if (val == 0 ){
+	x = 0;
+  }
   else {
-    for (i=1;i<20;i++)
-      {
-	if (!flag) {
-	  dx = (val - (x*x)) / (2.0 * x);
-	  x = x + dx;
-	  diff = val - (x*x);
-	  if (qurt_fabs(diff) <= min_tol) flag = 1;
-	}
-      }
+    for (i=1;i<20;i++){
+		if (!flag) {
+			dx = (val - (x*x)) / (2.0 * x);
+			x = x + dx;
+			diff = val - (x*x);
+			if (qurt_fabs(diff) <= min_tol){
+				flag = 1;
+			}
+		}
+    }
   }
   return (x);
 }
@@ -67,12 +70,13 @@ int main(){
 int  qurt(){
 	double  d, w1, w2;
 
-	if(a[0] == 0.0) return(999);
+	if(a[0] == 0.0) {
+		return(999);
+	}
 	d = a[1]*a[1] - 4 * a[0] * a[2];
 	w1 = 2.0 * a[0];
 	w2 = qurt_sqrt(qurt_fabs(d));
-	if(d > 0.0)
-	{
+	if(d > 0.0){
 		 flag = 1;
 		 x1[0] = (-a[1] + w2) / w1;
 		 x1[1] = 0.0;
@@ -80,8 +84,7 @@ int  qurt(){
 		 x2[1] = 0.0;
 		 return(0);
 	}
-	else if(d == 0.0)
-	{
+	else if(d == 0.0){
 		 flag = 0;
 		 x1[0] = -a[1] / w1;
 		 x1[1] = 0.0;
@@ -89,8 +92,7 @@ int  qurt(){
 		 x2[1] = 0.0;
 		 return(0);
 	}
-	else
-	{
+	else{
 		 flag = -1;
 		 w2 /= w1;
 		 x1[0] = -a[1] / w1;
