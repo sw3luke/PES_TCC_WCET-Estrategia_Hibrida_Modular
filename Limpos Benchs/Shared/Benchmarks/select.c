@@ -44,23 +44,28 @@ select(unsigned long k, unsigned long n)
 			flag2 = 0;
 			while (!flag2) {
 				i++;
-				while (arr[i] < a)
+				while (arr[i] < a){
 					i++;
+				}
 				j--;
-				while (arr[j] > a)
+				while (arr[j] > a){
 					j--;
-				if (j < i)
+				}
+				if (j < i){
 					flag2 = 1;
+				}
 				if (!flag2) {
 					SWAP(arr[i], arr[j])
 				}
 			}
 			arr[l] = arr[j];
 			arr[j] = a;
-			if (j >= k)
+			if (j >= k){
 				ir = j - 1;
-			if (j <= k)
+			}
+			if (j <= k){
 				l = i;
+			}			
 		}
 	}
 	return arr[k];
