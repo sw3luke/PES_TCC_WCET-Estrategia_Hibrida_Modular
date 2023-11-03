@@ -17,7 +17,7 @@ void insertsort(){
 StartTickCounter();
   while(i <= 10){
             StopTickCounter();
-            printf("insertsort::bb0 %u\r\n", GetTicks());
+            printf("insertsort::bb1 %u\r\n", GetTicks());
             ResetTickCounter();
             
             

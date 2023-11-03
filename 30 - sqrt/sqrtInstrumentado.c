@@ -81,7 +81,7 @@ StopTickCounter();
       for (i=1;i<20;i++){
             
 StopTickCounter();
-            printf("sqrtfcn::bb3 %u\r\n", GetTicks());
+            printf("sqrtfcn::bb5 %u\r\n", GetTicks());
             ResetTickCounter();
             
             
