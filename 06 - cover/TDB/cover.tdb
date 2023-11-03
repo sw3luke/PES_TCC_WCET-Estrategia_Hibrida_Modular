@@ -1,5 +1,5 @@
-swi120::bb 15
-swi120::bb1 10
+swi120::bb 0
+swi120::bb1 15
 swi120::bb2 35
 swi120::bb3 12
 swi120::bb5 12
@@ -124,8 +124,8 @@ swi120::bb241 12
 swi120::bb243 11
 swi120::bb245 0
 swi120::bb248 0
-swi50::bb 15
-swi50::bb1 0
+swi50::bb 0
+swi50::bb1 15
 swi50::bb2 35
 swi50::bb3 12
 swi50::bb5 12
@@ -190,8 +190,8 @@ swi50::bb121 12
 swi50::bb123 11
 swi50::bb125 0
 swi50::bb128 0
-swi10::bb 15
-swi10::bb1 0
+swi10::bb 0
+swi10::bb1 15
 swi10::bb2 35
 swi10::bb3 12
 swi10::bb5 12

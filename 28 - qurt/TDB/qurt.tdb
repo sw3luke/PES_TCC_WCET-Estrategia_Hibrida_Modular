@@ -1,11 +1,11 @@
-qurt_fabs::bb 71
+qurt_fabs::bb 76
 qurt_fabs::bb1 0
 qurt_fabs::bb2 17
 qurt_fabs::bb4 0
 qurt_sqrt::bb 63
 qurt_sqrt::bb1 0
-qurt_sqrt::bb2 499
-qurt_sqrt::bb4 0
+qurt_sqrt::bb2 497
+qurt_sqrt::bb4 17
 qurt_sqrt::bb6 7
 qurt_sqrt::bb6::1::qurt_sqrt::bb20 0
 qurt_sqrt::bb8 92

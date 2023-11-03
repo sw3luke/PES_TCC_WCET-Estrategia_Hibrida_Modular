@@ -10,13 +10,13 @@ main::bb27 28
 main::bb30 23
 main::bb32 0
 main::bb32::2 0
-ludcmp::bb 0
-ludcmp::bb1 ?
+ludcmp::bb 75
+ludcmp::bb1 0
 ludcmp::bb3 0
 ludcmp::bb4 0
 ludcmp::bb5 23
 ludcmp::bb7 90
-ludcmp::bb7::6 ?
+ludcmp::bb7::6 0
 ludcmp::bb14 0
 ludcmp::bb15 0
 ludcmp::bb16 29
