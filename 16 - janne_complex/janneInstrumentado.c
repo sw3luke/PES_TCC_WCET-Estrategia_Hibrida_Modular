@@ -40,14 +40,14 @@ StartTickCounter();
   while (a < 30) {
             
 StopTickCounter();
-            printf("complex::bb0 %u\r\n", GetTicks());
+            printf("complex::bb4 %u\r\n", GetTicks());
             ResetTickCounter();
  
 StartTickCounter();
     while (b < a) {
             
 StopTickCounter();
-            printf("complex::bb5 %u\r\n", GetTicks());
+            printf("complex::bb6 %u\r\n", GetTicks());
             ResetTickCounter();
             
 StartTickCounter();

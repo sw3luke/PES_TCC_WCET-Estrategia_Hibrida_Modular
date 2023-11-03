@@ -84,28 +84,28 @@ StartTickCounter();
   for(i=0; i<2; i++){
             
 StopTickCounter();
-            printf("foo::bb0 %u\r\n", GetTicks());
+            printf("foo::bb1 %u\r\n", GetTicks());
             ResetTickCounter();
             
 StartTickCounter();
     for(j=0 ; j<2 ; j++){
             
 StopTickCounter();
-            printf("foo::bb2 %u\r\n", GetTicks());
+            printf("foo::bb3 %u\r\n", GetTicks());
             ResetTickCounter();
             
 StartTickCounter();
       for(k=0 ; k<5 ; k++){
             
 StopTickCounter();
-            printf("foo::bb5 %u\r\n", GetTicks());
+            printf("foo::bb6 %u\r\n", GetTicks());
             ResetTickCounter();
             
 StartTickCounter();
                 for(l=0 ; l<5 ; l++){
             
 StopTickCounter();
-            printf("foo::bb8 %u\r\n", GetTicks());
+            printf("foo::bb9 %u\r\n", GetTicks());
             ResetTickCounter();
             
 StartTickCounter();

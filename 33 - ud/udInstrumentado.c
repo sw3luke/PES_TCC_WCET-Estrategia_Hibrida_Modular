@@ -20,7 +20,7 @@ StartTickCounter();
   for(i = 0; i <= n; i++){
             
 StopTickCounter();
-            printf("main::bb0 %u\r\n", GetTicks());
+            printf("main::bb1 %u\r\n", GetTicks());
             ResetTickCounter();
       w = 0.0;
             
@@ -28,7 +28,7 @@ StartTickCounter();
       for(j = 0; j <= n; j++){
             
 StopTickCounter();
-            printf("main::bb2 %u\r\n", GetTicks());
+            printf("main::bb3 %u\r\n", GetTicks());
             ResetTickCounter();
             
 StartTickCounter();
@@ -54,7 +54,8 @@ StopTickCounter();
             ResetTickCounter();
             printf("main::bb21 0\r\n");
             StartTickCounter();        }
-            
+StopTickCounter();
+ResetTickCounter();        
 StartTickCounter();
       b[i] = w;
             
@@ -75,19 +76,20 @@ StopTickCounter();
 int ludcmp(int nmax, int n){
   int i, j, k;
   long w, y[100];
-            
+StopTickCounter();
+ResetTickCounter();   
 StartTickCounter();
   for(i = 0; i < n; i++){
             
 StopTickCounter();
-            printf("ludcmp::bb0 %u\r\n", GetTicks());
+            printf("ludcmp::bb1 %u\r\n", GetTicks());
             ResetTickCounter();
             
 StartTickCounter();
       for(j = i+1; j <= n; j++){
             
 StopTickCounter();
-            printf("ludcmp::bb2 %u\r\n", GetTicks());
+            printf("ludcmp::bb3 %u\r\n", GetTicks());
             ResetTickCounter();
             
 StartTickCounter();
@@ -102,7 +104,7 @@ StartTickCounter();
             for(k = 0; k < i; k++){
             
 StopTickCounter();
-            printf("ludcmp::bb11 %u\r\n", GetTicks());
+            printf("ludcmp::bb12 %u\r\n", GetTicks());
             ResetTickCounter();
             
 	    StartTickCounter();
@@ -125,20 +127,28 @@ StopTickCounter();
             ResetTickCounter();
             StartTickCounter();
         }
-            
+StopTickCounter();
+ResetTickCounter();    
 StartTickCounter();
       for(j = i+1; j <= n; j++){
             
 StopTickCounter();
-            printf("ludcmp::bb38 %u\r\n", GetTicks());
+            printf("ludcmp::bb39 %u\r\n", GetTicks());
             ResetTickCounter();
             
 StartTickCounter();
           w = a[i+1][j];
+          
+          StopTickCounter();
+            printf("ludcmp::bb41 %u\r\n", GetTicks());
+            ResetTickCounter();
+          
+          
+          StartTickCounter();
           for(k = 0; k <= i; k++){
             
-StopTickCounter();
-            printf("ludcmp::bb41 %u\r\n", GetTicks());
+          StopTickCounter();
+            printf("ludcmp::bb47 %u\r\n", GetTicks());
             ResetTickCounter();
             
             
@@ -168,17 +178,32 @@ StopTickCounter();
             
 StartTickCounter();
   y[0] = b[0];
-  for(i = 1; i <= n; i++){
-            
-StopTickCounter();
+  
+             StopTickCounter();
             printf("ludcmp::bb72 %u\r\n", GetTicks());
+            ResetTickCounter();
+            
+            
+            StartTickCounter();
+            
+  for(i = 1; i <= n; i++){
+             StopTickCounter();
+            printf("ludcmp::bb75 %u\r\n", GetTicks());
             ResetTickCounter();
 StartTickCounter();
       w = b[i];
+      
+      StopTickCounter();
+            printf("ludcmp::bb77 %u\r\n", GetTicks());
+            ResetTickCounter();
+      
+      
+      StartTickCounter();
+      
       for(j = 0; j < i; j++){
             
-StopTickCounter();
-            printf("ludcmp::bb77 %u\r\n", GetTicks());
+      StopTickCounter();
+            printf("ludcmp::bb81 %u\r\n", GetTicks());
             ResetTickCounter();
             
             
@@ -196,22 +221,38 @@ StopTickCounter();
             ResetTickCounter();
             StartTickCounter();
     }
-            
+    StopTickCounter();
+    ResetTickCounter();       
 StartTickCounter();
   x[n] = y[n] / a[n][n];
+  
+             StopTickCounter();
+            printf("ludcmp::bb100 %u\r\n", GetTicks());
+            ResetTickCounter();
+            
+       StartTickCounter();     
+            
   for(i = n-1; i >= 0; i--){
             
             StopTickCounter();
-            printf("ludcmp::bb100 %u\r\n", GetTicks());
+            printf("ludcmp::bb111 %u\r\n", GetTicks());
             ResetTickCounter();
             
             
 StartTickCounter();
       w = y[i];
+      StopTickCounter();
+            printf("ludcmp::bb113 %u\r\n", GetTicks());
+            ResetTickCounter();
+      
+      
+      StartTickCounter();
+      
+      
       for(j = i+1; j <= n; j++){
             
 StopTickCounter();
-            printf("ludcmp::bb113 %u\r\n", GetTicks());
+            printf("ludcmp::bb117 %u\r\n", GetTicks());
             ResetTickCounter();
             
             

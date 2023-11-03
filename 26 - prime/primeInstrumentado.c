@@ -45,7 +45,7 @@ StartTickCounter();
   for (i = 3; i * i <= n; i += 2) { 
             
 StopTickCounter();
-            printf("prime::bb5 %u\r\n", GetTicks());
+            printf("prime::bb6 %u\r\n", GetTicks());
             ResetTickCounter();
             
 StartTickCounter();
