@@ -8,4 +8,5 @@
    program (for all its possible input value combinations).    
    Please run: sweet -h topic=annot  for annotation syntax   */
 
-FUNC_ENTRY "num_to_lcd" ASSIGN "%a" INT 0 15;
+//FUNC_ENTRY "num_to_lcd" ASSIGN "%a" INT 0 15;
+FUNC_ENTRY "num_to_lcd" ASSIGN "%a" INT 0 0;

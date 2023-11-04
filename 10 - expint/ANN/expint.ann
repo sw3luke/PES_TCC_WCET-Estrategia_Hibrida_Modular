@@ -8,7 +8,6 @@
    program (for all its possible input value combinations).    
    Please run: sweet -h topic=annot  for annotation syntax   */
 
-VOLATILE ASSIGN $null <type> <val> ;
-
-VOLATILE ASSIGN $mem <type> <val> ;
+//FUNC_ENTRY "expint" ASSIGN "%n" INT 0 50 || "%x" INT 0 50;
+FUNC_ENTRY "expint" ASSIGN "%n" INT 50 50 || "%x" INT 1 1;
 

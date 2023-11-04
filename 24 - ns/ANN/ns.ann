@@ -8,5 +8,5 @@
    program (for all its possible input value combinations).    
    Please run: sweet -h topic=annot  for annotation syntax   */
 
-FUNC_ENTRY "foo" ASSIGN "%x" INT 0 500;
-
+//FUNC_ENTRY "foo" ASSIGN "%x" INT 0 500;
+FUNC_ENTRY "foo" ASSIGN "%x" INT 5 5;

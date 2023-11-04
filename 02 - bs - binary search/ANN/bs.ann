@@ -12,4 +12,6 @@
 
 //VOLATILE ASSIGN $mem <type> <val> ;
 
-FUNC_ENTRY "binary_search" ASSIGN "%x" INT 0 20;
+//FUNC_ENTRY "binary_search" ASSIGN "%x" INT 0 20;
+FUNC_ENTRY "binary_search" ASSIGN "%x" INT 0 0;
+

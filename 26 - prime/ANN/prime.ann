@@ -8,5 +8,5 @@
    program (for all its possible input value combinations).    
    Please run: sweet -h topic=annot  for annotation syntax   */
 
-STMT_ENTRY "main" "main::bb::8" ASSIGN "%x" INT 0 1000 || "%y" INT 0 1000;
-
+//STMT_ENTRY "main" "main::bb::8" ASSIGN "%x" INT 0 1000 || "%y" INT 0 1000;
+STMT_ENTRY "main" "main::bb::8" ASSIGN "%x" INT 997 || "%y" INT 997;

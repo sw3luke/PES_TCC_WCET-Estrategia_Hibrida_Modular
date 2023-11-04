@@ -8,4 +8,5 @@
    program (for all its possible input value combinations).    
    Please run: sweet -h topic=annot  for annotation syntax   */
 
-FUNC_ENTRY complex ASSIGN "%a" INT 1 30 || "%b" INT 1 30;
+//FUNC_ENTRY complex ASSIGN "%a" INT 1 30 || "%b" INT 1 30;
+FUNC_ENTRY complex ASSIGN "%a" INT 0 0 || "%b" INT 5 5;
