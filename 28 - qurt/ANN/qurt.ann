@@ -9,4 +9,3 @@
    Please run: sweet -h topic=annot  for annotation syntax   */
 
 FUNC_ENTRY "preencheArray" ASSIGN "%v" INT 0 10 || "%b" INT 0 10 || "%c" INT 0 10;
-
