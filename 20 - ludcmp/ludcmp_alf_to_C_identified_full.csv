@@ -13,304 +13,304 @@ Basic Block fabs bb4
 bb4;Line;17;"	return f;
 "
 Basic Block ludcmp bb0
-bb0;Line;55;"	if (n > 99 || eps <= 0.0){
+bb0;Line;43;"	for (i = 0; i <= n; i++) {
 "
 Basic Block ludcmp bb1
-bb1;Line;55;"	if (n > 99 || eps <= 0.0){
+bb1;Line;43;"	for (i = 0; i <= n; i++) {
+"
+Basic Block ludcmp bb2
+bb2;Line;45;"		for (j = 0; j <= n; j++) {
+"
+bb2::2:::1;Line;45;"		for (j = 0; j <= n; j++) {
 "
 Basic Block ludcmp bb3
-bb3;Line;56;"		return (999);
-"
-bb3::0:::1;Line;56;"		return (999);
-"
-Basic Block ludcmp bb4
-bb4;Line;59;"	for (i = 0; i < n; i++) {
+bb3;Line;45;"		for (j = 0; j <= n; j++) {
 "
 Basic Block ludcmp bb5
-bb5;Line;59;"	for (i = 0; i < n; i++) {
+bb5;Line;46;"			a[i][j] = (i + 1) + (j + 1);
 "
-Basic Block ludcmp bb7
-bb7;Line;60;"		if (fabs(a[i][i]) <= eps){
+bb5::8;Line;47;"			if (i == j){
 "
-bb7::4;Line;60;"		if (fabs(a[i][i]) <= eps){
+Basic Block ludcmp bb13
+bb13;Line;48;"				a[i][j] *= 10.0;
 "
-bb7::6;Line;60;"		if (fabs(a[i][i]) <= eps){
+bb13::3;Line;48;"				a[i][j] *= 10.0;
 "
-Basic Block ludcmp bb14
-bb14;Line;61;"			return (1);
+bb13::5;Line;48;"				a[i][j] *= 10.0;
 "
-bb14::0:::1;Line;61;"			return (1);
+Basic Block ludcmp bb19
+bb19;Line;52;"		}
 "
-Basic Block ludcmp bb15
-bb15;Line;63;"		for (j = i + 1; j <= n; j++) {
+Basic Block ludcmp bb20
+bb20;Line;51;"			w += a[i][j];
 "
-Basic Block ludcmp bb16
-bb16;Line;63;"		for (j = i + 1; j <= n; j++) {
+bb20::4;Line;51;"			w += a[i][j];
 "
-bb16::3;Line;63;"		for (j = i + 1; j <= n; j++) {
+bb20::5;Line;45;"		for (j = 0; j <= n; j++) {
 "
-Basic Block ludcmp bb18
-bb18;Line;64;"			w = a[j][i];
+bb20::7;Line;45;"		for (j = 0; j <= n; j++) {
 "
-bb18::6;Line;65;"			if (i != 0){
+bb20::7:::1;Line;45;"		for (j = 0; j <= n; j++) {
 "
-bb18::6::ludcmp::bb41;Line;65;"			if (i != 0){
-"
-bb18::6::ludcmp::bb41:::1;Line;65;"			if (i != 0){
-"
-Basic Block ludcmp bb24
-bb24;Line;66;"				for (k = 0; k < i; k++){
-"
-bb24::1:::1;Line;66;"				for (k = 0; k < i; k++){
-"
-Basic Block ludcmp bb25
-bb25;Line;66;"				for (k = 0; k < i; k++){
+bb20::7:::2;Line;45;"		for (j = 0; j <= n; j++) {
 "
 Basic Block ludcmp bb27
-bb27;Line;68;"				}
+bb27;Line;53;"		b[i] = w;
 "
-Basic Block ludcmp bb28
-bb28;Line;67;"					w -= a[j][k] * a[k][i];
+Basic Block ludcmp bb30
+bb30;Line;43;"	for (i = 0; i <= n; i++) {
 "
-bb28::10;Line;66;"				for (k = 0; k < i; k++){
+bb30::2;Line;43;"	for (i = 0; i <= n; i++) {
 "
-bb28::12;Line;66;"				for (k = 0; k < i; k++){
+bb30::2:::1;Line;43;"	for (i = 0; i <= n; i++) {
 "
-bb28::12:::1;Line;66;"				for (k = 0; k < i; k++){
+Basic Block ludcmp bb32
+bb32;Line;57;"	if (n > 99 || eps <= 0.0){
 "
-bb28::12:::2;Line;66;"				for (k = 0; k < i; k++){
+Basic Block ludcmp bb34
+bb34;Line;57;"	if (n > 99 || eps <= 0.0){
 "
-bb28::7;Line;67;"					w -= a[j][k] * a[k][i];
+Basic Block ludcmp bb36
+bb36;Line;58;"		return (999);
 "
-bb28::9;Line;67;"					w -= a[j][k] * a[k][i];
+bb36::0:::1;Line;58;"		return (999);
+"
+Basic Block ludcmp bb37
+bb37;Line;61;"	for (i = 0; i < n; i++) {
+"
+Basic Block ludcmp bb38
+bb38;Line;61;"	for (i = 0; i < n; i++) {
 "
 Basic Block ludcmp bb40
-bb40;Line;69;"			}
+bb40;Line;62;"		if (fabs(a[i][i]) <= eps){
 "
-Basic Block ludcmp bb41
-bb41;Line;72;"			a[j][i] = w / a[i][i];
+bb40::4;Line;62;"		if (fabs(a[i][i]) <= eps){
 "
-bb41::9;Line;72;"			a[j][i] = w / a[i][i];
+bb40::6;Line;62;"		if (fabs(a[i][i]) <= eps){
 "
-Basic Block ludcmp bb50
-bb50;Line;63;"		for (j = i + 1; j <= n; j++) {
+Basic Block ludcmp bb47
+bb47;Line;63;"			return (1);
 "
-bb50::0:::1;Line;63;"		for (j = i + 1; j <= n; j++) {
+bb47::0:::1;Line;63;"			return (1);
+"
+Basic Block ludcmp bb48
+bb48;Line;65;"		for (j = i + 1; j <= n; j++) {
+"
+Basic Block ludcmp bb49
+bb49;Line;65;"		for (j = i + 1; j <= n; j++) {
+"
+bb49::3;Line;65;"		for (j = i + 1; j <= n; j++) {
 "
 Basic Block ludcmp bb51
-bb51;Line;74;"		for (j = i + 1; j <= n; j++) {
+bb51;Line;66;"			w = a[j][i];
 "
-Basic Block ludcmp bb52
-bb52;Line;74;"		for (j = i + 1; j <= n; j++) {
+bb51::6;Line;67;"			if (i != 0){
 "
-bb52::3;Line;74;"		for (j = i + 1; j <= n; j++) {
+bb51::6::ludcmp::bb74;Line;67;"			if (i != 0){
 "
-Basic Block ludcmp bb54
-bb54;Line;75;"			w = a[i + 1][j];
+bb51::6::ludcmp::bb74:::1;Line;67;"			if (i != 0){
 "
-bb54::7;Line;76;"			for (k = 0; k <= i; k++){
+Basic Block ludcmp bb57
+bb57;Line;68;"				for (k = 0; k < i; k++){
 "
-bb54::7:::1;Line;76;"			for (k = 0; k <= i; k++){
+bb57::1:::1;Line;68;"				for (k = 0; k < i; k++){
+"
+Basic Block ludcmp bb58
+bb58;Line;68;"				for (k = 0; k < i; k++){
 "
 Basic Block ludcmp bb60
-bb60;Line;76;"			for (k = 0; k <= i; k++){
+bb60;Line;70;"				}
 "
-Basic Block ludcmp bb62
-bb62;Line;78;"			}
+Basic Block ludcmp bb61
+bb61;Line;69;"					w -= a[j][k] * a[k][i];
 "
-Basic Block ludcmp bb63
-bb63;Line;77;"				w -= a[i + 1][k] * a[k][j];
+bb61::10;Line;68;"				for (k = 0; k < i; k++){
 "
-bb63::10;Line;77;"				w -= a[i + 1][k] * a[k][j];
+bb61::12;Line;68;"				for (k = 0; k < i; k++){
 "
-bb63::11;Line;76;"			for (k = 0; k <= i; k++){
+bb61::12:::1;Line;68;"				for (k = 0; k < i; k++){
 "
-bb63::13;Line;76;"			for (k = 0; k <= i; k++){
+bb61::12:::2;Line;68;"				for (k = 0; k < i; k++){
 "
-bb63::13:::1;Line;76;"			for (k = 0; k <= i; k++){
+bb61::7;Line;69;"					w -= a[j][k] * a[k][i];
 "
-bb63::13:::2;Line;76;"			for (k = 0; k <= i; k++){
+bb61::9;Line;69;"					w -= a[j][k] * a[k][i];
 "
-bb63::8;Line;77;"				w -= a[i + 1][k] * a[k][j];
+Basic Block ludcmp bb73
+bb73;Line;71;"			}
 "
-Basic Block ludcmp bb76
-bb76;Line;79;"			a[i + 1][j] = w;
+Basic Block ludcmp bb74
+bb74;Line;74;"			a[j][i] = w / a[i][i];
 "
-Basic Block ludcmp bb81
-bb81;Line;74;"		for (j = i + 1; j <= n; j++) {
-"
-bb81::0:::1;Line;74;"		for (j = i + 1; j <= n; j++) {
-"
-Basic Block ludcmp bb82
-bb82;Line;81;"	}
+bb74::9;Line;74;"			a[j][i] = w / a[i][i];
 "
 Basic Block ludcmp bb83
-bb83;Line;59;"	for (i = 0; i < n; i++) {
+bb83;Line;65;"		for (j = i + 1; j <= n; j++) {
 "
-bb83::2;Line;59;"	for (i = 0; i < n; i++) {
+bb83::0:::1;Line;65;"		for (j = i + 1; j <= n; j++) {
 "
-bb83::2:::1;Line;59;"	for (i = 0; i < n; i++) {
+Basic Block ludcmp bb84
+bb84;Line;76;"		for (j = i + 1; j <= n; j++) {
 "
 Basic Block ludcmp bb85
-bb85;Line;82;"	y[0] = b[0];
+bb85;Line;76;"		for (j = i + 1; j <= n; j++) {
 "
-bb85::2;Line;82;"	y[0] = b[0];
+bb85::3;Line;76;"		for (j = i + 1; j <= n; j++) {
 "
-bb85::4;Line;83;"	for (i = 1; i <= n; i++) {
+Basic Block ludcmp bb87
+bb87;Line;77;"			w = a[i + 1][j];
 "
-Basic Block ludcmp bb88
-bb88;Line;83;"	for (i = 1; i <= n; i++) {
+bb87::7;Line;78;"			for (k = 0; k <= i; k++){
 "
-Basic Block ludcmp bb90
-bb90;Line;84;"		w = b[i];
+bb87::7:::1;Line;78;"			for (k = 0; k <= i; k++){
 "
-bb90::5;Line;85;"		for (j = 0; j < i; j++){
+Basic Block ludcmp bb93
+bb93;Line;78;"			for (k = 0; k <= i; k++){
 "
-bb90::5:::1;Line;85;"		for (j = 0; j < i; j++){
-"
-Basic Block ludcmp bb94
-bb94;Line;85;"		for (j = 0; j < i; j++){
+Basic Block ludcmp bb95
+bb95;Line;80;"			}
 "
 Basic Block ludcmp bb96
-bb96;Line;87;"		}
+bb96;Line;79;"				w -= a[i + 1][k] * a[k][j];
 "
-Basic Block ludcmp bb97
-bb97;Line;86;"			w -= a[i][j] * y[j];
+bb96::10;Line;79;"				w -= a[i + 1][k] * a[k][j];
 "
-bb97::11;Line;85;"		for (j = 0; j < i; j++){
+bb96::11;Line;78;"			for (k = 0; k <= i; k++){
 "
-bb97::11:::1;Line;85;"		for (j = 0; j < i; j++){
+bb96::13;Line;78;"			for (k = 0; k <= i; k++){
 "
-bb97::11:::2;Line;85;"		for (j = 0; j < i; j++){
+bb96::13:::1;Line;78;"			for (k = 0; k <= i; k++){
 "
-bb97::6;Line;86;"			w -= a[i][j] * y[j];
+bb96::13:::2;Line;78;"			for (k = 0; k <= i; k++){
 "
-bb97::8;Line;86;"			w -= a[i][j] * y[j];
+bb96::8;Line;79;"				w -= a[i + 1][k] * a[k][j];
 "
-bb97::9;Line;85;"		for (j = 0; j < i; j++){
+Basic Block ludcmp bb109
+bb109;Line;81;"			a[i + 1][j] = w;
 "
-Basic Block ludcmp bb108
-bb108;Line;88;"		y[i] = w;
+Basic Block ludcmp bb114
+bb114;Line;76;"		for (j = i + 1; j <= n; j++) {
 "
-Basic Block ludcmp bb111
-bb111;Line;83;"	for (i = 1; i <= n; i++) {
+bb114::0:::1;Line;76;"		for (j = i + 1; j <= n; j++) {
 "
-bb111::2;Line;83;"	for (i = 1; i <= n; i++) {
+Basic Block ludcmp bb115
+bb115;Line;83;"	}
 "
-bb111::2:::1;Line;83;"	for (i = 1; i <= n; i++) {
+Basic Block ludcmp bb116
+bb116;Line;61;"	for (i = 0; i < n; i++) {
 "
-Basic Block ludcmp bb113
-bb113;Line;90;"	x[n] = y[n] / a[n][n];
+bb116::2;Line;61;"	for (i = 0; i < n; i++) {
 "
-bb113::10;Line;90;"	x[n] = y[n] / a[n][n];
+bb116::2:::1;Line;61;"	for (i = 0; i < n; i++) {
 "
-bb113::11;Line;91;"	for (i = n - 1; i >= 0; i--) {
+Basic Block ludcmp bb118
+bb118;Line;84;"	y[0] = b[0];
 "
-bb113::6;Line;90;"	x[n] = y[n] / a[n][n];
+bb118::2;Line;84;"	y[0] = b[0];
 "
-Basic Block ludcmp bb124
-bb124;Line;91;"	for (i = n - 1; i >= 0; i--) {
+bb118::4;Line;85;"	for (i = 1; i <= n; i++) {
 "
-bb124::3;Line;91;"	for (i = n - 1; i >= 0; i--) {
+Basic Block ludcmp bb121
+bb121;Line;85;"	for (i = 1; i <= n; i++) {
 "
-Basic Block ludcmp bb126
-bb126;Line;92;"		w = y[i];
+Basic Block ludcmp bb123
+bb123;Line;86;"		w = b[i];
 "
-bb126::5;Line;93;"		for (j = i + 1; j <= n; j++){
+bb123::5;Line;87;"		for (j = 0; j < i; j++){
 "
-bb126::5:::1;Line;93;"		for (j = i + 1; j <= n; j++){
+bb123::5:::1;Line;87;"		for (j = 0; j < i; j++){
+"
+Basic Block ludcmp bb127
+bb127;Line;87;"		for (j = 0; j < i; j++){
+"
+Basic Block ludcmp bb129
+bb129;Line;89;"		}
 "
 Basic Block ludcmp bb130
-bb130;Line;93;"		for (j = i + 1; j <= n; j++){
+bb130;Line;88;"			w -= a[i][j] * y[j];
 "
-Basic Block ludcmp bb132
-bb132;Line;95;"		}
+bb130::11;Line;87;"		for (j = 0; j < i; j++){
 "
-Basic Block ludcmp bb133
-bb133;Line;94;"			w -= a[i][j] * x[j];
+bb130::11:::1;Line;87;"		for (j = 0; j < i; j++){
 "
-bb133::11;Line;93;"		for (j = i + 1; j <= n; j++){
+bb130::11:::2;Line;87;"		for (j = 0; j < i; j++){
 "
-bb133::11:::1;Line;93;"		for (j = i + 1; j <= n; j++){
+bb130::6;Line;88;"			w -= a[i][j] * y[j];
 "
-bb133::11:::2;Line;93;"		for (j = i + 1; j <= n; j++){
+bb130::8;Line;88;"			w -= a[i][j] * y[j];
 "
-bb133::6;Line;94;"			w -= a[i][j] * x[j];
+bb130::9;Line;87;"		for (j = 0; j < i; j++){
 "
-bb133::8;Line;94;"			w -= a[i][j] * x[j];
-"
-bb133::9;Line;93;"		for (j = i + 1; j <= n; j++){
+Basic Block ludcmp bb141
+bb141;Line;90;"		y[i] = w;
 "
 Basic Block ludcmp bb144
-bb144;Line;96;"		x[i] = w / a[i][i];
+bb144;Line;85;"	for (i = 1; i <= n; i++) {
 "
-bb144::7;Line;96;"		x[i] = w / a[i][i];
+bb144::2;Line;85;"	for (i = 1; i <= n; i++) {
 "
-Basic Block ludcmp bb152
-bb152;Line;91;"	for (i = n - 1; i >= 0; i--) {
+bb144::2:::1;Line;85;"	for (i = 1; i <= n; i++) {
 "
-bb152::0:::1;Line;91;"	for (i = n - 1; i >= 0; i--) {
+Basic Block ludcmp bb146
+bb146;Line;92;"	x[n] = y[n] / a[n][n];
 "
-Basic Block ludcmp bb153
-bb153;Line;98;"	return (0);
+bb146::10;Line;92;"	x[n] = y[n] / a[n][n];
 "
-Basic Block ludcmp bb154
-bb154;Line;100;"}
+bb146::11;Line;93;"	for (i = n - 1; i >= 0; i--) {
+"
+bb146::6;Line;92;"	x[n] = y[n] / a[n][n];
+"
+Basic Block ludcmp bb157
+bb157;Line;93;"	for (i = n - 1; i >= 0; i--) {
+"
+bb157::3;Line;93;"	for (i = n - 1; i >= 0; i--) {
+"
+Basic Block ludcmp bb159
+bb159;Line;94;"		w = y[i];
+"
+bb159::5;Line;95;"		for (j = i + 1; j <= n; j++){
+"
+bb159::5:::1;Line;95;"		for (j = i + 1; j <= n; j++){
+"
+Basic Block ludcmp bb163
+bb163;Line;95;"		for (j = i + 1; j <= n; j++){
+"
+Basic Block ludcmp bb165
+bb165;Line;97;"		}
+"
+Basic Block ludcmp bb166
+bb166;Line;96;"			w -= a[i][j] * x[j];
+"
+bb166::11;Line;95;"		for (j = i + 1; j <= n; j++){
+"
+bb166::11:::1;Line;95;"		for (j = i + 1; j <= n; j++){
+"
+bb166::11:::2;Line;95;"		for (j = i + 1; j <= n; j++){
+"
+bb166::6;Line;96;"			w -= a[i][j] * x[j];
+"
+bb166::8;Line;96;"			w -= a[i][j] * x[j];
+"
+bb166::9;Line;95;"		for (j = i + 1; j <= n; j++){
+"
+Basic Block ludcmp bb177
+bb177;Line;98;"		x[i] = w / a[i][i];
+"
+bb177::7;Line;98;"		x[i] = w / a[i][i];
+"
+Basic Block ludcmp bb185
+bb185;Line;93;"	for (i = n - 1; i >= 0; i--) {
+"
+bb185::0:::1;Line;93;"	for (i = n - 1; i >= 0; i--) {
+"
+Basic Block ludcmp bb186
+bb186;Line;100;"	return (0);
+"
+Basic Block ludcmp bb187
+bb187;Line;102;"}
 "
 Basic Block main bb0
-bb0;Line;29;"	for (i = 0; i <= n; i++) {
+bb0;Line;29;"	chkerr = ludcmp(n, eps);
 "
-Basic Block main bb1
-bb1;Line;29;"	for (i = 0; i <= n; i++) {
-"
-Basic Block main bb2
-bb2;Line;31;"		for (j = 0; j <= n; j++) {
-"
-bb2::2:::1;Line;31;"		for (j = 0; j <= n; j++) {
-"
-Basic Block main bb3
-bb3;Line;31;"		for (j = 0; j <= n; j++) {
-"
-Basic Block main bb5
-bb5;Line;32;"			a[i][j] = (i + 1) + (j + 1);
-"
-bb5::8;Line;33;"			if (i == j){
-"
-Basic Block main bb13
-bb13;Line;34;"				a[i][j] *= 10.0;
-"
-bb13::3;Line;34;"				a[i][j] *= 10.0;
-"
-bb13::5;Line;34;"				a[i][j] *= 10.0;
-"
-Basic Block main bb19
-bb19;Line;38;"		}
-"
-Basic Block main bb20
-bb20;Line;37;"			w += a[i][j];
-"
-bb20::4;Line;37;"			w += a[i][j];
-"
-bb20::5;Line;31;"		for (j = 0; j <= n; j++) {
-"
-bb20::7;Line;31;"		for (j = 0; j <= n; j++) {
-"
-bb20::7:::1;Line;31;"		for (j = 0; j <= n; j++) {
-"
-bb20::7:::2;Line;31;"		for (j = 0; j <= n; j++) {
-"
-Basic Block main bb27
-bb27;Line;39;"		b[i] = w;
-"
-Basic Block main bb30
-bb30;Line;29;"	for (i = 0; i <= n; i++) {
-"
-bb30::2;Line;29;"	for (i = 0; i <= n; i++) {
-"
-bb30::2:::1;Line;29;"	for (i = 0; i <= n; i++) {
-"
-Basic Block main bb32
-bb32;Line;42;"	chkerr = ludcmp( /* nmax, */ n, eps);
-"
-bb32::2;Line;44;"	return 0;
+bb0::4;Line;31;"	return 0;
 "

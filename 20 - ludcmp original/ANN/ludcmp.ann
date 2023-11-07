@@ -8,5 +8,7 @@
    program (for all its possible input value combinations).    
    Please run: sweet -h topic=annot  for annotation syntax   */
 
-FUNC_ENTRY "ludcmp" ASSIGN "%n" INT 40 50;
+VOLATILE ASSIGN $null <type> <val> ;
+
+VOLATILE ASSIGN $mem <type> <val> ;
 

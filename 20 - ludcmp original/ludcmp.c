@@ -21,25 +21,11 @@ int
 main(void)
 {
 
-	int   n = 5, chkerr;
-	double  eps;
+	int             i, j/*, nmax = 50*/, n = 5, chkerr;
+	double          eps, w;
 
 	eps = 1.0e-6;
 
-	chkerr = ludcmp(n, eps);
-
-	return 0;
-
-}
-
-int 
-ludcmp( /* int nmax, */ int n, double eps)
-{
-
-	int             i, j, k;
-	double          w, y[100];
-	
-	
 	for (i = 0; i <= n; i++) {
 		w = 0.0;
 		for (j = 0; j <= n; j++) {
@@ -52,7 +38,19 @@ ludcmp( /* int nmax, */ int n, double eps)
 		}
 		b[i] = w;
 	}
-	
+
+	chkerr = ludcmp( /* nmax, */ n, eps);
+
+	return 0;
+
+}
+
+int 
+ludcmp( /* int nmax, */ int n, double eps)
+{
+
+	int             i, j, k;
+	double          w, y[100];
 
 	if (n > 99 || eps <= 0.0){
 		return (999);
