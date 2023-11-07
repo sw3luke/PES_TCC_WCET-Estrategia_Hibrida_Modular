@@ -8,6 +8,7 @@
    program (for all its possible input value combinations).    
    Please run: sweet -h topic=annot  for annotation syntax   */
 
-//FUNC_ENTRY "ludcmp" ASSIGN "%n" INT 49 49;
-FUNC_ENTRY "ludcmp" ASSIGN "%n" INT 49 49;
+//FUNC_ENTRY "ludcmp" ASSIGN "%n" INT 0 50;
 
+//No meu PC só conseguiu rodar até 5
+STMT_ENTRY "main" "main::bb::3" ASSIGN "%n" INT 0 50;

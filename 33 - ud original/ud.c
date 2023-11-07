@@ -3,17 +3,12 @@ long int a[50][50], b[50], x[50];
 int ludcmp(int nmax, int n);
 
 int main(){
-  int nmax = 50, n=5, chkerr;
+  int      i, j, nmax = 50, n, chkerr;
+  long int w;
 
-  chkerr = ludcmp(nmax,n);
-  return 0;
-}
-
-int ludcmp(int nmax, int n){
-  int i, j, k;
-  long w, y[100];
-  long int q=0;
-  
+  n = 4;
+  n = n+1;
+  	
   /* Init loop */
   for(i = 0; i <= n; i++){
       w = 0.0;
@@ -22,10 +17,18 @@ int ludcmp(int nmax, int n){
           if(i == j){
             a[i][j] *= 2.0;
           } 
-          q += a[i][j];
+          w += a[i][j];
         }
-      b[i] = q;
+      b[i] = w;
     }
+
+  chkerr = ludcmp(nmax,n);
+  return 0;
+}
+
+int ludcmp(int nmax, int n){
+  int i, j, k;
+  long w, y[100];
 
   for(i = 0; i < n; i++){
       for(j = i+1; j <= n; j++){
