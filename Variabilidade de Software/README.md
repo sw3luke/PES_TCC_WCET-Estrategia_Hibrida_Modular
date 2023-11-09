@@ -330,6 +330,37 @@ int binary_search(int x)
 
 ```
 
+Para a instrumentação, é necessário consultarmos o arquivo de mapeamento gerado na etapa do ALFBackend, referente ao bs.c, que pode ser encontrado na pasta do benchmark com o nome bs_alf_to_C_identified_full.txt. Haja visto que o objetivo é obtermos o tempo de execução para cada bloco básico, considerado pelo ALF, estaremos analisando a função **int binary_search(int x)**.
+A instrumentação será realizada utilizando a biblioteca [AVR-Tick-Counter](https://github.com/malcom/AVR-Tick-Counter), para isso devemos importar o arquivo avr-tick-counter.h em nosso source.
+
+```
+#include "avr-tick-counter.h"
+.
+.
+.
+int binary_search(int x)
+```
+
+Além disso, estaremos recolhendo os tempos de cada bloco básico utilizando através de uma implementação do printf em que a saída será a porta serial, portanto devemos realizar as seguintes declarações em nosso source.
+
+```
+#define special_output_port (*((volatile char *)0x20))
+int virtual_putchar(char c, FILE *unused)
+{
+    special_output_port = c;
+    return 0;
+}
+ FILE virtual_port = FDEV_SETUP_STREAM(virtual_putchar, NULL, _FDEV_SETUP_WRITE);
+```
+
+Além disso, é crucial mudar o endereço de stdout, dentro da função main:
+```
+stdout = &virtual_port;
+```
+Com essas etapas realizadas, estamos prontos para chamar as funções de contagem de ciclos, assim como mostrar os valores na serial.
+
+
+
 
 
 
