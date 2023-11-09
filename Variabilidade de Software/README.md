@@ -341,7 +341,7 @@ A instrumentação será realizada utilizando a biblioteca [AVR-Tick-Counter](ht
 int binary_search(int x)
 ```
 
-Além disso, estaremos recolhendo os tempos de cada bloco básico utilizando através de uma implementação do printf em que a saída será a porta serial, portanto devemos realizar as seguintes declarações em nosso source.
+Além disso, estaremos recolhendo os tempos de cada bloco básico através de uma implementação do printf em que a saída será a porta serial, portanto devemos realizar as seguintes declarações em nosso source.
 
 ```
 #define special_output_port (*((volatile char *)0x20))
