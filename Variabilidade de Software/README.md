@@ -20,6 +20,8 @@ As instruções de instalação para o ALF-Backend e o SWEET se aplicam a distri
 
 - [Comentários sobre os scripts de Linux](#comentários-sobre-os-scripts-de-linux)
 
+- [Tutorial Instalação SimulAVR](#comentários-sobre-os-scripts-de-linux)
+
 - [Sobre nós](#sobre-nós)
 
 
@@ -245,6 +247,26 @@ A saída será os tempos BCET e WCET, junto dos caminhos BCEP e WCEP relacionado
 ~~~
 ./preparacaoAE arquivo
 ~~~
+
+## Tutorial Instalação e Utilização SimulAVR
+
+- Para a realização da execução abstrata é necessário primeiro medir os blocos básicos do programa, para isso utilizou-se o SimulAVR, um simulador de microcontroladores AVR, essa seção tratará de sua instalação, utilizando a versão das dependências relativas às utilizadas no trabalho.
+
+```
+sudo apt-get install binutils-avr=2.26.20160125+Atmel3.6.2-4
+```
+
+```
+sudo apt-get install gcc-avr=1:5.4.0+Atmel3.6.2-3
+```
+
+```
+sudo apt-get install avr-libc=1:2.0.0+Atmel3.6.2-3
+```
+
+```
+sudo apt-get install simulavr=1.0.0+git20160221.e53413b-2build1
+```
 
 
 
