@@ -15,7 +15,7 @@ Cada qual, possuindo suas próprias documentações e manuais de instalação.
 
 O projeto foi concebido tendo como objetivo a modularização, motivo esse que resulta na divisão comentada anteriormente. Vale ressaltar que ressalvas e problemas relacionados ao método podem ser encontradas no artigo desenvolvido(colocar hiperlink).
 
-#Variabilidade de Software
+## Variabilidade de Software
 
 A etapa de variabilidade de software abrange 4 macro etapas:
   1. Geração dos blocos básicos advindos do CFG; (Doc do felipão)
