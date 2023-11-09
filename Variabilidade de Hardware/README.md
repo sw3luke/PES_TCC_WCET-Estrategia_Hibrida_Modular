@@ -182,9 +182,9 @@ O codigo abaixo foi concebido com base nas etapas para [desativacao da cache L2]
 	@===========================================
 	SUB r4, r4, r4
 	MRC p15, 0, r4, c1, c0, 1
-  BIC r4, r4, #(1 << 1)     @ Disable L2EN (bit 1)
-  MCR p15, 0, r4, c1, c0, 1
-  @===========================================
+  	BIC r4, r4, #(1 << 1)     @ Disable L2EN (bit 1)
+  	MCR p15, 0, r4, c1, c0, 1
+  	@===========================================
     	
 	@ =========================================
 	MRC p15, 0, r0, c1, c0, 0
