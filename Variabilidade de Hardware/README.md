@@ -75,7 +75,7 @@ Com o cabo corretamente conectado, basta energizarmos o BBB com o botao de boot 
 
 O AM3358x possui uma arquitetura relativamente complexa, o que dificulta a configuracao de todo o hardware. Visando possibilitar a utilizacao bare-metal a Texas Instruments criou o StarterWare, que disponibiliza uma abstracao do hardware do dispositivo, inicializando certos componentes e disponibilizando APIs uteis. Em nosso cenario as APIs disponibilizadas nao serao utilizadas, mas reutilizaremos a estrutura do projeto para realizar o *build* de nossos benchmarks, uma vez que o arquivo .lds e init.S do projeto StarterWare serao uteis para configurarmos alguns aspectos do hardware. 
 
-Nessa secao abordaremos como configurar o ambiente, utilizando como referencia a documentacao disponibilizada pela [octavesystems](https://octavosystems.com/app_notes/bare-metal-on-osd335x-using-u-boot/).
+Nessa secao abordaremos como configurar o ambiente, utilizando como referencia a documentacao disponibilizada pela [octavosystems](https://octavosystems.com/app_notes/bare-metal-on-osd335x-using-u-boot/).
 
 **Obs:** As etapas abaixo foram realizadas em uma maquina com Ubuntu 22.04.2 LTS.
 
