@@ -1,0 +1,1194 @@
+{ alf
+ { macro_defs }
+ { least_addr_unit 8 }
+ little_endian
+ { exports
+  { frefs
+   { fref 64 "arr" }
+  }
+  { lrefs { lref 64 "select" } { lref 64 "main" } }
+ }
+ { imports
+  { frefs
+   { fref 64 "$null" }
+   { fref 64 "$mem" }
+  }
+  { lrefs }
+ }
+ { decls
+  { alloc 64 "arr" 640 }
+ }
+ { inits
+  { init { ref "arr" { dec_unsigned 64 0 } } { float_val 8 23 5. } }
+  { init { ref "arr" { dec_unsigned 64 4 } } { float_val 8 23 4. } }
+  { init { ref "arr" { dec_unsigned 64 8 } } { float_val 8 23 10.3000002 } }
+  { init { ref "arr" { dec_unsigned 64 12 } } { float_val 8 23 1.10000002 } }
+  { init { ref "arr" { dec_unsigned 64 16 } } { float_val 8 23 5.69999981 } }
+  { init { ref "arr" { dec_unsigned 64 20 } } { float_val 8 23 100. } }
+  { init { ref "arr" { dec_unsigned 64 24 } } { float_val 8 23 231. } }
+  { init { ref "arr" { dec_unsigned 64 28 } } { float_val 8 23 111. } }
+  { init { ref "arr" { dec_unsigned 64 32 } } { float_val 8 23 49.5 } }
+  { init { ref "arr" { dec_unsigned 64 36 } } { float_val 8 23 99. } }
+  { init { ref "arr" { dec_unsigned 64 40 } } { float_val 8 23 10. } }
+  { init { ref "arr" { dec_unsigned 64 44 } } { float_val 8 23 150. } }
+  { init { ref "arr" { dec_unsigned 64 48 } } { float_val 8 23 222.220001 } }
+  { init { ref "arr" { dec_unsigned 64 52 } } { float_val 8 23 101. } }
+  { init { ref "arr" { dec_unsigned 64 56 } } { float_val 8 23 77. } }
+  { init { ref "arr" { dec_unsigned 64 60 } } { float_val 8 23 44. } }
+  { init { ref "arr" { dec_unsigned 64 64 } } { float_val 8 23 35. } }
+  { init { ref "arr" { dec_unsigned 64 68 } } { float_val 8 23 20.5400009 } }
+  { init { ref "arr" { dec_unsigned 64 72 } } { float_val 8 23 99.9899978 } }
+  { init { ref "arr" { dec_unsigned 64 76 } } { float_val 8 23 888.880005 } }
+ }
+ { funcs
+
+  /* Definition of function select */
+  { func
+   { label 64 { lref 64 "select" } { dec_unsigned 64 0 } }
+   { arg_decls
+    { alloc 64 "%k" 64 }
+    { alloc 64 "%n" 64 }
+   }
+   { scope
+    { decls
+     { alloc 64 "%tmp" 64 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%l.0" 64 } /* Local Variable (PHI node) */ 
+     { alloc 64 "%ir.0" 64 } /* Local Variable (PHI node) */ 
+     { alloc 64 "%flag.0" 32 } /* Local Variable (PHI node) */ 
+     { alloc 64 "%tmp11" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp13" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp17" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp19" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp28" 64 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp30" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp33" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp39" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp41" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp46" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp48" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp54" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp56" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp60" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp62" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp68" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp70" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp75" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp77" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp82" 64 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp84" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%j.0" 64 } /* Local Variable (PHI node) */ 
+     { alloc 64 "%i.0" 64 } /* Local Variable (PHI node) */ 
+     { alloc 64 "%flag2.0" 32 } /* Local Variable (PHI node) */ 
+     { alloc 64 "%i.1.in" 64 } /* Local Variable (PHI node) */ 
+     { alloc 64 "%i.1" 64 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp90" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%j.1.in" 64 } /* Local Variable (PHI node) */ 
+     { alloc 64 "%j.1" 64 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp96" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%flag2.1" 32 } /* Local Variable (PHI node) */ 
+     { alloc 64 "%tmp106" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp108" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp114" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp119" 64 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%ir.1" 64 } /* Local Variable (PHI node) */ 
+     { alloc 64 "%l.1" 64 } /* Local Variable (PHI node) */ 
+     { alloc 64 "%l.2" 64 } /* Local Variable (PHI node) */ 
+     { alloc 64 "%ir.2" 64 } /* Local Variable (PHI node) */ 
+     { alloc 64 "%l.3" 64 } /* Local Variable (PHI node) */ 
+     { alloc 64 "%ir.3" 64 } /* Local Variable (PHI node) */ 
+     { alloc 64 "%flag.1" 32 } /* Local Variable (PHI node) */ 
+     { alloc 64 "%tmp128" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+    }
+    { inits }
+    { stmts
+
+     /* --------- BASIC BLOCK bb ---------- */
+     { label 64 { lref 64 "select::bb" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb::3
+      *   %tmp = add i64 %n, -1, !dbg !29 */
+     { store { addr 64 { fref 64 "%tmp" } { dec_unsigned 64 0 } } with
+      { add 64 { load 64 { addr 64 { fref 64 "%n" } { dec_unsigned 64 0 } } } { dec_signed 64 { minus 1 } } { dec_unsigned 1 0 } }
+     }
+
+     /* STATEMENT select::bb::6
+      *   br label %bb1, !dbg !33 */
+     { label 64 { lref 64 "select::bb::6" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%l.0" } { dec_unsigned 64 0 } } with { dec_unsigned 64 0 } }
+
+     { label 64 { lref 64 "select::bb::6:::1" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%ir.0" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%tmp" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "select::bb::6:::2" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%flag.0" } { dec_unsigned 64 0 } } with { dec_unsigned 32 0 } }
+
+     /* --------- BASIC BLOCK bb1 ---------- */
+     { label 64 { lref 64 "select::bb1" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb1::4
+      *   %tmp2 = icmp eq i32 %flag.0, 0, !dbg !33
+      *   br i1 %tmp2, label %bb3, label %bb126, !dbg !33 */
+     { switch
+      { eq 32 { load 32 { addr 64 { fref 64 "%flag.0" } { dec_unsigned 64 0 } } } { dec_unsigned 32 0 } }
+      { target { dec_signed 1 { minus 1 } } { label 64 { lref 64 "select::bb3" } { dec_unsigned 64 0 } } }
+      { default { label 64 { lref 64 "select::bb126" } { dec_unsigned 64 0 } } }
+     }
+
+     /* --------- BASIC BLOCK bb3 ---------- */
+     { label 64 { lref 64 "select::bb3" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb3::2
+      *   %tmp4 = add i64 %l.0, 1, !dbg !34
+      *   %tmp5 = icmp ugt i64 %ir.0, %tmp4, !dbg !34
+      *   br i1 %tmp5, label %bb24, label %bb6, !dbg !34 */
+     { switch
+      { u_gt 64 { load 64 { addr 64 { fref 64 "%ir.0" } { dec_unsigned 64 0 } } }
+       { add 64 { load 64 { addr 64 { fref 64 "%l.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 1 } { dec_unsigned 1 0 } }
+      }
+      { target { dec_signed 1 { minus 1 } } { label 64 { lref 64 "select::bb24" } { dec_unsigned 64 0 } } }
+      { default { label 64 { lref 64 "select::bb6" } { dec_unsigned 64 0 } } }
+     }
+
+     /* --------- BASIC BLOCK bb6 ---------- */
+     { label 64 { lref 64 "select::bb6" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb6::2
+      *   %tmp7 = add i64 %l.0, 1, !dbg !37
+      *   %tmp8 = icmp eq i64 %ir.0, %tmp7, !dbg !37
+      *   br i1 %tmp8, label %bb9, label %bb23, !dbg !37 */
+     { switch
+      { eq 64 { load 64 { addr 64 { fref 64 "%ir.0" } { dec_unsigned 64 0 } } }
+       { add 64 { load 64 { addr 64 { fref 64 "%l.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 1 } { dec_unsigned 1 0 } }
+      }
+      { target { dec_signed 1 { minus 1 } } { label 64 { lref 64 "select::bb9" } { dec_unsigned 64 0 } } }
+      { default { label 64 { lref 64 "select::bb23" } { dec_unsigned 64 0 } } }
+     }
+
+     /* --------- BASIC BLOCK bb9 ---------- */
+     { label 64 { lref 64 "select::bb9" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb9::1
+      *   %tmp10 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %ir.0, !dbg !40
+      *   %tmp11 = load float* %tmp10, align 4, !dbg !40 */
+     { store { addr 64 { fref 64 "%tmp11" } { dec_unsigned 64 0 } } with
+      { load 32
+       { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+        { select 128 0 63
+         { u_mul 64 64 { load 64 { addr 64 { fref 64 "%ir.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+        }
+        { dec_unsigned 1 0 }
+       }
+      }
+     }
+
+     /* STATEMENT select::bb9::3
+      *   %tmp12 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %l.0, !dbg !40
+      *   %tmp13 = load float* %tmp12, align 4, !dbg !40 */
+     { label 64 { lref 64 "select::bb9::3" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp13" } { dec_unsigned 64 0 } } with
+      { load 32
+       { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+        { select 128 0 63
+         { u_mul 64 64 { load 64 { addr 64 { fref 64 "%l.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+        }
+        { dec_unsigned 1 0 }
+       }
+      }
+     }
+
+     /* STATEMENT select::bb9::5
+      *   %tmp14 = fcmp olt float %tmp11, %tmp13, !dbg !40
+      *   br i1 %tmp14, label %bb15, label %bb22, !dbg !40 */
+     { label 64 { lref 64 "select::bb9::5" } { dec_unsigned 64 0 } }
+     { switch
+      { f_lt 8 23 { load 32 { addr 64 { fref 64 "%tmp11" } { dec_unsigned 64 0 } } } { load 32 { addr 64 { fref 64 "%tmp13" } { dec_unsigned 64 0 } } } }
+      { target { dec_signed 1 { minus 1 } } { label 64 { lref 64 "select::bb15" } { dec_unsigned 64 0 } } }
+      { default { label 64 { lref 64 "select::bb22" } { dec_unsigned 64 0 } } }
+     }
+
+     /* --------- BASIC BLOCK bb15 ---------- */
+     { label 64 { lref 64 "select::bb15" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb15::1
+      *   %tmp16 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %l.0, !dbg !43
+      *   %tmp17 = load float* %tmp16, align 4, !dbg !43 */
+     { store { addr 64 { fref 64 "%tmp17" } { dec_unsigned 64 0 } } with
+      { load 32
+       { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+        { select 128 0 63
+         { u_mul 64 64 { load 64 { addr 64 { fref 64 "%l.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+        }
+        { dec_unsigned 1 0 }
+       }
+      }
+     }
+
+     /* STATEMENT select::bb15::4
+      *   %tmp18 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %ir.0, !dbg !43
+      *   %tmp19 = load float* %tmp18, align 4, !dbg !43 */
+     { label 64 { lref 64 "select::bb15::4" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp19" } { dec_unsigned 64 0 } } with
+      { load 32
+       { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+        { select 128 0 63
+         { u_mul 64 64 { load 64 { addr 64 { fref 64 "%ir.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+        }
+        { dec_unsigned 1 0 }
+       }
+      }
+     }
+
+     /* STATEMENT select::bb15::6
+      *   %tmp20 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %l.0, !dbg !43
+      *   store float %tmp19, float* %tmp20, align 4, !dbg !43 */
+     { label 64 { lref 64 "select::bb15::6" } { dec_unsigned 64 0 } }
+     { store
+      { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+       { select 128 0 63
+        { u_mul 64 64 { load 64 { addr 64 { fref 64 "%l.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+       }
+       { dec_unsigned 1 0 }
+      }
+      with
+      { load 32 { addr 64 { fref 64 "%tmp19" } { dec_unsigned 64 0 } } }
+     }
+
+     /* STATEMENT select::bb15::8
+      *   %tmp21 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %ir.0, !dbg !43
+      *   store float %tmp17, float* %tmp21, align 4, !dbg !43 */
+     { label 64 { lref 64 "select::bb15::8" } { dec_unsigned 64 0 } }
+     { store
+      { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+       { select 128 0 63
+        { u_mul 64 64 { load 64 { addr 64 { fref 64 "%ir.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+       }
+       { dec_unsigned 1 0 }
+      }
+      with
+      { load 32 { addr 64 { fref 64 "%tmp17" } { dec_unsigned 64 0 } } }
+     }
+
+     /* --------- BASIC BLOCK bb22 ---------- */
+     { label 64 { lref 64 "select::bb22" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb22::0
+      *   br label %bb23, !dbg !47 */
+     { jump { label 64 { lref 64 "select::bb23" } { dec_unsigned 64 0 } } leaving 0 }
+
+     /* --------- BASIC BLOCK bb23 ---------- */
+     { label 64 { lref 64 "select::bb23" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb23::1
+      *   br label %bb125, !dbg !50 */
+     { store { addr 64 { fref 64 "%l.3" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%l.0" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "select::bb23::1:::1" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%ir.3" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%ir.0" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "select::bb23::1:::2" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%flag.1" } { dec_unsigned 64 0 } } with { dec_unsigned 32 1 } }
+
+     { label 64 { lref 64 "select::bb23::1:::3" } { dec_unsigned 64 0 } }
+     { jump { label 64 { lref 64 "select::bb125" } { dec_unsigned 64 0 } } leaving 0 }
+
+     /* --------- BASIC BLOCK bb24 ---------- */
+     { label 64 { lref 64 "select::bb24" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb24::1
+      *   %tmp25 = icmp eq i32 %flag.0, 0, !dbg !51
+      *   br i1 %tmp25, label %bb26, label %bb124, !dbg !51 */
+     { switch
+      { eq 32 { load 32 { addr 64 { fref 64 "%flag.0" } { dec_unsigned 64 0 } } } { dec_unsigned 32 0 } }
+      { target { dec_signed 1 { minus 1 } } { label 64 { lref 64 "select::bb26" } { dec_unsigned 64 0 } } }
+      { default
+       { label 64 { lref 64 "select::bb24::1::select::bb124" } { dec_unsigned 64 0 } }
+      }
+     }
+
+     { label 64 { lref 64 "select::bb24::1::select::bb124" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%l.2" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%l.0" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "select::bb24::1::select::bb124:::1" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%ir.2" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%ir.0" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "select::bb24::1::select::bb124:::2" } { dec_unsigned 64 0 } }
+     { jump { label 64 { lref 64 "select::bb124" } { dec_unsigned 64 0 } } leaving 0 }
+
+     /* --------- BASIC BLOCK bb26 ---------- */
+     { label 64 { lref 64 "select::bb26" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb26::1
+      *   %tmp27 = add i64 %l.0, %ir.0, !dbg !53
+      *   %tmp28 = lshr i64 %tmp27, 1, !dbg !53 */
+     { store { addr 64 { fref 64 "%tmp28" } { dec_unsigned 64 0 } } with
+      { r_shift 64 64
+       { add 64 { load 64 { addr 64 { fref 64 "%l.0" } { dec_unsigned 64 0 } } } { load 64 { addr 64 { fref 64 "%ir.0" } { dec_unsigned 64 0 } } } { dec_unsigned 1 0 } }
+       { dec_unsigned 64 1 }
+      }
+     }
+
+     /* STATEMENT select::bb26::4
+      *   %tmp29 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %tmp28, !dbg !56
+      *   %tmp30 = load float* %tmp29, align 4, !dbg !56 */
+     { label 64 { lref 64 "select::bb26::4" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp30" } { dec_unsigned 64 0 } } with
+      { load 32
+       { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+        { select 128 0 63
+         { u_mul 64 64 { load 64 { addr 64 { fref 64 "%tmp28" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+        }
+        { dec_unsigned 1 0 }
+       }
+      }
+     }
+
+     /* STATEMENT select::bb26::8
+      *   %tmp31 = add i64 %l.0, 1, !dbg !56
+      *   %tmp32 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %tmp31, !dbg !56
+      *   %tmp33 = load float* %tmp32, align 4, !dbg !56 */
+     { label 64 { lref 64 "select::bb26::8" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp33" } { dec_unsigned 64 0 } } with
+      { load 32
+       { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+        { select 128 0 63
+         { u_mul 64 64
+          { add 64 { load 64 { addr 64 { fref 64 "%l.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 1 } { dec_unsigned 1 0 } }
+          { dec_unsigned 64 4 }
+         }
+        }
+        { dec_unsigned 1 0 }
+       }
+      }
+     }
+
+     /* STATEMENT select::bb26::10
+      *   %tmp34 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %tmp28, !dbg !56
+      *   store float %tmp33, float* %tmp34, align 4, !dbg !56 */
+     { label 64 { lref 64 "select::bb26::10" } { dec_unsigned 64 0 } }
+     { store
+      { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+       { select 128 0 63
+        { u_mul 64 64 { load 64 { addr 64 { fref 64 "%tmp28" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+       }
+       { dec_unsigned 1 0 }
+      }
+      with
+      { load 32 { addr 64 { fref 64 "%tmp33" } { dec_unsigned 64 0 } } }
+     }
+
+     /* STATEMENT select::bb26::13
+      *   %tmp35 = add i64 %l.0, 1, !dbg !56
+      *   %tmp36 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %tmp35, !dbg !56
+      *   store float %tmp30, float* %tmp36, align 4, !dbg !56 */
+     { label 64 { lref 64 "select::bb26::13" } { dec_unsigned 64 0 } }
+     { store
+      { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+       { select 128 0 63
+        { u_mul 64 64
+         { add 64 { load 64 { addr 64 { fref 64 "%l.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 1 } { dec_unsigned 1 0 } }
+         { dec_unsigned 64 4 }
+        }
+       }
+       { dec_unsigned 1 0 }
+      }
+      with
+      { load 32 { addr 64 { fref 64 "%tmp30" } { dec_unsigned 64 0 } } }
+     }
+
+     /* STATEMENT select::bb26::16
+      *   %tmp37 = add i64 %l.0, 1, !dbg !57
+      *   %tmp38 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %tmp37, !dbg !57
+      *   %tmp39 = load float* %tmp38, align 4, !dbg !57 */
+     { label 64 { lref 64 "select::bb26::16" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp39" } { dec_unsigned 64 0 } } with
+      { load 32
+       { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+        { select 128 0 63
+         { u_mul 64 64
+          { add 64 { load 64 { addr 64 { fref 64 "%l.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 1 } { dec_unsigned 1 0 } }
+          { dec_unsigned 64 4 }
+         }
+        }
+        { dec_unsigned 1 0 }
+       }
+      }
+     }
+
+     /* STATEMENT select::bb26::18
+      *   %tmp40 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %ir.0, !dbg !57
+      *   %tmp41 = load float* %tmp40, align 4, !dbg !57 */
+     { label 64 { lref 64 "select::bb26::18" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp41" } { dec_unsigned 64 0 } } with
+      { load 32
+       { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+        { select 128 0 63
+         { u_mul 64 64 { load 64 { addr 64 { fref 64 "%ir.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+        }
+        { dec_unsigned 1 0 }
+       }
+      }
+     }
+
+     /* STATEMENT select::bb26::20
+      *   %tmp42 = fcmp ogt float %tmp39, %tmp41, !dbg !57
+      *   br i1 %tmp42, label %bb43, label %bb52, !dbg !57 */
+     { label 64 { lref 64 "select::bb26::20" } { dec_unsigned 64 0 } }
+     { switch
+      { f_gt 8 23 { load 32 { addr 64 { fref 64 "%tmp39" } { dec_unsigned 64 0 } } } { load 32 { addr 64 { fref 64 "%tmp41" } { dec_unsigned 64 0 } } } }
+      { target { dec_signed 1 { minus 1 } } { label 64 { lref 64 "select::bb43" } { dec_unsigned 64 0 } } }
+      { default { label 64 { lref 64 "select::bb52" } { dec_unsigned 64 0 } } }
+     }
+
+     /* --------- BASIC BLOCK bb43 ---------- */
+     { label 64 { lref 64 "select::bb43" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb43::2
+      *   %tmp44 = add i64 %l.0, 1, !dbg !59
+      *   %tmp45 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %tmp44, !dbg !59
+      *   %tmp46 = load float* %tmp45, align 4, !dbg !59 */
+     { store { addr 64 { fref 64 "%tmp46" } { dec_unsigned 64 0 } } with
+      { load 32
+       { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+        { select 128 0 63
+         { u_mul 64 64
+          { add 64 { load 64 { addr 64 { fref 64 "%l.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 1 } { dec_unsigned 1 0 } }
+          { dec_unsigned 64 4 }
+         }
+        }
+        { dec_unsigned 1 0 }
+       }
+      }
+     }
+
+     /* STATEMENT select::bb43::5
+      *   %tmp47 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %ir.0, !dbg !59
+      *   %tmp48 = load float* %tmp47, align 4, !dbg !59 */
+     { label 64 { lref 64 "select::bb43::5" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp48" } { dec_unsigned 64 0 } } with
+      { load 32
+       { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+        { select 128 0 63
+         { u_mul 64 64 { load 64 { addr 64 { fref 64 "%ir.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+        }
+        { dec_unsigned 1 0 }
+       }
+      }
+     }
+
+     /* STATEMENT select::bb43::8
+      *   %tmp49 = add i64 %l.0, 1, !dbg !59
+      *   %tmp50 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %tmp49, !dbg !59
+      *   store float %tmp48, float* %tmp50, align 4, !dbg !59 */
+     { label 64 { lref 64 "select::bb43::8" } { dec_unsigned 64 0 } }
+     { store
+      { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+       { select 128 0 63
+        { u_mul 64 64
+         { add 64 { load 64 { addr 64 { fref 64 "%l.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 1 } { dec_unsigned 1 0 } }
+         { dec_unsigned 64 4 }
+        }
+       }
+       { dec_unsigned 1 0 }
+      }
+      with
+      { load 32 { addr 64 { fref 64 "%tmp48" } { dec_unsigned 64 0 } } }
+     }
+
+     /* STATEMENT select::bb43::10
+      *   %tmp51 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %ir.0, !dbg !59
+      *   store float %tmp46, float* %tmp51, align 4, !dbg !59 */
+     { label 64 { lref 64 "select::bb43::10" } { dec_unsigned 64 0 } }
+     { store
+      { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+       { select 128 0 63
+        { u_mul 64 64 { load 64 { addr 64 { fref 64 "%ir.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+       }
+       { dec_unsigned 1 0 }
+      }
+      with
+      { load 32 { addr 64 { fref 64 "%tmp46" } { dec_unsigned 64 0 } } }
+     }
+
+     /* --------- BASIC BLOCK bb52 ---------- */
+     { label 64 { lref 64 "select::bb52" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb52::1
+      *   %tmp53 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %l.0, !dbg !62
+      *   %tmp54 = load float* %tmp53, align 4, !dbg !62 */
+     { store { addr 64 { fref 64 "%tmp54" } { dec_unsigned 64 0 } } with
+      { load 32
+       { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+        { select 128 0 63
+         { u_mul 64 64 { load 64 { addr 64 { fref 64 "%l.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+        }
+        { dec_unsigned 1 0 }
+       }
+      }
+     }
+
+     /* STATEMENT select::bb52::3
+      *   %tmp55 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %ir.0, !dbg !62
+      *   %tmp56 = load float* %tmp55, align 4, !dbg !62 */
+     { label 64 { lref 64 "select::bb52::3" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp56" } { dec_unsigned 64 0 } } with
+      { load 32
+       { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+        { select 128 0 63
+         { u_mul 64 64 { load 64 { addr 64 { fref 64 "%ir.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+        }
+        { dec_unsigned 1 0 }
+       }
+      }
+     }
+
+     /* STATEMENT select::bb52::5
+      *   %tmp57 = fcmp ogt float %tmp54, %tmp56, !dbg !62
+      *   br i1 %tmp57, label %bb58, label %bb65, !dbg !62 */
+     { label 64 { lref 64 "select::bb52::5" } { dec_unsigned 64 0 } }
+     { switch
+      { f_gt 8 23 { load 32 { addr 64 { fref 64 "%tmp54" } { dec_unsigned 64 0 } } } { load 32 { addr 64 { fref 64 "%tmp56" } { dec_unsigned 64 0 } } } }
+      { target { dec_signed 1 { minus 1 } } { label 64 { lref 64 "select::bb58" } { dec_unsigned 64 0 } } }
+      { default { label 64 { lref 64 "select::bb65" } { dec_unsigned 64 0 } } }
+     }
+
+     /* --------- BASIC BLOCK bb58 ---------- */
+     { label 64 { lref 64 "select::bb58" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb58::1
+      *   %tmp59 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %l.0, !dbg !64
+      *   %tmp60 = load float* %tmp59, align 4, !dbg !64 */
+     { store { addr 64 { fref 64 "%tmp60" } { dec_unsigned 64 0 } } with
+      { load 32
+       { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+        { select 128 0 63
+         { u_mul 64 64 { load 64 { addr 64 { fref 64 "%l.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+        }
+        { dec_unsigned 1 0 }
+       }
+      }
+     }
+
+     /* STATEMENT select::bb58::4
+      *   %tmp61 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %ir.0, !dbg !64
+      *   %tmp62 = load float* %tmp61, align 4, !dbg !64 */
+     { label 64 { lref 64 "select::bb58::4" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp62" } { dec_unsigned 64 0 } } with
+      { load 32
+       { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+        { select 128 0 63
+         { u_mul 64 64 { load 64 { addr 64 { fref 64 "%ir.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+        }
+        { dec_unsigned 1 0 }
+       }
+      }
+     }
+
+     /* STATEMENT select::bb58::6
+      *   %tmp63 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %l.0, !dbg !64
+      *   store float %tmp62, float* %tmp63, align 4, !dbg !64 */
+     { label 64 { lref 64 "select::bb58::6" } { dec_unsigned 64 0 } }
+     { store
+      { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+       { select 128 0 63
+        { u_mul 64 64 { load 64 { addr 64 { fref 64 "%l.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+       }
+       { dec_unsigned 1 0 }
+      }
+      with
+      { load 32 { addr 64 { fref 64 "%tmp62" } { dec_unsigned 64 0 } } }
+     }
+
+     /* STATEMENT select::bb58::8
+      *   %tmp64 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %ir.0, !dbg !64
+      *   store float %tmp60, float* %tmp64, align 4, !dbg !64 */
+     { label 64 { lref 64 "select::bb58::8" } { dec_unsigned 64 0 } }
+     { store
+      { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+       { select 128 0 63
+        { u_mul 64 64 { load 64 { addr 64 { fref 64 "%ir.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+       }
+       { dec_unsigned 1 0 }
+      }
+      with
+      { load 32 { addr 64 { fref 64 "%tmp60" } { dec_unsigned 64 0 } } }
+     }
+
+     /* --------- BASIC BLOCK bb65 ---------- */
+     { label 64 { lref 64 "select::bb65" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb65::2
+      *   %tmp66 = add i64 %l.0, 1, !dbg !67
+      *   %tmp67 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %tmp66, !dbg !67
+      *   %tmp68 = load float* %tmp67, align 4, !dbg !67 */
+     { store { addr 64 { fref 64 "%tmp68" } { dec_unsigned 64 0 } } with
+      { load 32
+       { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+        { select 128 0 63
+         { u_mul 64 64
+          { add 64 { load 64 { addr 64 { fref 64 "%l.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 1 } { dec_unsigned 1 0 } }
+          { dec_unsigned 64 4 }
+         }
+        }
+        { dec_unsigned 1 0 }
+       }
+      }
+     }
+
+     /* STATEMENT select::bb65::4
+      *   %tmp69 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %l.0, !dbg !67
+      *   %tmp70 = load float* %tmp69, align 4, !dbg !67 */
+     { label 64 { lref 64 "select::bb65::4" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp70" } { dec_unsigned 64 0 } } with
+      { load 32
+       { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+        { select 128 0 63
+         { u_mul 64 64 { load 64 { addr 64 { fref 64 "%l.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+        }
+        { dec_unsigned 1 0 }
+       }
+      }
+     }
+
+     /* STATEMENT select::bb65::6
+      *   %tmp71 = fcmp ogt float %tmp68, %tmp70, !dbg !67
+      *   br i1 %tmp71, label %bb72, label %bb81, !dbg !67 */
+     { label 64 { lref 64 "select::bb65::6" } { dec_unsigned 64 0 } }
+     { switch
+      { f_gt 8 23 { load 32 { addr 64 { fref 64 "%tmp68" } { dec_unsigned 64 0 } } } { load 32 { addr 64 { fref 64 "%tmp70" } { dec_unsigned 64 0 } } } }
+      { target { dec_signed 1 { minus 1 } } { label 64 { lref 64 "select::bb72" } { dec_unsigned 64 0 } } }
+      { default { label 64 { lref 64 "select::bb81" } { dec_unsigned 64 0 } } }
+     }
+
+     /* --------- BASIC BLOCK bb72 ---------- */
+     { label 64 { lref 64 "select::bb72" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb72::2
+      *   %tmp73 = add i64 %l.0, 1, !dbg !69
+      *   %tmp74 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %tmp73, !dbg !69
+      *   %tmp75 = load float* %tmp74, align 4, !dbg !69 */
+     { store { addr 64 { fref 64 "%tmp75" } { dec_unsigned 64 0 } } with
+      { load 32
+       { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+        { select 128 0 63
+         { u_mul 64 64
+          { add 64 { load 64 { addr 64 { fref 64 "%l.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 1 } { dec_unsigned 1 0 } }
+          { dec_unsigned 64 4 }
+         }
+        }
+        { dec_unsigned 1 0 }
+       }
+      }
+     }
+
+     /* STATEMENT select::bb72::5
+      *   %tmp76 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %l.0, !dbg !69
+      *   %tmp77 = load float* %tmp76, align 4, !dbg !69 */
+     { label 64 { lref 64 "select::bb72::5" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp77" } { dec_unsigned 64 0 } } with
+      { load 32
+       { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+        { select 128 0 63
+         { u_mul 64 64 { load 64 { addr 64 { fref 64 "%l.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+        }
+        { dec_unsigned 1 0 }
+       }
+      }
+     }
+
+     /* STATEMENT select::bb72::8
+      *   %tmp78 = add i64 %l.0, 1, !dbg !69
+      *   %tmp79 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %tmp78, !dbg !69
+      *   store float %tmp77, float* %tmp79, align 4, !dbg !69 */
+     { label 64 { lref 64 "select::bb72::8" } { dec_unsigned 64 0 } }
+     { store
+      { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+       { select 128 0 63
+        { u_mul 64 64
+         { add 64 { load 64 { addr 64 { fref 64 "%l.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 1 } { dec_unsigned 1 0 } }
+         { dec_unsigned 64 4 }
+        }
+       }
+       { dec_unsigned 1 0 }
+      }
+      with
+      { load 32 { addr 64 { fref 64 "%tmp77" } { dec_unsigned 64 0 } } }
+     }
+
+     /* STATEMENT select::bb72::10
+      *   %tmp80 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %l.0, !dbg !69
+      *   store float %tmp75, float* %tmp80, align 4, !dbg !69 */
+     { label 64 { lref 64 "select::bb72::10" } { dec_unsigned 64 0 } }
+     { store
+      { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+       { select 128 0 63
+        { u_mul 64 64 { load 64 { addr 64 { fref 64 "%l.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+       }
+       { dec_unsigned 1 0 }
+      }
+      with
+      { load 32 { addr 64 { fref 64 "%tmp75" } { dec_unsigned 64 0 } } }
+     }
+
+     /* --------- BASIC BLOCK bb81 ---------- */
+     { label 64 { lref 64 "select::bb81" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb81::0
+      *   %tmp82 = add i64 %l.0, 1, !dbg !72 */
+     { store { addr 64 { fref 64 "%tmp82" } { dec_unsigned 64 0 } } with
+      { add 64 { load 64 { addr 64 { fref 64 "%l.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 1 } { dec_unsigned 1 0 } }
+     }
+
+     /* STATEMENT select::bb81::4
+      *   %tmp83 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %l.0, !dbg !76
+      *   %tmp84 = load float* %tmp83, align 4, !dbg !76 */
+     { label 64 { lref 64 "select::bb81::4" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp84" } { dec_unsigned 64 0 } } with
+      { load 32
+       { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+        { select 128 0 63
+         { u_mul 64 64 { load 64 { addr 64 { fref 64 "%l.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+        }
+        { dec_unsigned 1 0 }
+       }
+      }
+     }
+
+     /* STATEMENT select::bb81::7
+      *   br label %bb85, !dbg !80 */
+     { label 64 { lref 64 "select::bb81::7" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%j.0" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%ir.0" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "select::bb81::7:::1" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%i.0" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%tmp82" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "select::bb81::7:::2" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%flag2.0" } { dec_unsigned 64 0 } } with { dec_unsigned 32 0 } }
+
+     /* --------- BASIC BLOCK bb85 ---------- */
+     { label 64 { lref 64 "select::bb85" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb85::4
+      *   %tmp86 = icmp eq i32 %flag2.0, 0, !dbg !80
+      *   br i1 %tmp86, label %bb87, label %bb112, !dbg !80 */
+     { switch
+      { eq 32 { load 32 { addr 64 { fref 64 "%flag2.0" } { dec_unsigned 64 0 } } } { dec_unsigned 32 0 } }
+      { target { dec_signed 1 { minus 1 } } { label 64 { lref 64 "select::bb87" } { dec_unsigned 64 0 } } }
+      { default { label 64 { lref 64 "select::bb112" } { dec_unsigned 64 0 } } }
+     }
+
+     /* --------- BASIC BLOCK bb87 ---------- */
+     { label 64 { lref 64 "select::bb87" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb87::0
+      *   br label %bb88, !dbg !81 */
+     { store { addr 64 { fref 64 "%i.1.in" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%i.0" } { dec_unsigned 64 0 } } } }
+
+     /* --------- BASIC BLOCK bb88 ---------- */
+     { label 64 { lref 64 "select::bb88" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb88::1
+      *   %i.1 = add i64 %i.1.in, 1, !dbg !83 */
+     { store { addr 64 { fref 64 "%i.1" } { dec_unsigned 64 0 } } with
+      { add 64 { load 64 { addr 64 { fref 64 "%i.1.in" } { dec_unsigned 64 0 } } } { dec_unsigned 64 1 } { dec_unsigned 1 0 } }
+     }
+
+     /* STATEMENT select::bb88::3
+      *   %tmp89 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %i.1, !dbg !81
+      *   %tmp90 = load float* %tmp89, align 4, !dbg !81 */
+     { label 64 { lref 64 "select::bb88::3" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp90" } { dec_unsigned 64 0 } } with
+      { load 32
+       { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+        { select 128 0 63
+         { u_mul 64 64 { load 64 { addr 64 { fref 64 "%i.1" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+        }
+        { dec_unsigned 1 0 }
+       }
+      }
+     }
+
+     /* STATEMENT select::bb88::5
+      *   %tmp91 = fcmp olt float %tmp90, %tmp84, !dbg !81
+      *   br i1 %tmp91, label %bb92, label %bb93, !dbg !81 */
+     { label 64 { lref 64 "select::bb88::5" } { dec_unsigned 64 0 } }
+     { switch
+      { f_lt 8 23 { load 32 { addr 64 { fref 64 "%tmp90" } { dec_unsigned 64 0 } } } { load 32 { addr 64 { fref 64 "%tmp84" } { dec_unsigned 64 0 } } } }
+      { target { dec_signed 1 { minus 1 } } { label 64 { lref 64 "select::bb92" } { dec_unsigned 64 0 } } }
+      { default { label 64 { lref 64 "select::bb93" } { dec_unsigned 64 0 } } }
+     }
+
+     /* --------- BASIC BLOCK bb92 ---------- */
+     { label 64 { lref 64 "select::bb92" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb92::0
+      *   br label %bb88, !dbg !84 */
+     { store { addr 64 { fref 64 "%i.1.in" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%i.1" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "select::bb92::0:::1" } { dec_unsigned 64 0 } }
+     { jump { label 64 { lref 64 "select::bb88" } { dec_unsigned 64 0 } } leaving 0 }
+
+     /* --------- BASIC BLOCK bb93 ---------- */
+     { label 64 { lref 64 "select::bb93" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb93::0
+      *   br label %bb94, !dbg !86 */
+     { store { addr 64 { fref 64 "%j.1.in" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%j.0" } { dec_unsigned 64 0 } } } }
+
+     /* --------- BASIC BLOCK bb94 ---------- */
+     { label 64 { lref 64 "select::bb94" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb94::1
+      *   %j.1 = add i64 %j.1.in, -1, !dbg !87 */
+     { store { addr 64 { fref 64 "%j.1" } { dec_unsigned 64 0 } } with
+      { add 64 { load 64 { addr 64 { fref 64 "%j.1.in" } { dec_unsigned 64 0 } } } { dec_signed 64 { minus 1 } } { dec_unsigned 1 0 } }
+     }
+
+     /* STATEMENT select::bb94::3
+      *   %tmp95 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %j.1, !dbg !86
+      *   %tmp96 = load float* %tmp95, align 4, !dbg !86 */
+     { label 64 { lref 64 "select::bb94::3" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp96" } { dec_unsigned 64 0 } } with
+      { load 32
+       { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+        { select 128 0 63
+         { u_mul 64 64 { load 64 { addr 64 { fref 64 "%j.1" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+        }
+        { dec_unsigned 1 0 }
+       }
+      }
+     }
+
+     /* STATEMENT select::bb94::5
+      *   %tmp97 = fcmp ogt float %tmp96, %tmp84, !dbg !86
+      *   br i1 %tmp97, label %bb98, label %bb99, !dbg !86 */
+     { label 64 { lref 64 "select::bb94::5" } { dec_unsigned 64 0 } }
+     { switch
+      { f_gt 8 23 { load 32 { addr 64 { fref 64 "%tmp96" } { dec_unsigned 64 0 } } } { load 32 { addr 64 { fref 64 "%tmp84" } { dec_unsigned 64 0 } } } }
+      { target { dec_signed 1 { minus 1 } } { label 64 { lref 64 "select::bb98" } { dec_unsigned 64 0 } } }
+      { default { label 64 { lref 64 "select::bb99" } { dec_unsigned 64 0 } } }
+     }
+
+     /* --------- BASIC BLOCK bb98 ---------- */
+     { label 64 { lref 64 "select::bb98" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb98::0
+      *   br label %bb94, !dbg !88 */
+     { store { addr 64 { fref 64 "%j.1.in" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%j.1" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "select::bb98::0:::1" } { dec_unsigned 64 0 } }
+     { jump { label 64 { lref 64 "select::bb94" } { dec_unsigned 64 0 } } leaving 0 }
+
+     /* --------- BASIC BLOCK bb99 ---------- */
+     { label 64 { lref 64 "select::bb99" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb99::1
+      *   %tmp100 = icmp ult i64 %j.1, %i.1, !dbg !90
+      *   br i1 %tmp100, label %bb101, label %bb102, !dbg !90 */
+     { switch
+      { u_lt 64 { load 64 { addr 64 { fref 64 "%j.1" } { dec_unsigned 64 0 } } } { load 64 { addr 64 { fref 64 "%i.1" } { dec_unsigned 64 0 } } } }
+      { target { dec_signed 1 { minus 1 } } { label 64 { lref 64 "select::bb101" } { dec_unsigned 64 0 } } }
+      { default
+       { label 64 { lref 64 "select::bb99::1::select::bb102" } { dec_unsigned 64 0 } }
+      }
+     }
+
+     { label 64 { lref 64 "select::bb99::1::select::bb102" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%flag2.1" } { dec_unsigned 64 0 } } with { load 32 { addr 64 { fref 64 "%flag2.0" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "select::bb99::1::select::bb102:::1" } { dec_unsigned 64 0 } }
+     { jump { label 64 { lref 64 "select::bb102" } { dec_unsigned 64 0 } } leaving 0 }
+
+     /* --------- BASIC BLOCK bb101 ---------- */
+     { label 64 { lref 64 "select::bb101" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb101::1
+      *   br label %bb102, !dbg !94 */
+     { store { addr 64 { fref 64 "%flag2.1" } { dec_unsigned 64 0 } } with { dec_unsigned 32 1 } }
+
+     /* --------- BASIC BLOCK bb102 ---------- */
+     { label 64 { lref 64 "select::bb102" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb102::2
+      *   %tmp103 = icmp eq i32 %flag2.1, 0, !dbg !95
+      *   br i1 %tmp103, label %bb104, label %bb111, !dbg !95 */
+     { switch
+      { eq 32 { load 32 { addr 64 { fref 64 "%flag2.1" } { dec_unsigned 64 0 } } } { dec_unsigned 32 0 } }
+      { target { dec_signed 1 { minus 1 } } { label 64 { lref 64 "select::bb104" } { dec_unsigned 64 0 } } }
+      { default { label 64 { lref 64 "select::bb111" } { dec_unsigned 64 0 } } }
+     }
+
+     /* --------- BASIC BLOCK bb104 ---------- */
+     { label 64 { lref 64 "select::bb104" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb104::1
+      *   %tmp105 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %i.1, !dbg !97
+      *   %tmp106 = load float* %tmp105, align 4, !dbg !97 */
+     { store { addr 64 { fref 64 "%tmp106" } { dec_unsigned 64 0 } } with
+      { load 32
+       { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+        { select 128 0 63
+         { u_mul 64 64 { load 64 { addr 64 { fref 64 "%i.1" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+        }
+        { dec_unsigned 1 0 }
+       }
+      }
+     }
+
+     /* STATEMENT select::bb104::4
+      *   %tmp107 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %j.1, !dbg !97
+      *   %tmp108 = load float* %tmp107, align 4, !dbg !97 */
+     { label 64 { lref 64 "select::bb104::4" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp108" } { dec_unsigned 64 0 } } with
+      { load 32
+       { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+        { select 128 0 63
+         { u_mul 64 64 { load 64 { addr 64 { fref 64 "%j.1" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+        }
+        { dec_unsigned 1 0 }
+       }
+      }
+     }
+
+     /* STATEMENT select::bb104::6
+      *   %tmp109 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %i.1, !dbg !97
+      *   store float %tmp108, float* %tmp109, align 4, !dbg !97 */
+     { label 64 { lref 64 "select::bb104::6" } { dec_unsigned 64 0 } }
+     { store
+      { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+       { select 128 0 63
+        { u_mul 64 64 { load 64 { addr 64 { fref 64 "%i.1" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+       }
+       { dec_unsigned 1 0 }
+      }
+      with
+      { load 32 { addr 64 { fref 64 "%tmp108" } { dec_unsigned 64 0 } } }
+     }
+
+     /* STATEMENT select::bb104::8
+      *   %tmp110 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %j.1, !dbg !97
+      *   store float %tmp106, float* %tmp110, align 4, !dbg !97 */
+     { label 64 { lref 64 "select::bb104::8" } { dec_unsigned 64 0 } }
+     { store
+      { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+       { select 128 0 63
+        { u_mul 64 64 { load 64 { addr 64 { fref 64 "%j.1" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+       }
+       { dec_unsigned 1 0 }
+      }
+      with
+      { load 32 { addr 64 { fref 64 "%tmp106" } { dec_unsigned 64 0 } } }
+     }
+
+     /* --------- BASIC BLOCK bb111 ---------- */
+     { label 64 { lref 64 "select::bb111" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb111::0
+      *   br label %bb85, !dbg !100 */
+     { store { addr 64 { fref 64 "%j.0" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%j.1" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "select::bb111::0:::1" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%i.0" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%i.1" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "select::bb111::0:::2" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%flag2.0" } { dec_unsigned 64 0 } } with { load 32 { addr 64 { fref 64 "%flag2.1" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "select::bb111::0:::3" } { dec_unsigned 64 0 } }
+     { jump { label 64 { lref 64 "select::bb85" } { dec_unsigned 64 0 } } leaving 0 }
+
+     /* --------- BASIC BLOCK bb112 ---------- */
+     { label 64 { lref 64 "select::bb112" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb112::1
+      *   %tmp113 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %j.0, !dbg !101
+      *   %tmp114 = load float* %tmp113, align 4, !dbg !101 */
+     { store { addr 64 { fref 64 "%tmp114" } { dec_unsigned 64 0 } } with
+      { load 32
+       { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+        { select 128 0 63
+         { u_mul 64 64 { load 64 { addr 64 { fref 64 "%j.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+        }
+        { dec_unsigned 1 0 }
+       }
+      }
+     }
+
+     /* STATEMENT select::bb112::3
+      *   %tmp115 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %l.0, !dbg !101
+      *   store float %tmp114, float* %tmp115, align 4, !dbg !101 */
+     { label 64 { lref 64 "select::bb112::3" } { dec_unsigned 64 0 } }
+     { store
+      { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+       { select 128 0 63
+        { u_mul 64 64 { load 64 { addr 64 { fref 64 "%l.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+       }
+       { dec_unsigned 1 0 }
+      }
+      with
+      { load 32 { addr 64 { fref 64 "%tmp114" } { dec_unsigned 64 0 } } }
+     }
+
+     /* STATEMENT select::bb112::5
+      *   %tmp116 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %j.0, !dbg !102
+      *   store float %tmp84, float* %tmp116, align 4, !dbg !102 */
+     { label 64 { lref 64 "select::bb112::5" } { dec_unsigned 64 0 } }
+     { store
+      { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+       { select 128 0 63
+        { u_mul 64 64 { load 64 { addr 64 { fref 64 "%j.0" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+       }
+       { dec_unsigned 1 0 }
+      }
+      with
+      { load 32 { addr 64 { fref 64 "%tmp84" } { dec_unsigned 64 0 } } }
+     }
+
+     /* STATEMENT select::bb112::7
+      *   %tmp117 = icmp ult i64 %j.0, %k, !dbg !103
+      *   br i1 %tmp117, label %bb120, label %bb118, !dbg !103 */
+     { label 64 { lref 64 "select::bb112::7" } { dec_unsigned 64 0 } }
+     { switch
+      { u_lt 64 { load 64 { addr 64 { fref 64 "%j.0" } { dec_unsigned 64 0 } } } { load 64 { addr 64 { fref 64 "%k" } { dec_unsigned 64 0 } } } }
+      { target { dec_signed 1 { minus 1 } }
+       { label 64 { lref 64 "select::bb112::7::select::bb120" } { dec_unsigned 64 0 } }
+      }
+      { default { label 64 { lref 64 "select::bb118" } { dec_unsigned 64 0 } } }
+     }
+
+     { label 64 { lref 64 "select::bb112::7::select::bb120" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%ir.1" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%ir.0" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "select::bb112::7::select::bb120:::1" } { dec_unsigned 64 0 } }
+     { jump { label 64 { lref 64 "select::bb120" } { dec_unsigned 64 0 } } leaving 0 }
+
+     /* --------- BASIC BLOCK bb118 ---------- */
+     { label 64 { lref 64 "select::bb118" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb118::0
+      *   %tmp119 = add i64 %j.0, -1, !dbg !105 */
+     { store { addr 64 { fref 64 "%tmp119" } { dec_unsigned 64 0 } } with
+      { add 64 { load 64 { addr 64 { fref 64 "%j.0" } { dec_unsigned 64 0 } } } { dec_signed 64 { minus 1 } } { dec_unsigned 1 0 } }
+     }
+
+     /* STATEMENT select::bb118::2
+      *   br label %bb120, !dbg !107 */
+     { label 64 { lref 64 "select::bb118::2" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%ir.1" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%tmp119" } { dec_unsigned 64 0 } } } }
+
+     /* --------- BASIC BLOCK bb120 ---------- */
+     { label 64 { lref 64 "select::bb120" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb120::2
+      *   %tmp121 = icmp ugt i64 %j.0, %k, !dbg !108
+      *   br i1 %tmp121, label %bb123, label %bb122, !dbg !108 */
+     { switch
+      { u_gt 64 { load 64 { addr 64 { fref 64 "%j.0" } { dec_unsigned 64 0 } } } { load 64 { addr 64 { fref 64 "%k" } { dec_unsigned 64 0 } } } }
+      { target { dec_signed 1 { minus 1 } }
+       { label 64 { lref 64 "select::bb120::2::select::bb123" } { dec_unsigned 64 0 } }
+      }
+      { default { label 64 { lref 64 "select::bb122" } { dec_unsigned 64 0 } } }
+     }
+
+     { label 64 { lref 64 "select::bb120::2::select::bb123" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%l.1" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%l.0" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "select::bb120::2::select::bb123:::1" } { dec_unsigned 64 0 } }
+     { jump { label 64 { lref 64 "select::bb123" } { dec_unsigned 64 0 } } leaving 0 }
+
+     /* --------- BASIC BLOCK bb122 ---------- */
+     { label 64 { lref 64 "select::bb122" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb122::1
+      *   br label %bb123, !dbg !112 */
+     { store { addr 64 { fref 64 "%l.1" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%i.0" } { dec_unsigned 64 0 } } } }
+
+     /* --------- BASIC BLOCK bb123 ---------- */
+     { label 64 { lref 64 "select::bb123" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb123::1
+      *   br label %bb124, !dbg !113 */
+     { store { addr 64 { fref 64 "%l.2" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%l.1" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "select::bb123::1:::1" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%ir.2" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%ir.1" } { dec_unsigned 64 0 } } } }
+
+     /* --------- BASIC BLOCK bb124 ---------- */
+     { label 64 { lref 64 "select::bb124" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb124::2
+      *   br label %bb125 */
+     { store { addr 64 { fref 64 "%l.3" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%l.2" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "select::bb124::2:::1" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%ir.3" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%ir.2" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "select::bb124::2:::2" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%flag.1" } { dec_unsigned 64 0 } } with { load 32 { addr 64 { fref 64 "%flag.0" } { dec_unsigned 64 0 } } } }
+
+     /* --------- BASIC BLOCK bb125 ---------- */
+     { label 64 { lref 64 "select::bb125" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb125::3
+      *   br label %bb1, !dbg !114 */
+     { store { addr 64 { fref 64 "%l.0" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%l.3" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "select::bb125::3:::1" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%ir.0" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%ir.3" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "select::bb125::3:::2" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%flag.0" } { dec_unsigned 64 0 } } with { load 32 { addr 64 { fref 64 "%flag.1" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "select::bb125::3:::3" } { dec_unsigned 64 0 } }
+     { jump { label 64 { lref 64 "select::bb1" } { dec_unsigned 64 0 } } leaving 0 }
+
+     /* --------- BASIC BLOCK bb126 ---------- */
+     { label 64 { lref 64 "select::bb126" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT select::bb126::1
+      *   %tmp127 = getelementptr inbounds [20 x float]* @arr, i64 0, i64 %k, !dbg !115
+      *   %tmp128 = load float* %tmp127, align 4, !dbg !115 */
+     { store { addr 64 { fref 64 "%tmp128" } { dec_unsigned 64 0 } } with
+      { load 32
+       { add 64 { addr 64 { fref 64 "arr" } { dec_unsigned 64 0 } }
+        { select 128 0 63
+         { u_mul 64 64 { load 64 { addr 64 { fref 64 "%k" } { dec_unsigned 64 0 } } } { dec_unsigned 64 4 } }
+        }
+        { dec_unsigned 1 0 }
+       }
+      }
+     }
+
+     /* STATEMENT select::bb126::2
+      *   ret float %tmp128, !dbg !115 */
+     { label 64 { lref 64 "select::bb126::2" } { dec_unsigned 64 0 } }
+     { return { load 32 { addr 64 { fref 64 "%tmp128" } { dec_unsigned 64 0 } } } }
+    }
+   }
+  }
+
+  /* Definition of function main */
+  { func
+   { label 64 { lref 64 "main" } { dec_unsigned 64 0 } }
+   { arg_decls }
+   { scope
+    { decls
+     { alloc 64 "%tmp" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+    }
+    { inits }
+    { stmts
+
+     /* --------- BASIC BLOCK bb ---------- */
+     { label 64 { lref 64 "main::bb" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT main::bb::0
+      *   %tmp = call float @select(i64 10, i64 20), !dbg !22 */
+     { call { label 64 { lref 64 "select" } { dec_unsigned 64 0 } } { dec_unsigned 64 10 } { dec_unsigned 64 20 } result { addr 64 { fref 64 "%tmp" } { dec_unsigned 64 0 } } }
+
+     /* STATEMENT main::bb::1
+      *   ret i32 0, !dbg !23 */
+     { label 64 { lref 64 "main::bb::1" } { dec_unsigned 64 0 } }
+     { return { dec_unsigned 32 0 } }
+    }
+   }
+  }
+ }
+}

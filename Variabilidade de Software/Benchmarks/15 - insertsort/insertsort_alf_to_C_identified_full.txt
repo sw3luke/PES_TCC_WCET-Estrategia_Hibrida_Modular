@@ -1,0 +1,39 @@
+Basic Blocks in C code 
+Basic Block insertsort bb0
+bb0 Line 5   while(i <= 10){
+Basic Block insertsort bb1
+bb1 Line 5   while(i <= 10){
+Basic Block insertsort bb2
+bb2 Line 7       while (a[j] < a[j-1]){
+Basic Block insertsort bb3
+bb3 Line 7       while (a[j] < a[j-1]){
+bb3::7 Line 7       while (a[j] < a[j-1]){
+bb3::9 Line 7       while (a[j] < a[j-1]){
+Basic Block insertsort bb12
+bb12 Line 8 	temp = a[j];
+bb12::10 Line 9 	a[j] = a[j-1];
+bb12::14 Line 10 	a[j-1] = temp;
+bb12::15 Line 11 	j--;
+bb12::17 Line 12       }
+bb12::17:::1 Line 12       }
+bb12::7 Line 9 	a[j] = a[j-1];
+Basic Block insertsort bb26
+bb26 Line 13       i++;
+bb26::2 Line 14   }
+bb26::2:::1 Line 14   }
+Basic Block insertsort bb28
+bb28 Line 15 }
+Basic Block main bb0
+bb0 Line 17   a[0] = 0;   /* assume all data is positive */
+bb0::1 Line 18   a[1] = 11; 
+bb0::10 Line 27   a[10]=2;
+bb0::11 Line 29   insertsort();
+bb0::12 Line 31   return 1;
+bb0::2 Line 19   a[2]=10;
+bb0::3 Line 20   a[3]=9; 
+bb0::4 Line 21   a[4]=8; 
+bb0::5 Line 22   a[5]=7; 
+bb0::6 Line 23   a[6]=6; 
+bb0::7 Line 24   a[7]=5;
+bb0::8 Line 25   a[8] =4; 
+bb0::9 Line 26   a[9]=3; 

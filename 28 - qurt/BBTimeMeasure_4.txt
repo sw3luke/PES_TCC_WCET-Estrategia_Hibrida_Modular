@@ -1,3 +1,0 @@
-qurt::bb0 57
-bb4bb4SystemClock::Endless stopped
-bb4number of cpu cycles simulated: 6038

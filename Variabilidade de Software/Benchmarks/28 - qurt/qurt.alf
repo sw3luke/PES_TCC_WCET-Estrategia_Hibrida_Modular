@@ -1,0 +1,701 @@
+{ alf
+ { macro_defs }
+ { least_addr_unit 8 }
+ little_endian
+ { exports
+  { frefs
+   { fref 64 "a" }
+   { fref 64 "flag" }
+   { fref 64 "x1" }
+   { fref 64 "x2" }
+  }
+  { lrefs { lref 64 "qurt_fabs" } { lref 64 "qurt_sqrt" } { lref 64 "preencheArray" } { lref 64 "main" } { lref 64 "qurt" } }
+ }
+ { imports
+  { frefs
+   { fref 64 "$null" }
+   { fref 64 "$mem" }
+  }
+  { lrefs }
+ }
+ { decls
+  { alloc 64 "a" 192 }
+  { alloc 64 "flag" 32 }
+  { alloc 64 "x1" 128 }
+  { alloc 64 "x2" 128 }
+ }
+ { inits
+  { init { ref "a" { dec_unsigned 64 0 } } { float_val 11 52 0. } }
+  { init { ref "a" { dec_unsigned 64 8 } } { float_val 11 52 0. } }
+  { init { ref "a" { dec_unsigned 64 16 } } { float_val 11 52 0. } }
+  { init { ref "flag" { dec_unsigned 64 0 } } { dec_unsigned 32 0 } }
+  { init { ref "x1" { dec_unsigned 64 0 } } { float_val 11 52 0. } }
+  { init { ref "x1" { dec_unsigned 64 8 } } { float_val 11 52 0. } }
+  { init { ref "x2" { dec_unsigned 64 0 } } { float_val 11 52 0. } }
+  { init { ref "x2" { dec_unsigned 64 8 } } { float_val 11 52 0. } }
+ }
+ { funcs
+
+  /* Definition of function qurt_fabs */
+  { func
+   { label 64 { lref 64 "qurt_fabs" } { dec_unsigned 64 0 } }
+   { arg_decls
+    { alloc 64 "%n" 64 }
+   }
+   { scope
+    { decls
+     { alloc 64 "%tmp3" 64 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%f.0" 64 } /* Local Variable (PHI node) */ 
+    }
+    { inits }
+    { stmts
+
+     /* --------- BASIC BLOCK bb ---------- */
+     { label 64 { lref 64 "qurt_fabs::bb" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT qurt_fabs::bb::2
+      *   %tmp = fcmp ult double %n, 0.000000e+00, !dbg !34
+      *   br i1 %tmp, label %bb2, label %bb1, !dbg !34 */
+     { switch
+      { f_lt 11 52 { load 64 { addr 64 { fref 64 "%n" } { dec_unsigned 64 0 } } } { float_val 11 52 0. } }
+      { target { dec_signed 1 { minus 1 } } { label 64 { lref 64 "qurt_fabs::bb2" } { dec_unsigned 64 0 } } }
+      { default { label 64 { lref 64 "qurt_fabs::bb1" } { dec_unsigned 64 0 } } }
+     }
+
+     /* --------- BASIC BLOCK bb1 ---------- */
+     { label 64 { lref 64 "qurt_fabs::bb1" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT qurt_fabs::bb1::1
+      *   br label %bb4, !dbg !37 */
+     { store { addr 64 { fref 64 "%f.0" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%n" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "qurt_fabs::bb1::1:::1" } { dec_unsigned 64 0 } }
+     { jump { label 64 { lref 64 "qurt_fabs::bb4" } { dec_unsigned 64 0 } } leaving 0 }
+
+     /* --------- BASIC BLOCK bb2 ---------- */
+     { label 64 { lref 64 "qurt_fabs::bb2" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT qurt_fabs::bb2::0
+      *   %tmp3 = fsub double -0.000000e+00, %n, !dbg !38 */
+     { store { addr 64 { fref 64 "%tmp3" } { dec_unsigned 64 0 } } with
+      { f_neg 11 52 { load 64 { addr 64 { fref 64 "%n" } { dec_unsigned 64 0 } } } }
+     }
+
+     /* STATEMENT qurt_fabs::bb2::2
+      *   br label %bb4 */
+     { label 64 { lref 64 "qurt_fabs::bb2::2" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%f.0" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%tmp3" } { dec_unsigned 64 0 } } } }
+
+     /* --------- BASIC BLOCK bb4 ---------- */
+     { label 64 { lref 64 "qurt_fabs::bb4" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT qurt_fabs::bb4::1
+      *   ret double %f.0, !dbg !39 */
+     { return { load 64 { addr 64 { fref 64 "%f.0" } { dec_unsigned 64 0 } } } }
+    }
+   }
+  }
+
+  /* Definition of function qurt_sqrt */
+  { func
+   { label 64 { lref 64 "qurt_sqrt" } { dec_unsigned 64 0 } }
+   { arg_decls
+    { alloc 64 "%val" 64 }
+   }
+   { scope
+    { decls
+     { alloc 64 "%tmp3" 64 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%i.0" 32 } /* Local Variable (PHI node) */ 
+     { alloc 64 "%x.0" 64 } /* Local Variable (PHI node) */ 
+     { alloc 64 "%flag.0" 32 } /* Local Variable (PHI node) */ 
+     { alloc 64 "%tmp13" 64 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp16" 64 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%flag.1" 32 } /* Local Variable (PHI node) */ 
+     { alloc 64 "%x.1" 64 } /* Local Variable (PHI node) */ 
+     { alloc 64 "%flag.2" 32 } /* Local Variable (PHI node) */ 
+     { alloc 64 "%tmp22" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%x.2" 64 } /* Local Variable (PHI node) */ 
+    }
+    { inits }
+    { stmts
+
+     /* --------- BASIC BLOCK bb ---------- */
+     { label 64 { lref 64 "qurt_sqrt::bb" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT qurt_sqrt::bb::5
+      *   %tmp = fcmp oeq double %val, 0.000000e+00, !dbg !41
+      *   br i1 %tmp, label %bb1, label %bb2, !dbg !41 */
+     { switch
+      { f_eq 11 52 { load 64 { addr 64 { fref 64 "%val" } { dec_unsigned 64 0 } } } { float_val 11 52 0. } }
+      { target { dec_signed 1 { minus 1 } } { label 64 { lref 64 "qurt_sqrt::bb1" } { dec_unsigned 64 0 } } }
+      { default { label 64 { lref 64 "qurt_sqrt::bb2" } { dec_unsigned 64 0 } } }
+     }
+
+     /* --------- BASIC BLOCK bb1 ---------- */
+     { label 64 { lref 64 "qurt_sqrt::bb1" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT qurt_sqrt::bb1::1
+      *   br label %bb24, !dbg !46 */
+     { store { addr 64 { fref 64 "%x.2" } { dec_unsigned 64 0 } } with { float_val 11 52 0. } }
+
+     { label 64 { lref 64 "qurt_sqrt::bb1::1:::1" } { dec_unsigned 64 0 } }
+     { jump { label 64 { lref 64 "qurt_sqrt::bb24" } { dec_unsigned 64 0 } } leaving 0 }
+
+     /* --------- BASIC BLOCK bb2 ---------- */
+     { label 64 { lref 64 "qurt_sqrt::bb2" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT qurt_sqrt::bb2::0
+      *   %tmp3 = fdiv double %val, 1.000000e+01, !dbg !35 */
+     { store { addr 64 { fref 64 "%tmp3" } { dec_unsigned 64 0 } } with
+      { f_div 11 52 { load 64 { addr 64 { fref 64 "%val" } { dec_unsigned 64 0 } } } { float_val 11 52 10. } }
+     }
+
+     /* STATEMENT qurt_sqrt::bb2::2
+      *   br label %bb4, !dbg !49 */
+     { label 64 { lref 64 "qurt_sqrt::bb2::2" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%i.0" } { dec_unsigned 64 0 } } with { dec_unsigned 32 1 } }
+
+     { label 64 { lref 64 "qurt_sqrt::bb2::2:::1" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%x.0" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%tmp3" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "qurt_sqrt::bb2::2:::2" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%flag.0" } { dec_unsigned 64 0 } } with { dec_unsigned 32 0 } }
+
+     /* --------- BASIC BLOCK bb4 ---------- */
+     { label 64 { lref 64 "qurt_sqrt::bb4" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT qurt_sqrt::bb4::4
+      *   %tmp5 = icmp slt i32 %i.0, 20, !dbg !49
+      *   br i1 %tmp5, label %bb6, label %bb23, !dbg !49 */
+     { switch
+      { s_lt 32 { load 32 { addr 64 { fref 64 "%i.0" } { dec_unsigned 64 0 } } } { dec_unsigned 32 20 } }
+      { target { dec_signed 1 { minus 1 } } { label 64 { lref 64 "qurt_sqrt::bb6" } { dec_unsigned 64 0 } } }
+      { default { label 64 { lref 64 "qurt_sqrt::bb23" } { dec_unsigned 64 0 } } }
+     }
+
+     /* --------- BASIC BLOCK bb6 ---------- */
+     { label 64 { lref 64 "qurt_sqrt::bb6" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT qurt_sqrt::bb6::1
+      *   %tmp7 = icmp eq i32 %flag.0, 0, !dbg !52
+      *   br i1 %tmp7, label %bb8, label %bb20, !dbg !52 */
+     { switch
+      { eq 32 { load 32 { addr 64 { fref 64 "%flag.0" } { dec_unsigned 64 0 } } } { dec_unsigned 32 0 } }
+      { target { dec_signed 1 { minus 1 } } { label 64 { lref 64 "qurt_sqrt::bb8" } { dec_unsigned 64 0 } } }
+      { default
+       { label 64 { lref 64 "qurt_sqrt::bb6::1::qurt_sqrt::bb20" } { dec_unsigned 64 0 } }
+      }
+     }
+
+     { label 64 { lref 64 "qurt_sqrt::bb6::1::qurt_sqrt::bb20" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%x.1" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%x.0" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "qurt_sqrt::bb6::1::qurt_sqrt::bb20:::1" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%flag.2" } { dec_unsigned 64 0 } } with { load 32 { addr 64 { fref 64 "%flag.0" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "qurt_sqrt::bb6::1::qurt_sqrt::bb20:::2" } { dec_unsigned 64 0 } }
+     { jump { label 64 { lref 64 "qurt_sqrt::bb20" } { dec_unsigned 64 0 } } leaving 0 }
+
+     /* --------- BASIC BLOCK bb8 ---------- */
+     { label 64 { lref 64 "qurt_sqrt::bb8" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT qurt_sqrt::bb8::5
+      *   %tmp9 = fmul double %x.0, %x.0, !dbg !55
+      *   %tmp10 = fsub double %val, %tmp9, !dbg !55
+      *   %tmp11 = fmul double %x.0, 2.000000e+00, !dbg !55
+      *   %tmp12 = fdiv double %tmp10, %tmp11, !dbg !55
+      *   %tmp13 = fadd double %x.0, %tmp12, !dbg !58 */
+     { store { addr 64 { fref 64 "%tmp13" } { dec_unsigned 64 0 } } with
+      { f_add 11 52 { load 64 { addr 64 { fref 64 "%x.0" } { dec_unsigned 64 0 } } }
+       { f_div 11 52
+        { f_sub 11 52 { load 64 { addr 64 { fref 64 "%val" } { dec_unsigned 64 0 } } }
+         { f_mul 11 52 { load 64 { addr 64 { fref 64 "%x.0" } { dec_unsigned 64 0 } } } { load 64 { addr 64 { fref 64 "%x.0" } { dec_unsigned 64 0 } } } }
+        }
+        { f_mul 11 52 { load 64 { addr 64 { fref 64 "%x.0" } { dec_unsigned 64 0 } } } { float_val 11 52 2. } }
+       }
+      }
+     }
+
+     /* STATEMENT qurt_sqrt::bb8::10
+      *   %tmp14 = fmul double %tmp13, %tmp13, !dbg !59
+      *   %tmp15 = fsub double %val, %tmp14, !dbg !59
+      *   %tmp16 = call double @qurt_fabs(double %tmp15), !dbg !61 */
+     { label 64 { lref 64 "qurt_sqrt::bb8::10" } { dec_unsigned 64 0 } }
+     { call { label 64 { lref 64 "qurt_fabs" } { dec_unsigned 64 0 } }
+      { f_sub 11 52 { load 64 { addr 64 { fref 64 "%val" } { dec_unsigned 64 0 } } }
+       { f_mul 11 52 { load 64 { addr 64 { fref 64 "%tmp13" } { dec_unsigned 64 0 } } } { load 64 { addr 64 { fref 64 "%tmp13" } { dec_unsigned 64 0 } } } }
+      }
+      result
+      { addr 64 { fref 64 "%tmp16" } { dec_unsigned 64 0 } }
+     }
+
+     /* STATEMENT qurt_sqrt::bb8::12
+      *   %tmp17 = fcmp ugt double %tmp16, 1.000000e-05, !dbg !61
+      *   br i1 %tmp17, label %bb19, label %bb18, !dbg !61 */
+     { label 64 { lref 64 "qurt_sqrt::bb8::12" } { dec_unsigned 64 0 } }
+     { switch
+      { f_gt 11 52 { load 64 { addr 64 { fref 64 "%tmp16" } { dec_unsigned 64 0 } } } { float_val 11 52 1.0000000000000001E-5 } }
+      { target { dec_signed 1 { minus 1 } }
+       { label 64 { lref 64 "qurt_sqrt::bb8::12::qurt_sqrt::bb19" } { dec_unsigned 64 0 } }
+      }
+      { default { label 64 { lref 64 "qurt_sqrt::bb18" } { dec_unsigned 64 0 } } }
+     }
+
+     { label 64 { lref 64 "qurt_sqrt::bb8::12::qurt_sqrt::bb19" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%flag.1" } { dec_unsigned 64 0 } } with { load 32 { addr 64 { fref 64 "%flag.0" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "qurt_sqrt::bb8::12::qurt_sqrt::bb19:::1" } { dec_unsigned 64 0 } }
+     { jump { label 64 { lref 64 "qurt_sqrt::bb19" } { dec_unsigned 64 0 } } leaving 0 }
+
+     /* --------- BASIC BLOCK bb18 ---------- */
+     { label 64 { lref 64 "qurt_sqrt::bb18" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT qurt_sqrt::bb18::1
+      *   br label %bb19, !dbg !65 */
+     { store { addr 64 { fref 64 "%flag.1" } { dec_unsigned 64 0 } } with { dec_unsigned 32 1 } }
+
+     /* --------- BASIC BLOCK bb19 ---------- */
+     { label 64 { lref 64 "qurt_sqrt::bb19" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT qurt_sqrt::bb19::1
+      *   br label %bb20, !dbg !66 */
+     { store { addr 64 { fref 64 "%x.1" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%tmp13" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "qurt_sqrt::bb19::1:::1" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%flag.2" } { dec_unsigned 64 0 } } with { load 32 { addr 64 { fref 64 "%flag.1" } { dec_unsigned 64 0 } } } }
+
+     /* --------- BASIC BLOCK bb20 ---------- */
+     { label 64 { lref 64 "qurt_sqrt::bb20" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT qurt_sqrt::bb20::2
+      *   br label %bb21, !dbg !67 */
+     { jump { label 64 { lref 64 "qurt_sqrt::bb21" } { dec_unsigned 64 0 } } leaving 0 }
+
+     /* --------- BASIC BLOCK bb21 ---------- */
+     { label 64 { lref 64 "qurt_sqrt::bb21" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT qurt_sqrt::bb21::0
+      *   %tmp22 = add nsw i32 %i.0, 1, !dbg !68 */
+     { store { addr 64 { fref 64 "%tmp22" } { dec_unsigned 64 0 } } with
+      { add 32 { load 32 { addr 64 { fref 64 "%i.0" } { dec_unsigned 64 0 } } } { dec_unsigned 32 1 } { dec_unsigned 1 0 } }
+     }
+
+     /* STATEMENT qurt_sqrt::bb21::2
+      *   br label %bb4, !dbg !68 */
+     { label 64 { lref 64 "qurt_sqrt::bb21::2" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%i.0" } { dec_unsigned 64 0 } } with { load 32 { addr 64 { fref 64 "%tmp22" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "qurt_sqrt::bb21::2:::1" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%x.0" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%x.1" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "qurt_sqrt::bb21::2:::2" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%flag.0" } { dec_unsigned 64 0 } } with { load 32 { addr 64 { fref 64 "%flag.2" } { dec_unsigned 64 0 } } } }
+
+     { label 64 { lref 64 "qurt_sqrt::bb21::2:::3" } { dec_unsigned 64 0 } }
+     { jump { label 64 { lref 64 "qurt_sqrt::bb4" } { dec_unsigned 64 0 } } leaving 0 }
+
+     /* --------- BASIC BLOCK bb23 ---------- */
+     { label 64 { lref 64 "qurt_sqrt::bb23" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT qurt_sqrt::bb23::0
+      *   br label %bb24 */
+     { store { addr 64 { fref 64 "%x.2" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%x.0" } { dec_unsigned 64 0 } } } }
+
+     /* --------- BASIC BLOCK bb24 ---------- */
+     { label 64 { lref 64 "qurt_sqrt::bb24" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT qurt_sqrt::bb24::1
+      *   ret double %x.2, !dbg !69 */
+     { return { load 64 { addr 64 { fref 64 "%x.2" } { dec_unsigned 64 0 } } } }
+    }
+   }
+  }
+
+  /* Definition of function preencheArray */
+  { func
+   { label 64 { lref 64 "preencheArray" } { dec_unsigned 64 0 } }
+   { arg_decls
+    { alloc 64 "%v" 32 }
+    { alloc 64 "%b" 32 }
+    { alloc 64 "%c" 32 }
+   }
+   { scope
+    { decls }
+    { inits }
+    { stmts
+
+     /* --------- BASIC BLOCK bb ---------- */
+     { label 64 { lref 64 "preencheArray::bb" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT preencheArray::bb::4
+      *   %tmp = sitofp i32 %v to double, !dbg !38
+      *   store double %tmp, double* getelementptr inbounds ([3 x double]* @a, i64 0, i64 0), align 16, !dbg !38 */
+     { store { addr 64 { fref 64 "a" } { dec_unsigned 64 0 } } with
+      { s_to_f 11 52 32 { load 32 { addr 64 { fref 64 "%v" } { dec_unsigned 64 0 } } } }
+     }
+
+     /* STATEMENT preencheArray::bb::6
+      *   %tmp1 = sitofp i32 %b to double, !dbg !39
+      *   store double %tmp1, double* getelementptr inbounds ([3 x double]* @a, i64 0, i64 1), align 8, !dbg !39 */
+     { label 64 { lref 64 "preencheArray::bb::6" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "a" } { dec_unsigned 64 8 } } with
+      { s_to_f 11 52 32 { load 32 { addr 64 { fref 64 "%b" } { dec_unsigned 64 0 } } } }
+     }
+
+     /* STATEMENT preencheArray::bb::8
+      *   %tmp2 = sitofp i32 %c to double, !dbg !40
+      *   store double %tmp2, double* getelementptr inbounds ([3 x double]* @a, i64 0, i64 2), align 16, !dbg !40 */
+     { label 64 { lref 64 "preencheArray::bb::8" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "a" } { dec_unsigned 64 16 } } with
+      { s_to_f 11 52 32 { load 32 { addr 64 { fref 64 "%c" } { dec_unsigned 64 0 } } } }
+     }
+
+     /* STATEMENT preencheArray::bb::9
+      *   ret void, !dbg !41 */
+     { label 64 { lref 64 "preencheArray::bb::9" } { dec_unsigned 64 0 } }
+     { return }
+    }
+   }
+  }
+
+  /* Definition of function main */
+  { func
+   { label 64 { lref 64 "main" } { dec_unsigned 64 0 } }
+   { arg_decls }
+   { scope
+    { decls
+     { alloc 64 "%tmp" 32 } /* Local Variable (Non-Inlinable Instruction) */ 
+    }
+    { inits }
+    { stmts
+
+     /* --------- BASIC BLOCK bb ---------- */
+     { label 64 { lref 64 "main::bb" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT main::bb::0
+      *   call void @preencheArray(i32 undef, i32 undef, i32 undef), !dbg !32 */
+     { call { label 64 { lref 64 "preencheArray" } { dec_unsigned 64 0 } } { undefined 32 } { undefined 32 } { undefined 32 } result }
+
+     /* STATEMENT main::bb::1
+      *   %tmp = call i32 @qurt(), !dbg !33 */
+     { label 64 { lref 64 "main::bb::1" } { dec_unsigned 64 0 } }
+     { call { label 64 { lref 64 "qurt" } { dec_unsigned 64 0 } } result { addr 64 { fref 64 "%tmp" } { dec_unsigned 64 0 } } }
+
+     /* STATEMENT main::bb::2
+      *   ret i32 0, !dbg !34 */
+     { label 64 { lref 64 "main::bb::2" } { dec_unsigned 64 0 } }
+     { return { dec_unsigned 32 0 } }
+    }
+   }
+  }
+
+  /* Definition of function qurt */
+  { func
+   { label 64 { lref 64 "qurt" } { dec_unsigned 64 0 } }
+   { arg_decls }
+   { scope
+    { decls
+     { alloc 64 "%tmp" 64 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp4" 64 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp6" 64 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp8" 64 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp10" 64 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp11" 64 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp12" 64 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp13" 64 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp16" 64 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp19" 64 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp26" 64 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp29" 64 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp31" 64 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp32" 64 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%tmp35" 64 } /* Local Variable (Non-Inlinable Instruction) */ 
+     { alloc 64 "%.0" 32 } /* Local Variable (PHI node) */ 
+    }
+    { inits }
+    { stmts
+
+     /* --------- BASIC BLOCK bb ---------- */
+     { label 64 { lref 64 "qurt::bb" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT qurt::bb::0
+      *   %tmp = load double* getelementptr inbounds ([3 x double]* @a, i64 0, i64 0), align 16, !dbg !32 */
+     { store { addr 64 { fref 64 "%tmp" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "a" } { dec_unsigned 64 0 } } } }
+
+     /* STATEMENT qurt::bb::2
+      *   %tmp1 = fcmp oeq double %tmp, 0.000000e+00, !dbg !32
+      *   br i1 %tmp1, label %bb2, label %bb3, !dbg !32 */
+     { label 64 { lref 64 "qurt::bb::2" } { dec_unsigned 64 0 } }
+     { switch
+      { f_eq 11 52 { load 64 { addr 64 { fref 64 "%tmp" } { dec_unsigned 64 0 } } } { float_val 11 52 0. } }
+      { target { dec_signed 1 { minus 1 } } { label 64 { lref 64 "qurt::bb2" } { dec_unsigned 64 0 } } }
+      { default { label 64 { lref 64 "qurt::bb3" } { dec_unsigned 64 0 } } }
+     }
+
+     /* --------- BASIC BLOCK bb2 ---------- */
+     { label 64 { lref 64 "qurt::bb2" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT qurt::bb2::0
+      *   br label %bb37, !dbg !34 */
+     { store { addr 64 { fref 64 "%.0" } { dec_unsigned 64 0 } } with { dec_unsigned 32 999 } }
+
+     { label 64 { lref 64 "qurt::bb2::0:::1" } { dec_unsigned 64 0 } }
+     { jump { label 64 { lref 64 "qurt::bb37" } { dec_unsigned 64 0 } } leaving 0 }
+
+     /* --------- BASIC BLOCK bb3 ---------- */
+     { label 64 { lref 64 "qurt::bb3" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT qurt::bb3::0
+      *   %tmp4 = load double* getelementptr inbounds ([3 x double]* @a, i64 0, i64 1), align 8, !dbg !36 */
+     { store { addr 64 { fref 64 "%tmp4" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "a" } { dec_unsigned 64 8 } } } }
+
+     /* STATEMENT qurt::bb3::2
+      *   %tmp6 = load double* getelementptr inbounds ([3 x double]* @a, i64 0, i64 0), align 16, !dbg !36 */
+     { label 64 { lref 64 "qurt::bb3::2" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp6" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "a" } { dec_unsigned 64 0 } } } }
+
+     /* STATEMENT qurt::bb3::4
+      *   %tmp8 = load double* getelementptr inbounds ([3 x double]* @a, i64 0, i64 2), align 16, !dbg !36 */
+     { label 64 { lref 64 "qurt::bb3::4" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp8" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "a" } { dec_unsigned 64 16 } } } }
+
+     /* STATEMENT qurt::bb3::6
+      *   %tmp5 = fmul double %tmp4, %tmp4, !dbg !36
+      *   %tmp7 = fmul double %tmp6, 4.000000e+00, !dbg !36
+      *   %tmp9 = fmul double %tmp7, %tmp8, !dbg !36
+      *   %tmp10 = fsub double %tmp5, %tmp9, !dbg !36 */
+     { label 64 { lref 64 "qurt::bb3::6" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp10" } { dec_unsigned 64 0 } } with
+      { f_sub 11 52
+       { f_mul 11 52 { load 64 { addr 64 { fref 64 "%tmp4" } { dec_unsigned 64 0 } } } { load 64 { addr 64 { fref 64 "%tmp4" } { dec_unsigned 64 0 } } } }
+       { f_mul 11 52
+        { f_mul 11 52 { load 64 { addr 64 { fref 64 "%tmp6" } { dec_unsigned 64 0 } } } { float_val 11 52 4. } }
+        { load 64 { addr 64 { fref 64 "%tmp8" } { dec_unsigned 64 0 } } }
+       }
+      }
+     }
+
+     /* STATEMENT qurt::bb3::8
+      *   %tmp11 = fmul double %tmp6, 2.000000e+00, !dbg !38 */
+     { label 64 { lref 64 "qurt::bb3::8" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp11" } { dec_unsigned 64 0 } } with
+      { f_mul 11 52 { load 64 { addr 64 { fref 64 "%tmp6" } { dec_unsigned 64 0 } } } { float_val 11 52 2. } }
+     }
+
+     /* STATEMENT qurt::bb3::10
+      *   %tmp12 = call double @qurt_fabs(double %tmp10), !dbg !40 */
+     { label 64 { lref 64 "qurt::bb3::10" } { dec_unsigned 64 0 } }
+     { call { label 64 { lref 64 "qurt_fabs" } { dec_unsigned 64 0 } } { load 64 { addr 64 { fref 64 "%tmp10" } { dec_unsigned 64 0 } } } result { addr 64 { fref 64 "%tmp12" } { dec_unsigned 64 0 } } }
+
+     /* STATEMENT qurt::bb3::11
+      *   %tmp13 = call double @qurt_sqrt(double %tmp12), !dbg !41 */
+     { label 64 { lref 64 "qurt::bb3::11" } { dec_unsigned 64 0 } }
+     { call { label 64 { lref 64 "qurt_sqrt" } { dec_unsigned 64 0 } } { load 64 { addr 64 { fref 64 "%tmp12" } { dec_unsigned 64 0 } } } result { addr 64 { fref 64 "%tmp13" } { dec_unsigned 64 0 } } }
+
+     /* STATEMENT qurt::bb3::14
+      *   %tmp14 = fcmp ogt double %tmp10, 0.000000e+00, !dbg !43
+      *   br i1 %tmp14, label %bb15, label %bb23, !dbg !43 */
+     { label 64 { lref 64 "qurt::bb3::14" } { dec_unsigned 64 0 } }
+     { switch
+      { f_gt 11 52 { load 64 { addr 64 { fref 64 "%tmp10" } { dec_unsigned 64 0 } } } { float_val 11 52 0. } }
+      { target { dec_signed 1 { minus 1 } } { label 64 { lref 64 "qurt::bb15" } { dec_unsigned 64 0 } } }
+      { default { label 64 { lref 64 "qurt::bb23" } { dec_unsigned 64 0 } } }
+     }
+
+     /* --------- BASIC BLOCK bb15 ---------- */
+     { label 64 { lref 64 "qurt::bb15" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT qurt::bb15::0
+      *   store i32 1, i32* @flag, align 4, !dbg !45 */
+     { store { addr 64 { fref 64 "flag" } { dec_unsigned 64 0 } } with { dec_unsigned 32 1 } }
+
+     /* STATEMENT qurt::bb15::1
+      *   %tmp16 = load double* getelementptr inbounds ([3 x double]* @a, i64 0, i64 1), align 8, !dbg !47 */
+     { label 64 { lref 64 "qurt::bb15::1" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp16" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "a" } { dec_unsigned 64 8 } } } }
+
+     /* STATEMENT qurt::bb15::4
+      *   %tmp17 = fsub double %tmp13, %tmp16, !dbg !47
+      *   %tmp18 = fdiv double %tmp17, %tmp11, !dbg !47
+      *   store double %tmp18, double* getelementptr inbounds ([2 x double]* @x1, i64 0, i64 0), align 16, !dbg !47 */
+     { label 64 { lref 64 "qurt::bb15::4" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "x1" } { dec_unsigned 64 0 } } with
+      { f_div 11 52
+       { f_sub 11 52 { load 64 { addr 64 { fref 64 "%tmp13" } { dec_unsigned 64 0 } } } { load 64 { addr 64 { fref 64 "%tmp16" } { dec_unsigned 64 0 } } } }
+       { load 64 { addr 64 { fref 64 "%tmp11" } { dec_unsigned 64 0 } } }
+      }
+     }
+
+     /* STATEMENT qurt::bb15::5
+      *   store double 0.000000e+00, double* getelementptr inbounds ([2 x double]* @x1, i64 0, i64 1), align 8, !dbg !48 */
+     { label 64 { lref 64 "qurt::bb15::5" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "x1" } { dec_unsigned 64 8 } } with { float_val 11 52 0. } }
+
+     /* STATEMENT qurt::bb15::6
+      *   %tmp19 = load double* getelementptr inbounds ([3 x double]* @a, i64 0, i64 1), align 8, !dbg !49 */
+     { label 64 { lref 64 "qurt::bb15::6" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp19" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "a" } { dec_unsigned 64 8 } } } }
+
+     /* STATEMENT qurt::bb15::10
+      *   %tmp20 = fsub double -0.000000e+00, %tmp19, !dbg !49
+      *   %tmp21 = fsub double %tmp20, %tmp13, !dbg !49
+      *   %tmp22 = fdiv double %tmp21, %tmp11, !dbg !49
+      *   store double %tmp22, double* getelementptr inbounds ([2 x double]* @x2, i64 0, i64 0), align 16, !dbg !49 */
+     { label 64 { lref 64 "qurt::bb15::10" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "x2" } { dec_unsigned 64 0 } } with
+      { f_div 11 52
+       { f_sub 11 52
+        { f_neg 11 52 { load 64 { addr 64 { fref 64 "%tmp19" } { dec_unsigned 64 0 } } } }
+        { load 64 { addr 64 { fref 64 "%tmp13" } { dec_unsigned 64 0 } } }
+       }
+       { load 64 { addr 64 { fref 64 "%tmp11" } { dec_unsigned 64 0 } } }
+      }
+     }
+
+     /* STATEMENT qurt::bb15::11
+      *   store double 0.000000e+00, double* getelementptr inbounds ([2 x double]* @x2, i64 0, i64 1), align 8, !dbg !50 */
+     { label 64 { lref 64 "qurt::bb15::11" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "x2" } { dec_unsigned 64 8 } } with { float_val 11 52 0. } }
+
+     /* STATEMENT qurt::bb15::12
+      *   br label %bb37, !dbg !51 */
+     { label 64 { lref 64 "qurt::bb15::12" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%.0" } { dec_unsigned 64 0 } } with { dec_unsigned 32 0 } }
+
+     { label 64 { lref 64 "qurt::bb15::12:::1" } { dec_unsigned 64 0 } }
+     { jump { label 64 { lref 64 "qurt::bb37" } { dec_unsigned 64 0 } } leaving 0 }
+
+     /* --------- BASIC BLOCK bb23 ---------- */
+     { label 64 { lref 64 "qurt::bb23" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT qurt::bb23::1
+      *   %tmp24 = fcmp oeq double %tmp10, 0.000000e+00, !dbg !52
+      *   br i1 %tmp24, label %bb25, label %bb30, !dbg !52 */
+     { switch
+      { f_eq 11 52 { load 64 { addr 64 { fref 64 "%tmp10" } { dec_unsigned 64 0 } } } { float_val 11 52 0. } }
+      { target { dec_signed 1 { minus 1 } } { label 64 { lref 64 "qurt::bb25" } { dec_unsigned 64 0 } } }
+      { default { label 64 { lref 64 "qurt::bb30" } { dec_unsigned 64 0 } } }
+     }
+
+     /* --------- BASIC BLOCK bb25 ---------- */
+     { label 64 { lref 64 "qurt::bb25" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT qurt::bb25::0
+      *   store i32 0, i32* @flag, align 4, !dbg !54 */
+     { store { addr 64 { fref 64 "flag" } { dec_unsigned 64 0 } } with { dec_unsigned 32 0 } }
+
+     /* STATEMENT qurt::bb25::1
+      *   %tmp26 = load double* getelementptr inbounds ([3 x double]* @a, i64 0, i64 1), align 8, !dbg !56 */
+     { label 64 { lref 64 "qurt::bb25::1" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp26" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "a" } { dec_unsigned 64 8 } } } }
+
+     /* STATEMENT qurt::bb25::4
+      *   %tmp27 = fsub double -0.000000e+00, %tmp26, !dbg !56
+      *   %tmp28 = fdiv double %tmp27, %tmp11, !dbg !56
+      *   store double %tmp28, double* getelementptr inbounds ([2 x double]* @x1, i64 0, i64 0), align 16, !dbg !56 */
+     { label 64 { lref 64 "qurt::bb25::4" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "x1" } { dec_unsigned 64 0 } } with
+      { f_div 11 52
+       { f_neg 11 52 { load 64 { addr 64 { fref 64 "%tmp26" } { dec_unsigned 64 0 } } } }
+       { load 64 { addr 64 { fref 64 "%tmp11" } { dec_unsigned 64 0 } } }
+      }
+     }
+
+     /* STATEMENT qurt::bb25::5
+      *   store double 0.000000e+00, double* getelementptr inbounds ([2 x double]* @x1, i64 0, i64 1), align 8, !dbg !57 */
+     { label 64 { lref 64 "qurt::bb25::5" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "x1" } { dec_unsigned 64 8 } } with { float_val 11 52 0. } }
+
+     /* STATEMENT qurt::bb25::6
+      *   %tmp29 = load double* getelementptr inbounds ([2 x double]* @x1, i64 0, i64 0), align 16, !dbg !58 */
+     { label 64 { lref 64 "qurt::bb25::6" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp29" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "x1" } { dec_unsigned 64 0 } } } }
+
+     /* STATEMENT qurt::bb25::7
+      *   store double %tmp29, double* getelementptr inbounds ([2 x double]* @x2, i64 0, i64 0), align 16, !dbg !58 */
+     { label 64 { lref 64 "qurt::bb25::7" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "x2" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%tmp29" } { dec_unsigned 64 0 } } } }
+
+     /* STATEMENT qurt::bb25::8
+      *   store double 0.000000e+00, double* getelementptr inbounds ([2 x double]* @x2, i64 0, i64 1), align 8, !dbg !59 */
+     { label 64 { lref 64 "qurt::bb25::8" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "x2" } { dec_unsigned 64 8 } } with { float_val 11 52 0. } }
+
+     /* STATEMENT qurt::bb25::9
+      *   br label %bb37, !dbg !60 */
+     { label 64 { lref 64 "qurt::bb25::9" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%.0" } { dec_unsigned 64 0 } } with { dec_unsigned 32 0 } }
+
+     { label 64 { lref 64 "qurt::bb25::9:::1" } { dec_unsigned 64 0 } }
+     { jump { label 64 { lref 64 "qurt::bb37" } { dec_unsigned 64 0 } } leaving 0 }
+
+     /* --------- BASIC BLOCK bb30 ---------- */
+     { label 64 { lref 64 "qurt::bb30" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT qurt::bb30::0
+      *   store i32 -1, i32* @flag, align 4, !dbg !61 */
+     { store { addr 64 { fref 64 "flag" } { dec_unsigned 64 0 } } with { dec_signed 32 { minus 1 } } }
+
+     /* STATEMENT qurt::bb30::1
+      *   %tmp31 = fdiv double %tmp13, %tmp11, !dbg !63 */
+     { label 64 { lref 64 "qurt::bb30::1" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp31" } { dec_unsigned 64 0 } } with
+      { f_div 11 52 { load 64 { addr 64 { fref 64 "%tmp13" } { dec_unsigned 64 0 } } } { load 64 { addr 64 { fref 64 "%tmp11" } { dec_unsigned 64 0 } } } }
+     }
+
+     /* STATEMENT qurt::bb30::3
+      *   %tmp32 = load double* getelementptr inbounds ([3 x double]* @a, i64 0, i64 1), align 8, !dbg !64 */
+     { label 64 { lref 64 "qurt::bb30::3" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp32" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "a" } { dec_unsigned 64 8 } } } }
+
+     /* STATEMENT qurt::bb30::6
+      *   %tmp33 = fsub double -0.000000e+00, %tmp32, !dbg !64
+      *   %tmp34 = fdiv double %tmp33, %tmp11, !dbg !64
+      *   store double %tmp34, double* getelementptr inbounds ([2 x double]* @x1, i64 0, i64 0), align 16, !dbg !64 */
+     { label 64 { lref 64 "qurt::bb30::6" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "x1" } { dec_unsigned 64 0 } } with
+      { f_div 11 52
+       { f_neg 11 52 { load 64 { addr 64 { fref 64 "%tmp32" } { dec_unsigned 64 0 } } } }
+       { load 64 { addr 64 { fref 64 "%tmp11" } { dec_unsigned 64 0 } } }
+      }
+     }
+
+     /* STATEMENT qurt::bb30::7
+      *   store double %tmp31, double* getelementptr inbounds ([2 x double]* @x1, i64 0, i64 1), align 8, !dbg !65 */
+     { label 64 { lref 64 "qurt::bb30::7" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "x1" } { dec_unsigned 64 8 } } with { load 64 { addr 64 { fref 64 "%tmp31" } { dec_unsigned 64 0 } } } }
+
+     /* STATEMENT qurt::bb30::8
+      *   %tmp35 = load double* getelementptr inbounds ([2 x double]* @x1, i64 0, i64 0), align 16, !dbg !66 */
+     { label 64 { lref 64 "qurt::bb30::8" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%tmp35" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "x1" } { dec_unsigned 64 0 } } } }
+
+     /* STATEMENT qurt::bb30::9
+      *   store double %tmp35, double* getelementptr inbounds ([2 x double]* @x2, i64 0, i64 0), align 16, !dbg !66 */
+     { label 64 { lref 64 "qurt::bb30::9" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "x2" } { dec_unsigned 64 0 } } with { load 64 { addr 64 { fref 64 "%tmp35" } { dec_unsigned 64 0 } } } }
+
+     /* STATEMENT qurt::bb30::11
+      *   %tmp36 = fsub double -0.000000e+00, %tmp31, !dbg !67
+      *   store double %tmp36, double* getelementptr inbounds ([2 x double]* @x2, i64 0, i64 1), align 8, !dbg !67 */
+     { label 64 { lref 64 "qurt::bb30::11" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "x2" } { dec_unsigned 64 8 } } with
+      { f_neg 11 52 { load 64 { addr 64 { fref 64 "%tmp31" } { dec_unsigned 64 0 } } } }
+     }
+
+     /* STATEMENT qurt::bb30::12
+      *   br label %bb37, !dbg !68 */
+     { label 64 { lref 64 "qurt::bb30::12" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%.0" } { dec_unsigned 64 0 } } with { dec_unsigned 32 0 } }
+
+     /* --------- BASIC BLOCK bb37 ---------- */
+     { label 64 { lref 64 "qurt::bb37" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT qurt::bb37::1
+      *   ret i32 %.0, !dbg !69 */
+     { return { load 32 { addr 64 { fref 64 "%.0" } { dec_unsigned 64 0 } } } }
+    }
+   }
+  }
+ }
+}

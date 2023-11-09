@@ -1,0 +1,166 @@
+Basic Blocks in C code 
+Basic Block ludcmp bb0
+bb0 Line 18   for(i = 0; i <= n; i++){
+bb0::6:::1 Line 18   for(i = 0; i <= n; i++){
+Basic Block ludcmp bb1
+bb1 Line 18   for(i = 0; i <= n; i++){
+Basic Block ludcmp bb2
+bb2 Line 20       for(j = 0; j <= n; j++){
+bb2::2:::1 Line 20       for(j = 0; j <= n; j++){
+Basic Block ludcmp bb3
+bb3 Line 20       for(j = 0; j <= n; j++){
+Basic Block ludcmp bb5
+bb5 Line 21           a[i][j] = (i + 1) + (j + 1);
+bb5::8 Line 22           if(i == j){
+Basic Block ludcmp bb13
+bb13 Line 23             a[i][j] *= 2.0;
+bb13::3 Line 23             a[i][j] *= 2.0;
+bb13::7 Line 23             a[i][j] *= 2.0;
+Basic Block ludcmp bb21
+bb21 Line 26         }
+Basic Block ludcmp bb22
+bb22 Line 25           q += a[i][j];
+bb22::4 Line 25           q += a[i][j];
+bb22::5 Line 20       for(j = 0; j <= n; j++){
+bb22::7 Line 20       for(j = 0; j <= n; j++){
+bb22::7:::1 Line 20       for(j = 0; j <= n; j++){
+bb22::7:::2 Line 20       for(j = 0; j <= n; j++){
+Basic Block ludcmp bb29
+bb29 Line 27       b[i] = q;
+Basic Block ludcmp bb32
+bb32 Line 18   for(i = 0; i <= n; i++){
+bb32::2 Line 18   for(i = 0; i <= n; i++){
+bb32::2:::1 Line 18   for(i = 0; i <= n; i++){
+bb32::2:::2 Line 18   for(i = 0; i <= n; i++){
+Basic Block ludcmp bb34
+bb34 Line 30   for(i = 0; i < n; i++){
+Basic Block ludcmp bb35
+bb35 Line 30   for(i = 0; i < n; i++){
+Basic Block ludcmp bb37
+bb37 Line 31       for(j = i+1; j <= n; j++){
+Basic Block ludcmp bb38
+bb38 Line 31       for(j = i+1; j <= n; j++){
+bb38::3 Line 31       for(j = i+1; j <= n; j++){
+Basic Block ludcmp bb40
+bb40 Line 32           w = a[j][i];
+bb40::6 Line 33           if(i != 0){
+bb40::6::ludcmp::bb63 Line 33           if(i != 0){
+bb40::6::ludcmp::bb63:::1 Line 33           if(i != 0){
+Basic Block ludcmp bb46
+bb46 Line 34             for(k = 0; k < i; k++){
+bb46::1:::1 Line 34             for(k = 0; k < i; k++){
+Basic Block ludcmp bb47
+bb47 Line 34             for(k = 0; k < i; k++){
+Basic Block ludcmp bb49
+bb49 Line 36             }
+Basic Block ludcmp bb50
+bb50 Line 35               w -= a[j][k] * a[k][i];
+bb50::10 Line 34             for(k = 0; k < i; k++){
+bb50::12 Line 34             for(k = 0; k < i; k++){
+bb50::12:::1 Line 34             for(k = 0; k < i; k++){
+bb50::12:::2 Line 34             for(k = 0; k < i; k++){
+bb50::7 Line 35               w -= a[j][k] * a[k][i];
+bb50::9 Line 35               w -= a[j][k] * a[k][i];
+Basic Block ludcmp bb62
+bb62 Line 37           }            
+Basic Block ludcmp bb63
+bb63 Line 38           a[j][i] = w / a[i][i];
+bb63::9 Line 38           a[j][i] = w / a[i][i];
+Basic Block ludcmp bb72
+bb72 Line 31       for(j = i+1; j <= n; j++){
+bb72::0:::1 Line 31       for(j = i+1; j <= n; j++){
+Basic Block ludcmp bb73
+bb73 Line 40       for(j = i+1; j <= n; j++){
+Basic Block ludcmp bb74
+bb74 Line 40       for(j = i+1; j <= n; j++){
+bb74::3 Line 40       for(j = i+1; j <= n; j++){
+Basic Block ludcmp bb76
+bb76 Line 41           w = a[i+1][j];
+bb76::7 Line 42           for(k = 0; k <= i; k++){
+bb76::7:::1 Line 42           for(k = 0; k <= i; k++){
+Basic Block ludcmp bb82
+bb82 Line 42           for(k = 0; k <= i; k++){
+Basic Block ludcmp bb84
+bb84 Line 44           }
+Basic Block ludcmp bb85
+bb85 Line 43             w -= a[i+1][k] * a[k][j];
+bb85::10 Line 43             w -= a[i+1][k] * a[k][j];
+bb85::11 Line 42           for(k = 0; k <= i; k++){
+bb85::13 Line 42           for(k = 0; k <= i; k++){
+bb85::13:::1 Line 42           for(k = 0; k <= i; k++){
+bb85::13:::2 Line 42           for(k = 0; k <= i; k++){
+bb85::8 Line 43             w -= a[i+1][k] * a[k][j];
+Basic Block ludcmp bb98
+bb98 Line 45           a[i+1][j] = w;
+Basic Block ludcmp bb103
+bb103 Line 40       for(j = i+1; j <= n; j++){
+bb103::0:::1 Line 40       for(j = i+1; j <= n; j++){
+Basic Block ludcmp bb104
+bb104 Line 47     }
+Basic Block ludcmp bb105
+bb105 Line 30   for(i = 0; i < n; i++){
+bb105::2 Line 30   for(i = 0; i < n; i++){
+bb105::2:::1 Line 30   for(i = 0; i < n; i++){
+Basic Block ludcmp bb107
+bb107 Line 48   y[0] = b[0];
+bb107::2 Line 48   y[0] = b[0];
+bb107::4 Line 49   for(i = 1; i <= n; i++){
+Basic Block ludcmp bb110
+bb110 Line 49   for(i = 1; i <= n; i++){
+Basic Block ludcmp bb112
+bb112 Line 50       w = b[i];
+bb112::5 Line 51       for(j = 0; j < i; j++){
+bb112::5:::1 Line 51       for(j = 0; j < i; j++){
+Basic Block ludcmp bb116
+bb116 Line 51       for(j = 0; j < i; j++){
+Basic Block ludcmp bb118
+bb118 Line 53       }
+Basic Block ludcmp bb119
+bb119 Line 52         w -= a[i][j] * y[j];
+bb119::11 Line 51       for(j = 0; j < i; j++){
+bb119::11:::1 Line 51       for(j = 0; j < i; j++){
+bb119::11:::2 Line 51       for(j = 0; j < i; j++){
+bb119::6 Line 52         w -= a[i][j] * y[j];
+bb119::8 Line 52         w -= a[i][j] * y[j];
+bb119::9 Line 51       for(j = 0; j < i; j++){
+Basic Block ludcmp bb130
+bb130 Line 55       y[i] = w;
+Basic Block ludcmp bb133
+bb133 Line 49   for(i = 1; i <= n; i++){
+bb133::2 Line 49   for(i = 1; i <= n; i++){
+bb133::2:::1 Line 49   for(i = 1; i <= n; i++){
+Basic Block ludcmp bb135
+bb135 Line 57   x[n] = y[n] / a[n][n];
+bb135::10 Line 57   x[n] = y[n] / a[n][n];
+bb135::11 Line 58   for(i = n-1; i >= 0; i--){
+bb135::6 Line 57   x[n] = y[n] / a[n][n];
+Basic Block ludcmp bb146
+bb146 Line 58   for(i = n-1; i >= 0; i--){
+bb146::3 Line 58   for(i = n-1; i >= 0; i--){
+Basic Block ludcmp bb148
+bb148 Line 59       w = y[i];
+bb148::5 Line 60       for(j = i+1; j <= n; j++){
+bb148::5:::1 Line 60       for(j = i+1; j <= n; j++){
+Basic Block ludcmp bb152
+bb152 Line 60       for(j = i+1; j <= n; j++){
+Basic Block ludcmp bb154
+bb154 Line 62       } 
+Basic Block ludcmp bb155
+bb155 Line 61         w -= a[i][j] * x[j];
+bb155::11 Line 60       for(j = i+1; j <= n; j++){
+bb155::11:::1 Line 60       for(j = i+1; j <= n; j++){
+bb155::11:::2 Line 60       for(j = i+1; j <= n; j++){
+bb155::6 Line 61         w -= a[i][j] * x[j];
+bb155::8 Line 61         w -= a[i][j] * x[j];
+bb155::9 Line 60       for(j = i+1; j <= n; j++){
+Basic Block ludcmp bb166
+bb166 Line 63       x[i] = w / a[i][i];
+bb166::7 Line 63       x[i] = w / a[i][i];
+Basic Block ludcmp bb174
+bb174 Line 58   for(i = n-1; i >= 0; i--){
+bb174::0:::1 Line 58   for(i = n-1; i >= 0; i--){
+Basic Block ludcmp bb175
+bb175 Line 65   return(0);
+Basic Block main bb0
+bb0 Line 8   chkerr = ludcmp(nmax,n);
+bb0::4 Line 9   return 0;

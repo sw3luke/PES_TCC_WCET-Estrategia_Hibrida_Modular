@@ -1,0 +1,25 @@
+swap::bb0 44
+prime::bb6 35
+prime::bb13 0
+prime::bb6 37
+prime::bb13 0
+prime::bb6 37
+prime::bb13 0
+prime::bb6 37
+prime::bb13 0
+prime::bb6 37
+prime::bb13 0
+prime::bb6 37
+prime::bb13 0
+prime::bb6 37
+prime::bb13 0
+prime::bb6 37
+prime::bb13 0
+prime::bb6 37
+prime::bb13 0
+prime::bb6 37
+prime::bb13 0
+prime::bb6 37
+prime::bb9 266
+SystemClock::Endless stopped
+number of cpu cycles simulated: 50304

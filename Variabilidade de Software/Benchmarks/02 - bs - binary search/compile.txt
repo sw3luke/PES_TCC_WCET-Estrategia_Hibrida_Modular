@@ -1,0 +1,1 @@
+avr-gcc -std=c89 -pedantic -mmcu=atmega328 -o binarySearchInstrumentado.elf binarySearchInstrumentado.c ../include/avr-tick-counter.S

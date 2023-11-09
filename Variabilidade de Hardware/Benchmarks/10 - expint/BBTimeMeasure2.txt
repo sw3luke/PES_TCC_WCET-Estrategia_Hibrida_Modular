@@ -1,0 +1,8 @@
+expint::bb0 24
+expint::bb2 85
+expint::bb24 0
+expint::bb2 19
+expint::bb7 1080
+expint::bb21 108
+SystemClock::Endless stopped
+number of cpu cycles simulated: 21009

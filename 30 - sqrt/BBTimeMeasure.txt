@@ -1,6 +1,0 @@
-sqrtfcn::bb0:1 43
-sqrtfcn::bb3:1 90
-sqrtfcn::bb0:2 71
-sqrtfcn::bb2 0
-SystemClock::Endless stopped
-number of cpu cycles simulated: 12914

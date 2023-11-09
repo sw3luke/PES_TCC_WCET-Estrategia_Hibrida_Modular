@@ -1,0 +1,54 @@
+Basic Blocks in C code 
+Basic Block divides bb0
+bb0 Line 10   return (m % n == 0);
+Basic Block even bb0
+bb0 Line 14   return (divides (2, n));
+bb0::2 Line 14   return (divides (2, n));
+Basic Block main bb0
+bb0 Line 37   uint x =  21649;
+bb0::10 Line 40   return (!(prime(x) && prime(y)));
+bb0::11 Line 40   return (!(prime(x) && prime(y)));
+bb0::13 Line 40   return (!(prime(x) && prime(y)));
+bb0::13::main::bb6 Line 40   return (!(prime(x) && prime(y)));
+bb0::13::main::bb6:::1 Line 40   return (!(prime(x) && prime(y)));
+bb0::7 Line 38   uint y = 513239;
+bb0::8 Line 39   swap (&x, &y);
+Basic Block main bb3
+bb3 Line 40   return (!(prime(x) && prime(y)));
+bb3::2 Line 40   return (!(prime(x) && prime(y)));
+Basic Block main bb6
+bb6 Line 41 }
+Basic Block prime bb0
+bb0 Line 19   if (even (n)){
+bb0::3 Line 19   if (even (n)){
+Basic Block prime bb2
+bb2 Line 20       return (n == 2);
+bb2::2 Line 20       return (n == 2);
+bb2::2:::1 Line 20       return (n == 2);
+Basic Block prime bb5
+bb5 Line 22   for (i = 3; i * i <= n; i += 2) { 
+Basic Block prime bb6
+bb6 Line 22   for (i = 3; i * i <= n; i += 2) { 
+Basic Block prime bb9
+bb9 Line 23       if (divides (i, n)){ /* ai: loop here min 0 max 357 end; */
+bb9::2 Line 23       if (divides (i, n)){ /* ai: loop here min 0 max 357 end; */
+Basic Block prime bb12
+bb12 Line 24         return 0; 
+bb12::0:::1 Line 24         return 0; 
+Basic Block prime bb13
+bb13 Line 26   }
+Basic Block prime bb14
+bb14 Line 22   for (i = 3; i * i <= n; i += 2) { 
+bb14::2 Line 22   for (i = 3; i * i <= n; i += 2) { 
+bb14::2:::1 Line 22   for (i = 3; i * i <= n; i += 2) { 
+Basic Block prime bb16
+bb16 Line 27   return (n > 1);
+bb16::2 Line 27   return (n > 1);
+Basic Block prime bb19
+bb19 Line 28 }
+Basic Block swap bb0
+bb0 Line 31   uint tmp = *a;
+bb0::4 Line 32   *a = *b; 
+bb0::5 Line 32   *a = *b; 
+bb0::6 Line 33   *b = tmp;
+bb0::7 Line 34 }

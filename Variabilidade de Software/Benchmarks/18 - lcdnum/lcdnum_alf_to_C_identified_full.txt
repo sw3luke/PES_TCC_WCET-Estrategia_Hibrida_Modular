@@ -1,0 +1,72 @@
+Basic Blocks in C code 
+Basic Block main bb0
+bb0 Line 32   for(i=0; i< n; i++){
+Basic Block main bb1
+bb1 Line 32   for(i=0; i< n; i++){
+Basic Block main bb2
+bb2 Line 35       if(i<5){
+Basic Block main bb4
+bb4 Line 37           OUT = num_to_lcd(a);
+bb4::2 Line 37           OUT = num_to_lcd(a);
+Basic Block main bb6
+bb6 Line 39     }
+Basic Block main bb7
+bb7 Line 32   for(i=0; i< n; i++){
+bb7::2 Line 32   for(i=0; i< n; i++){
+bb7::2:::1 Line 32   for(i=0; i< n; i++){
+Basic Block main bb9
+bb9 Line 40   return 0;
+Basic Block num_to_lcd bb0
+bb0 Line 2   switch(a){
+Basic Block num_to_lcd bb1
+bb1 Line 3     case 0x00: return 0;
+bb1::0:::1 Line 3     case 0x00: return 0;
+Basic Block num_to_lcd bb2
+bb2 Line 4     case 0x01: return 0x24;
+bb2::0:::1 Line 4     case 0x01: return 0x24;
+Basic Block num_to_lcd bb3
+bb3 Line 5     case 0x02: return 1+4+8+16+64;
+bb3::0:::1 Line 5     case 0x02: return 1+4+8+16+64;
+Basic Block num_to_lcd bb4
+bb4 Line 6     case 0x03: return 1+4+8+32+64;
+bb4::0:::1 Line 6     case 0x03: return 1+4+8+32+64;
+Basic Block num_to_lcd bb5
+bb5 Line 7     case 0x04: return 2+4+8+32;
+bb5::0:::1 Line 7     case 0x04: return 2+4+8+32;
+Basic Block num_to_lcd bb6
+bb6 Line 8     case 0x05: return 1+4+8+16+64;
+bb6::0:::1 Line 8     case 0x05: return 1+4+8+16+64;
+Basic Block num_to_lcd bb7
+bb7 Line 9     case 0x06: return 1+2+8+16+32+64;
+bb7::0:::1 Line 9     case 0x06: return 1+2+8+16+32+64;
+Basic Block num_to_lcd bb8
+bb8 Line 10     case 0x07: return 1+4+32;
+bb8::0:::1 Line 10     case 0x07: return 1+4+32;
+Basic Block num_to_lcd bb9
+bb9 Line 11     case 0x08: return 0x7F;     /* light all */
+bb9::0:::1 Line 11     case 0x08: return 0x7F;     /* light all */
+Basic Block num_to_lcd bb10
+bb10 Line 12     case 0x09: return 0x0F + 32 + 64;
+bb10::0:::1 Line 12     case 0x09: return 0x0F + 32 + 64;
+Basic Block num_to_lcd bb11
+bb11 Line 13     case 0x0A: return 0x0F + 16 + 32;
+bb11::0:::1 Line 13     case 0x0A: return 0x0F + 16 + 32;
+Basic Block num_to_lcd bb12
+bb12 Line 14     case 0x0B: return 2+8+16+32+64;
+bb12::0:::1 Line 14     case 0x0B: return 2+8+16+32+64;
+Basic Block num_to_lcd bb13
+bb13 Line 15     case 0x0C: return 1+2+16+64;
+bb13::0:::1 Line 15     case 0x0C: return 1+2+16+64;
+Basic Block num_to_lcd bb14
+bb14 Line 16     case 0x0D: return 4+8+16+32+64;
+bb14::0:::1 Line 16     case 0x0D: return 4+8+16+32+64;
+Basic Block num_to_lcd bb15
+bb15 Line 17     case 0x0E: return 1+2+8+16+64;
+bb15::0:::1 Line 17     case 0x0E: return 1+2+8+16+64;
+Basic Block num_to_lcd bb16
+bb16 Line 18     case 0x0F: return 1+2+8+16;
+bb16::0:::1 Line 18     case 0x0F: return 1+2+8+16;
+Basic Block num_to_lcd bb17
+bb17 Line 20   return 0;
+Basic Block num_to_lcd bb18
+bb18 Line 21 }
