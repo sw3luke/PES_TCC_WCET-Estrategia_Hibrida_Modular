@@ -31,9 +31,22 @@ Com as partições criadas e os arquivos do UBoot armazenados na partição BOOT
 
 ## Instalação e Configuração do Minicom
 
+Nessa etapa, abordaremos brevemente a instalacao e configuracao do minicom
+
+Para instalar o minicom devemos executar:
 ~~~
 sudo apt-get install minicom
 ~~~
+
+Em seguida, e necessario realizar a configuracao do minicom, para entrarmos no menu de configuracao devemos executar:
+~~~
+sudo minicom -s
+~~~
+
+Agora basta acessarmos a opcao _Serial port setup_ e configurarmos seguindo a imagem abaixo:
+
+
+
 
 
   1. Kit de desenvolvimento BeagleBone Black;
