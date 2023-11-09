@@ -359,7 +359,7 @@ stdout = &virtual_port;
 ```
 Com essas etapas realizadas, estamos prontos para chamar as funções de contagem de ciclos, assim como mostrar os valores obtidos no console serial. Para uma melhor correspondência durante a etapa de instrumentação, devemos consultar dois arquivos, o arquivo bs_alf_to_C_identified_full.txt que representa o mapeamento do código C para ALF, e o arquivo bs.alf que mostra bs.c na representação intermediaria ALF.
 
-Vejamos os primeiros dois blocos listados:
+Vejamos os primeiros dois blocos listados em bs_alf_to_C_identified_full.txt:
 
 ```
 Basic Block binary_search bb0
