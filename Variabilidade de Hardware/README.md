@@ -162,12 +162,51 @@ endif
 export LIB_PATH=${HOME}/bareMetal/linaro-gcc/gcc-arm-none-eabi-4_7-2012q4
 ~~~
 
-
-
-
 ### Build do StarterWare
 
+Antes de realizarmos o build precisamos, primeiramente, alterar o arquivo init.S, isso se deve ao fato de em nosso processo propormos a desativacao da cache L2.
 
-  1. Kit de desenvolvimento BeagleBone Black;
-  2. UBoot;
-  3. StarterWare.
+1. Abrir o arquivo Init.S
+~~~
+gedit ~/bareMetal/AM335X_StarterWare_02_00_01_01/system_config/armv7a/gcc/init.S
+~~~
+
+2. Adicionar o bloco de codigo depois de "Entry:", este bloco sera executado antes do main() presente no source.
+
+O codigo abaixo foi concebido com base nas etapas para [desativacao da cache L2](https://developer.arm.com/documentation/ddi0344/k/level-2-memory-system/enabling-and-disabling-the-l2-cache-controller) disponibilizada na documentacao do ARM Cortex-a8, assim como na documentacao de cada um dos registradores, citados no processo de desativacao, [Control Register](https://developer.arm.com/documentation/ddi0344/k/system-control-coprocessor/system-control-coprocessor-registers/c1--control-register) e [Auxiliary Control Register](https://developer.arm.com/documentation/ddi0344/k/system-control-coprocessor/system-control-coprocessor-registers/c1--auxiliary-control-register)
+
+~~~
+	SUB r0, r0, r0
+	MCR   p15, 0, r0, c1, c0, 0  @ Disable MMU, Data Cache, Instruction Cache and Error Handlings
+	
+	@===========================================
+	SUB r4, r4, r4
+	MRC p15, 0, r4, c1, c0, 1
+  BIC r4, r4, #(1 << 1)     @ Disable L2EN (bit 1)
+  MCR p15, 0, r4, c1, c0, 1
+  @===========================================
+    	
+	@ =========================================
+	MRC p15, 0, r0, c1, c0, 0
+	
+	ORR r0, r0, #(1 << 0)    @ Enable MMU
+	ORR r0, r0, #(1 << 2)     @ Enable C bit (bit 2)
+	ORR r0, r0, #(1 << 12)     @ Enable I bit (bit 12)
+	
+	MCR   p15, 0, r0, c1, c0, 0
+	@ =========================================
+~~~
+
+3. Salve e feche o arquivo
+4. Realizar o Build dos exemplos
+~~~
+cd ~/bareMetal/AM335X_StarterWare_02_00_01_01/build/armv7a/gcc/am335x/beaglebone
+make
+~~~
+
+5. Acessar o binario gerado
+~~~
+cd ~/bareMetal/AM335X_StarterWare_02_00_01_01/binary/armv7a/gcc/am335x/beaglebone/NomeDoExemplo/Release
+~~~
+
+### Build dos Benchmarks
