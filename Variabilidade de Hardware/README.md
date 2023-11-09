@@ -31,7 +31,9 @@ Com as partições criadas e os arquivos do UBoot armazenados na partição BOOT
 
 ## Instalação e Configuração do Minicom
 
-
+~~~
+sudo apt-get install minicom
+~~~
 
 
   1. Kit de desenvolvimento BeagleBone Black;
