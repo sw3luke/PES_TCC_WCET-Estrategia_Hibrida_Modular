@@ -1,4 +1,4 @@
-# Tutoriais-TCC-Abordagem-Hibrida-PES
+# Tutoriais - [PES-TCC-WCET] - Estratégia Híbrida Modular
 
 Nesse repositório estão os tutoriais de instalação e uso do Alf-Backend, do Clang 3.4 e do SWEET, junto de scripts úteis para a execução abstrata.
 
@@ -226,7 +226,7 @@ Para o template de anotações de entrada ANN:
 	sweet -i=arquivo.alf -at=arquivo.ann
 ~~~
 
-Por fim, a execução abstrata pode ser executada com o comando abaixo que recebe como entrada o arquivo .ALF, o arquivo .TDB e o arquivo .ANN, além de parâmetros que indicam por exemplo sobre o uso de estratégias de merge.
+Por fim, a execução abstrata pode ser executada pelo SWEET com o comando abaixo que recebe como entrada o arquivo .ALF, o arquivo .TDB e o arquivo .ANN, além de parâmetros que indicam por exemplo sobre o uso de estratégias de merge.
 
 ~~~
 sweet -i=arquivo.alf annot=arquivo.ann -ae pu bbc=arquivo.tdb merge=none bbcpaths -do floats=est
