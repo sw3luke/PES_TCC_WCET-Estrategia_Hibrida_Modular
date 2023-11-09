@@ -8,7 +8,7 @@ A fim de carregar programas bare-metal na memória do BBB foi utilizado o UBoot,
 
 Por motivos de simplicidade, utilizaremos uma versão já construída, disponibilizada no repositório, na pasta UBoot.
 
-Com os arquivos UBoot.img e MLO baixados, é necessário carregá-los no cartão microSD que será utilizado para o carregamento do Uboot no BBB. Para isso, é de suma importante que sejam criadas duas partições no microSD:
+Com os arquivos UBoot.img e MLO baixados, é necessário carregá-los no cartão microSD que será utilizado para o carregamento do Uboot no BBB. Para isso, é de suma importancia que sejam criadas duas partições no microSD:
 
 ```
 #BOOT --> Partição responsável por armazenar os arquivos do UBoot (MLO e UBoot.img);
@@ -27,7 +27,7 @@ Com os arquivos UBoot.img e MLO baixados, é necessário carregá-los no cartão
 ```
 As partições podem ser facilmente criadas e configuradas utilizando a ferramenta GPARTED.
 
-Com as partições criadas e os arquivos do UBoot armazenados na partição BOOT, o usuário já deve ser capaz de acessar o console do UBoot, no BBB, via conexão serial. A fim de estabelecer a conexão serial e testar o funcionamento do bootloader é necessário um emulador de terminal como putty, minicom e etc. No cenário utilizado, utilizou-se o minicom.
+Com as partições criadas e os arquivos do UBoot armazenados na partição BOOT, o usuário já deve ser capaz de acessar o console do UBoot, no BBB, via conexão serial. A fim de estabelecer a conexão serial e testar o funcionamento do bootloader é necessário um emulador de terminal como putty, minicom e etc. No cenário em questão, utilizou-se o minicom.
 
 ## Instalação e Configuração do Minicom
 
