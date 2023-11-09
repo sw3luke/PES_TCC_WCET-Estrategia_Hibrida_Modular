@@ -67,7 +67,10 @@ Agora devemos conectar o cabo no BBB seguindo a seguinte configuracao:
 
 **Imagem da conexao do cabo no BBB**
 
-Com o cabo corretamente conectado, basta energizarmos o BBB
+Com o cabo corretamente conectado, basta energizarmos o BBB com o botao de boot pressionado, fazendo com que o booy seja realizado pelo microSD. Por fim, basta pressionarmos qualquer tecla para que o processo de boot padrao seja cancelado e o terminal do UBoot seja liberado.
+
+**Imagem do terminal do UBoot**
+
 
   1. Kit de desenvolvimento BeagleBone Black;
   2. UBoot;
