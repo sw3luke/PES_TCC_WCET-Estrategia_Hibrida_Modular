@@ -357,7 +357,50 @@ Além disso, é crucial mudar o endereço de stdout, dentro da função main:
 ```
 stdout = &virtual_port;
 ```
-Com essas etapas realizadas, estamos prontos para chamar as funções de contagem de ciclos, assim como mostrar os valores na serial.
+Com essas etapas realizadas, estamos prontos para chamar as funções de contagem de ciclos, assim como mostrar os valores obtidos no console serial. Para uma melhor correspondência durante a etapa de instrumentação, devemos consultar dois arquivos, o arquivo bs_alf_to_C_identified_full.txt que representa o mapeamento do código C para ALF, e o arquivo bs.alf que mostra bs.c na representação intermediaria ALF.
+
+Vejamos os primeiros dois blocos listados:
+
+```
+Basic Block binary_search bb0
+bb0 Line 39   while (low <= up) {
+bb0::4:::1 Line 39   while (low <= up) {
+bb0::4:::2 Line 39   while (low <= up) {
+Basic Block binary_search bb1
+bb1 Line 39   while (low <= up) {
+```
+A representação ALF considera que ambos os blocos bb0 e bb1 representam a mesma linha do código source, portanto foi realizado uma análise no código ALF, onde temos:
+
+```
+     /* --------- BASIC BLOCK bb ---------- */
+     { label 64 { lref 64 "binary_search::bb" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT binary_search::bb::4
+      *   br label %bb1, !dbg !34 */
+     { store { addr 64 { fref 64 "%up.0" } { dec_unsigned 64 0 } } with { dec_unsigned 32 14 } }
+
+     { label 64 { lref 64 "binary_search::bb::4:::1" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%fvalue.0" } { dec_unsigned 64 0 } } with { dec_signed 32 { minus 1 } } }
+
+     { label 64 { lref 64 "binary_search::bb::4:::2" } { dec_unsigned 64 0 } }
+     { store { addr 64 { fref 64 "%low.0" } { dec_unsigned 64 0 } } with { dec_unsigned 32 0 } }
+
+     /* --------- BASIC BLOCK bb1 ---------- */
+     { label 64 { lref 64 "binary_search::bb1" } { dec_unsigned 64 0 } }
+
+     /* STATEMENT binary_search::bb1::4
+      *   %tmp = icmp sgt i32 %low.0, %up.0, !dbg !34
+      *   br i1 %tmp, label %bb25, label %bb2, !dbg !34 */
+     { switch
+      { s_gt 32 { load 32 { addr 64 { fref 64 "%low.0" } { dec_unsigned 64 0 } } } { load 32 { addr 64 { fref 64 "%up.0" } { dec_unsigned 64 0 } } } }
+      { target { dec_signed 1 { minus 1 } }
+       { label 64 { lref 64 "binary_search::bb25" } { dec_unsigned 64 0 } }
+      }
+      { default
+       { label 64 { lref 64 "binary_search::bb2" } { dec_unsigned 64 0 } }
+      }
+     }
+```
 
 
 
