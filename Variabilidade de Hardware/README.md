@@ -45,9 +45,29 @@ sudo minicom -s
 
 Agora basta acessarmos a opcao _Serial port setup_ e configurarmos seguindo a imagem abaixo:
 
+**IMAGEM DO TERMINAL DO MINICOM**
+
+Com o minicom configurado, basta acessarmos seu terminal com o comando
+~~~
+sudo minicom
+~~~
+
+**Imagem do minicom escutando a serial**
+
+**\*OBS**: Caso o cabo USB Serial nao esteja sendo reconhecido pela maquina, o resultado da imagem acima nao sera alcancado.
 
 
+##Acessando o terminal do UBoot no BBB
 
+Com o UBoot ja no microSD e o minicom corretamente configurado, precisamos conectar o BBB na serial, para isso sera necessario um cabo conversor USB TTL, como visto na imagem abaixo:
+
+**Imagem Cabo Conversor USB TTL**
+
+Agora devemos conectar o cabo no BBB seguindo a seguinte configuracao:
+
+**Imagem da conexao do cabo no BBB**
+
+Com o cabo corretamente conectado, basta energizarmos o BBB
 
   1. Kit de desenvolvimento BeagleBone Black;
   2. UBoot;
