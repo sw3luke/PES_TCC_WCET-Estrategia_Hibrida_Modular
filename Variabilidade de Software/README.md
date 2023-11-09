@@ -250,7 +250,9 @@ A saída será os tempos BCET e WCET, junto dos caminhos BCEP e WCEP relacionado
 
 ## Tutorial Instalação e Utilização SimulAVR
 
-- Para a realização da execução abstrata é necessário primeiro medir os blocos básicos do programa, para isso utilizou-se o SimulAVR, um simulador de microcontroladores AVR, essa seção tratará de sua instalação, utilizando a versão das dependências relativas às utilizadas no trabalho.
+- Para a realização da execução abstrata é necessário, primeiro, medir os blocos básicos do programa, para isso utilizou-se o SimulAVR, um simulador de microcontroladores AVR, essa seção tratará de sua instalação, utilizando a versão das dependências relativas às utilizadas no trabalho.
+
+A primeira etapa abrange a instalação das dependências do SimulAVR, assim como a instalação do próprio SimulAVR.
 
 ```
 sudo apt-get install binutils-avr=2.26.20160125+Atmel3.6.2-4
@@ -267,6 +269,68 @@ sudo apt-get install avr-libc=1:2.0.0+Atmel3.6.2-3
 ```
 sudo apt-get install simulavr=1.0.0+git20160221.e53413b-2build1
 ```
+
+Com as dependências e a plataforma instalada, podemos passar para a instrumentação do código, para uma explicação mais visual, realizaremos um exemplo utilizando o benchmark bs.c, relativo a implementação do algoritmo binary search.
+
+```
+struct DATA {
+  int  key;
+  int  value;
+}  ;
+
+struct DATA data[15] = { {1, 100},
+	     {5,200},
+	     {6, 300},
+	     {7, 700},
+	     {8, 900},
+	     {9, 250},
+	     {10, 400},
+	     {11, 600},
+	     {12, 800},
+	     {13, 1500},
+	     {14, 1200},
+	     {15, 110},
+	     {16, 140},
+	     {17, 133},
+	     {18, 10} };
+
+int binary_search(int x);
+
+int main(void)
+{
+	/* a = [0..20]*/ 
+	int a = 1;
+	binary_search(a);
+	return (0);
+}
+
+int binary_search(int x)
+{
+  int fvalue, mid, up, low ;
+
+  low = 0;
+  up = 14;
+  fvalue = -1 /* all data are positive */ ;
+  while (low <= up) {
+    mid = (low + up) >> 1;
+    if ( data[mid].key == x ) {  /*  found  */
+      up = low - 1;
+      fvalue = data[mid].value;
+    }
+    else  /* not found */
+      if ( data[mid].key > x ) 	{
+	up = mid - 1;
+      }
+      else   {
+             	low = mid + 1;
+      }
+  }
+  return fvalue;
+}
+
+```
+
+
 
 
 
