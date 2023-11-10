@@ -438,7 +438,7 @@ A conclusão dessa breve análise é que medir o cabeçalho do while(low <= up) 
 
 Uma referência importante para o método de execução abstrata é o artigo [Deriving WCET Bounds By Abstract_Execution](https://github.com/sw3luke/PES_TCC_WCET-Estrategia_Hibrida_Modular/blob/master/Variabilidade%20de%20Software/Referências/Deriving_WCET_Bounds_By_Abstract_Execution.pdf) dos autores Andreas Ermedahl, Jan Gustafsson e Bjorn Lisper.
 
-O manual de uso detalhado do SWEET e do ALF-Backend escrito por Jan Gustafsson e fundamental para se saber as funcionalidades que o SWEET disponibiliza pode ser consultado [aqui](https://github.com/sw3luke/PES_TCC_WCET-Estrategia_Hibrida_Modular/blob/master/Variabilidade%20de%20Software/Referências/SWEET_manual).
+O manual de uso detalhado do SWEET e do ALF-Backend escrito por Jan Gustafsson e fundamental para se saber as funcionalidades que o SWEET disponibiliza pode ser consultado [aqui](https://github.com/sw3luke/PES_TCC_WCET-Estrategia_Hibrida_Modular/blob/master/Variabilidade%20de%20Software/Referências/SWEET_manual.pdf).
 
 Maiores detalhes sobre a síntaxe do ALF pode ser consultado nos artigos de referência [ALF – A Language for WCET Flow Analysis](https://github.com/sw3luke/PES_TCC_WCET-Estrategia_Hibrida_Modular/blob/master/Variabilidade%20de%20Software/Referências/ALF_A_Language_for_WCET_Flow_Analysis.pdf) e [ALF (ARTIST2 Language for Flow Analysis) Specification](https://github.com/sw3luke/PES_TCC_WCET-Estrategia_Hibrida_Modular/blob/master/Variabilidade%20de%20Software/Referências/ALF_ARTIST2_Language_for_Flow_Analysis_Specification.pdf).
 
