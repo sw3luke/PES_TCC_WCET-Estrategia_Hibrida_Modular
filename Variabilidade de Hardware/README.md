@@ -534,7 +534,7 @@ static inline void init_perfcounters (int32_t do_reset, int32_t enable_divider);
 //=========================== Instrumentation Definitions =========================== 
 ~~~
 
-### void init_cache_garbage_array();
+### static inline void init_perfcounters (int32_t do_reset, int32_t enable_divider)
 
 
 O acesso ao registrador de ciclos de clock depende do atual nível de acesso do processador, no nosso caso estamos com o nível 1111 que equivale ao nível privilegiado e seguro, o AM335x não permite que alteremos todos os registradores, haja visto que alguns deles necessitam que você, além disso, esteja em uma TrustZone, o que só é alcançado pela fabricante.
