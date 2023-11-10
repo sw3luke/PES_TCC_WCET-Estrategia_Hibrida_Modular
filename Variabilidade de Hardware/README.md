@@ -613,10 +613,21 @@ Tendo em vista que o objetivo é encontrarmos o pior tempo de execução do flux
 
 ### void init_cache_garbage_array();
 
+~~~
+void init_cache_garbage_array(){
 
+	int* garbage_array_addr = (int*)0x8009b000; //posicao de inicio do array; OBS: Vou deixar esse Addr por enquanto, mas ele esta logo apos o array que armazena o numero de ciclos, entao,
+	//por enquanto o addr esta sujeito a mudancas dependendo da quantidade de iteracoes a serem executadas. Para o teste aqui vou deixar esse endereco
+	int i;
+	for(i = 0; i < 8192; i++){
+		*(garbage_array_addr+(i*4)) = 0; //um equivalente de j = j+1 para cada posicao do array    ///*(garbage_array_addr+(i*4)) = 0;
+		
+		//por que 8192?? Como comentado anteriormente, cada inteiro ocupa 32bits, logo 32 * 8192 = 32KB que e o tamanho de nossa cache e garantira que ela foi substituida
+		//PS: podemos colocar um pouco mais de 1024 como gordura, mas em teoria nao e necessario
+	}
 
-
-
+}
+~~~
 
 
 
