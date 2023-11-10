@@ -534,6 +534,67 @@ static inline void init_perfcounters (int32_t do_reset, int32_t enable_divider);
 //=========================== Instrumentation Definitions =========================== 
 ~~~
 
+### void init_cache_garbage_array();
+
+
+O acesso ao registrador de ciclos de clock depende do atual nível de acesso do processador, no nosso caso estamos com o nível 1111 que equivale ao nível privilegiado e seguro, o AM335x não permite que alteremos todos os registradores, haja visto que alguns deles necessitam que você, além disso, esteja em uma TrustZone, o que só é alcançado pela fabricante.
+
+Porém tal nível é suficiente para que possamos acessar os registradores necessários para a instrumentação. A primeira etapa realizada é ativar todos os contadores, assim como ativar a exportação de eventos do barramento de eventos para blocos de monitoramento externo. O ARM Cortex-A8 possui um registrador responsável pelo [monitoramento de performance (c9)](https://developer.arm.com/documentation/ddi0344/k/system-control-coprocessor/system-control-coprocessor-registers/c9--performance-monitor-control-register), o qual iremos alterá-lo. O código utilizado, pode ser visto abaixo e foi reutilizado do [link](https://stackoverflow.com/questions/34081183/compute-clock-cycle-count-on-arm-cortex-a8-beaglebone-black):
+
+~~~
+static inline void init_perfcounters (int32_t do_reset, int32_t enable_divider){
+  // in general enable all counters (including cycle counter)
+  int32_t value = 1;
+
+  // peform reset:  
+  if (do_reset)
+  {
+    value |= 2;     // resetar todos os contadores para zero.
+    value |= 4;     // resetar contadores de ciclo para zero.
+  } 
+
+  if (enable_divider)
+    value |= 8;     // enable "by 64" divider for CCNT.
+
+  value |= 16;
+
+  // program the performance-counter control-register:
+  asm volatile ("MCR p15, 0, %0, c9, c12, 0\t\n" :: "r"(value));  
+
+  // enable all counters:  
+  asm volatile ("MCR p15, 0, %0, c9, c12, 1\t\n" :: "r"(0x8000000f));  
+
+  // clear overflows:
+  asm volatile ("MCR p15, 0, %0, c9, c12, 3\t\n" :: "r"(0x8000000f));
+}
+~~~
+
+No cenário estudado, o clock foi configurado com o divisor desligado, portanto o valor escrito no monitor de performance(c9), mais especificamente na linha abaixo, é 17:
+~~~
+asm volatile ("MCR p15, 0, %0, c9, c12, 0\t\n" :: "r"(value));
+~~~
+
+O que equivale a 10001. Olhando na [documentação do registrador](https://developer.arm.com/documentation/ddi0344/k/system-control-coprocessor/system-control-coprocessor-registers/c9--performance-monitor-control-register) temos que, da direita para a esquerda, o bit na posição 0 representa a ativação de todos os contadores e o bit 5 representa a habilitação da exportação dos eventos dos barramentos para um bloco monitor externo.
+
+A linha seguinte equivale a escrita no registrador de [habilitação do conjunto de contadores(c9)](https://developer.arm.com/documentation/ddi0344/k/system-control-coprocessor/system-control-coprocessor-registers/c9--count-enable-set-register). Mais especificamente, ele habilita os 4 contadores, representados pelos bits 0, 1, 2 e 3, e habilita o contador de ciclos, representado pelo bit 31.
+~~~
+  asm volatile ("MCR p15, 0, %0, c9, c12, 1\t\n" :: "r"(0x8000000f));  
+~~~
+
+Por fim, a linha abaixo desabilita o overflow dos contadores habilitados, através da escrita no registrador [Overflow Flag Status (c9)](https://developer.arm.com/documentation/ddi0344/k/system-control-coprocessor/system-control-coprocessor-registers/c9--overflow-flag-status-register).
+~~~
+asm volatile ("MCR p15, 0, %0, c9, c12, 3\t\n" :: "r"(0x8000000f));
+~~~
+
+Com isso, temos nosso contador de ciclos habilitado.
+
+### static inline unsigned int get_cyclecount (void);
+
+
+
+
+
+
 
 
 
