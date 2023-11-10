@@ -232,7 +232,7 @@ cd <NomeDoExemplo>
 
 5. Com a pasta criada, devemos criar 2 arquivos dentro dela, o arquivo de link do source e o arquivo de makefile. Aqui reutilizaremos o .lds dos outros exemplos, disponibilizado pelo projeto StarterWare para o AM335x, que será o mesmo para todos os códigos.
 
-<NomeDoExemplo>.lds :
+\<NomeDoExemplo\>.lds :
 
 ~~~
 /*
@@ -341,7 +341,7 @@ SECTIONS
 
 ~~~
 
-Criar e alterar o arquivo makefile substituindo <NomeDoExemplo> pelo escolhido.
+Criar e alterar o arquivo makefile substituindo \<omeDoExemplo\> pelo escolhido.
 
 makefile :
 ~~~
