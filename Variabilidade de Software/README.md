@@ -419,7 +419,7 @@ O bloco BB ou BB0, através da instrução do tipo *store* é responsável por a
 | fvalue = -1; | { store { addr 64 { fref 64 "%fvalue.0" } { dec_unsigned 64 0 } } with { dec_signed 32 { minus 1 }
 
 
-Já o bloco BB1, é efetivamente a comparação de decisão característica do while. No ALF esse tipo de estrutura é implementado com o tipo de instrução *switch*. Note que dentro do switch há a operação de comparação de *"inteiros maior que": s_gt* que é responsável pela comparação de grandeza dos frames *%low* e *%up*. Mediante o resultado da comparação o *switch* segue para um *target* dado por uma Label do ALF, que por padrão (default) é a seguinte (o ato de entrar no loop, nesse caso na label "binary_search::bb2") e caso a comparação seja falsa a Label seguinte ao loop (nessa caso a label "binary_search::bb25" que corresponde ao BB25). Abaixo a relação "de para" explicada.
+Já o bloco BB1, é efetivamente a comparação de decisão característica do while. No ALF esse tipo de estrutura é implementado com o tipo de instrução *switch*. Note que dentro do switch há a operação de comparação de *"inteiros maior que": s_gt* que é responsável pela comparação de grandeza dos frames *%low* e *%up*. Mediante o resultado da comparação o *switch* segue para um *target* dado por uma Label do ALF, que por padrão (default) é a próxima (o ato de entrar no loop, nesse caso na label "binary_search::bb2") e caso a comparação seja falsa a Label seguinte ao loop (nesse caso a label "binary_search::bb25" que corresponde ao BB25). Abaixo a relação "de para" explicada.
 
 | Código C   | Código ALF      |    
 | ------- | --------------------- | 
@@ -431,7 +431,7 @@ A conclusão dessa breve análise é que medir o cabeçalho do while(low <= up) 
 
 
 
-Maiores detalhes sobre a síntaxe do ALF pode ser consultado nos artigos de referência [ALF – A Language for WCET Flow Analysis](https://github.com/sw3luke/PES_TCC_WCET-Estrategia_Hibrida_Modular/blob/master/ALF_A_Language_for_WCET_Flow_Analysis.pdf) e [ALF (ARTIST2 Language for Flow Analysis) Specification](https://github.com/sw3luke/PES_TCC_WCET-Estrategia_Hibrida_Modular/blob/master/ALF_ARTIST2_Language_for_Flow_Analysis_Specification.pdf).
+Maiores detalhes sobre a síntaxe do ALF pode ser consultado nos artigos de referência [ALF – A Language for WCET Flow Analysis](https://github.com/sw3luke/PES_TCC_WCET-Estrategia_Hibrida_Modular/blob/master/Variabilidade%20de%20Software/Referências/ALF_A_Language_for_WCET_Flow_Analysis.pdf) e [ALF (ARTIST2 Language for Flow Analysis) Specification](https://github.com/sw3luke/PES_TCC_WCET-Estrategia_Hibrida_Modular/blob/master/Variabilidade%20de%20Software/Referências/ALF_ARTIST2_Language_for_Flow_Analysis_Specification.pdf).
 
 
 
