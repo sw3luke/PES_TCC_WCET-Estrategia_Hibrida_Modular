@@ -512,6 +512,61 @@ make clean
 make
 ~~~
 
+## Instrumentação em hardware
+
+Agora que temos o ambiente configurado e sabemos como gerar o binário para um código customizado, para a execução no BBB, podemos instrumentar o código para a medição ponta a ponta no hardware. Essa seção tratará da instrumentação colocada no código fonte.
+
+A fase de instrumentação define 4 funções principais as quais os cabeçalhos podem ser vistos abaixo. A seguir trataremos de cada uma separadamente.
+
+~~~
+//=========================== Instrumentation Definitions =========================== 
+
+typedef signed int int32_t;
+
+void cache_maintenance();
+
+void init_cache_garbage_array();
+
+static inline unsigned int get_cyclecount (void);
+
+static inline void init_perfcounters (int32_t do_reset, int32_t enable_divider);
+
+//=========================== Instrumentation Definitions =========================== 
+~~~
+
+
+
+
+
+
+~~~
+//====================== Hardware Instrumentation Definitions ======================
+
+    unsigned int anotherControlRegister;
+    unsigned int* newRegisterCheck = (unsigned int*)0x8009af70;
+    unsigned int current_mode;
+    unsigned int* currentModeStatus = (unsigned int*)0x8009af80;
+    unsigned int auxiliaryControlRegister;
+    unsigned int* addrAuxiliaryControlRegisterBefore = (unsigned int*)0x8009af90;
+
+
+//====================== Hardware Instrumentation Definitions ======================
+~~~
+
+~~~
+
+~~~
+
+
+
+
+
 ## Executando Binário no BBB via microSD
 
+Agora que temos nosso binário gerado, podemos passar para a fase de execução
 
+
+
+~~~
+load mmc 0:2 0x80000000 <NomeDoExemplo>.bin
+~~~
