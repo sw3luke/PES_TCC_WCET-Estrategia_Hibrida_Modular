@@ -512,7 +512,7 @@ make clean
 make
 ~~~
 
-## Instrumentação em hardware
+# Instrumentação em hardware
 
 Agora que temos o ambiente configurado e sabemos como gerar o binário para um código customizado, para a execução no BBB, podemos instrumentar o código para a medição ponta a ponta no hardware. Essa seção tratará da instrumentação colocada no código fonte.
 
@@ -533,6 +533,8 @@ static inline void init_perfcounters (int32_t do_reset, int32_t enable_divider);
 
 //=========================== Instrumentation Definitions =========================== 
 ~~~
+
+## Configuração e leitura do contador de ciclos
 
 ### static inline void init_perfcounters (int32_t do_reset, int32_t enable_divider)
 
@@ -590,8 +592,26 @@ Com isso, temos nosso contador de ciclos habilitado.
 
 ### static inline unsigned int get_cyclecount (void);
 
+A função get_cyclecount é a responsável por retornar o valor de ciclos decorridos.
 
+~~~
+static inline unsigned int get_cyclecount (void){
+  unsigned int value;
+  // Read CCNT Register
+  asm volatile ("MRC p15, 0, %0, c9, c13, 0\t\n": "=r"(value));
+  return value;
+}
+~~~
 
+De maneira geral, é uma função bem simples, em que seu único objetivo é ler o [Cycle Count Register (c9)](https://developer.arm.com/documentation/ddi0344/k/system-control-coprocessor/system-control-coprocessor-registers/c9--cycle-count-register?lang=en) e armazenar seu valor na variavel *value* para que possa ser retornado ao ponto de chamada.
+
+## Análise e manutenção da cache
+
+Com as duas funções comentadas anteriormente já somos capazes de contabilizar a quantidade de ciclos decorridos entre dois pontos, porém é necessário lembrarmos que o hardware estudado possui, ativa, uma cache L1 de 32KB, portanto caso apenas contabilizemos o número de ciclos decorridos entre cada execução notaremos que o valor resultante sofrerá uma diminuição até se estabilizar. Isto ocorre pois a cada execução estamos preenchendo a cache com instruções e dados que serão úteis para o fluxo estudado, o que consequentemente o deixará mais performático.
+
+Tendo em vista que o objetivo é encontrarmos o pior tempo de execução do fluxo estudado, cada execução deve ser realizada nas piores condições do hardware, isto é, no pior cenário da cache para nosso programa alvo. Como comentado no artigo, o pior cenário da cache depende da política de substituição implementada pela mesma, em nosso caso a cache implementa a política *write-back* o que faz com que o pior cenário para a cache seja ela completamente preenchida com dados que não serão úteis para nosso programa estudado.
+
+### void init_cache_garbage_array();
 
 
 
