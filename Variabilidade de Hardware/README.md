@@ -1,6 +1,6 @@
 # Instalação e Utilização
 
-Essa seção visa abordar a variabilidade de hardware, a partir da execução e armazenamento dos tempos de execução do benchmark em um ambiente bare-metal, utilizando o BeagleBone Black (BBB).
+Esta seção visa abordar a variabilidade de hardware, a partir da execução e armazenamento dos tempos de execução do benchmark em um ambiente bare-metal, utilizando o BeagleBone Black (BBB).
   
 ## Instalação do UBoot
 
