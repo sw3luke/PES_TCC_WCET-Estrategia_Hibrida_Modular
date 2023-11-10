@@ -4,6 +4,8 @@ Nesse repositório estão os tutoriais de instalação e uso do Alf-Backend, do 
 
 As instruções de instalação para o ALF-Backend e o SWEET se aplicam a distribuição Ubuntu 22.04.3 do Linux.
 
+A metodologia detalhada do trabalho pode ser encontrada no artigo [WCET Estratégia Híbrida Modular](https://github.com/sw3luke/PES_TCC_WCET-Estrategia_Hibrida_Modular/blob/master/Artigo_WCET_Estratégia_Híbrida_Modular_RXX.pdf) produzido.
+
 # Variabilidade de Software
 
 # Sumário
@@ -270,7 +272,9 @@ sudo apt-get install avr-libc=1:2.0.0+Atmel3.6.2-3
 sudo apt-get install simulavr=1.0.0+git20160221.e53413b-2build1
 ```
 
-Com as dependências e a plataforma instalada, podemos passar para a instrumentação do código, para uma explicação mais visual, realizaremos um exemplo utilizando o benchmark bs.c, relativo a implementação do algoritmo binary search.
+## Instrumentação do código C
+
+Com as dependências e a plataforma instalada, podemos passar para a instrumentação do código, para uma explicação prática, realizaremos um exemplo utilizando o benchmark bs.c, relativo a implementação do algoritmo binary search, cujo código fonte está abaixo.
 
 ```
 struct DATA {
@@ -330,7 +334,7 @@ int binary_search(int x)
 
 ```
 
-Para a instrumentação, é necessário consultarmos o arquivo de mapeamento gerado na etapa do ALFBackend, referente ao bs.c, que pode ser encontrado na pasta do benchmark com o nome bs_alf_to_C_identified_full.txt. Haja visto que o objetivo é obtermos o tempo de execução para cada bloco básico, considerado pelo ALF, estaremos analisando a função **int binary_search(int x)**.
+Para a instrumentação, é necessário consultarmos o arquivo de mapeamento gerado na etapa do ALFBackend [Comandos do SWEET e ALF-Backend](#comandos-úteis-do-sweet-e-alf-backend), referente ao bs.c, que pode ser encontrado na pasta do benchmark com o nome *bs_alf_to_C_identified_full.txt* ou *bs_alf_to_C_identified_full.csv*. Haja visto que o objetivo é obtermos o tempo de execução para cada bloco básico considerado pelo ALF, estaremos analisando a função **int binary_search(int x)**.
 A instrumentação será realizada utilizando a biblioteca [AVR-Tick-Counter](https://github.com/malcom/AVR-Tick-Counter), para isso devemos importar o arquivo avr-tick-counter.h em nosso source.
 
 ```
@@ -357,9 +361,9 @@ Além disso, é crucial mudar o endereço de stdout, dentro da função main:
 ```
 stdout = &virtual_port;
 ```
-Com essas etapas realizadas, estamos prontos para chamar as funções de contagem de ciclos, assim como mostrar os valores obtidos no console serial. Para uma melhor correspondência durante a etapa de instrumentação, devemos consultar dois arquivos, o arquivo bs_alf_to_C_identified_full.txt que representa o mapeamento do código C para ALF, e o arquivo bs.alf que mostra bs.c na representação intermediaria ALF.
+Com essas etapas realizadas, estamos prontos para chamar as funções de contagem de ciclos, assim como mostrar os valores obtidos no console serial. Para uma melhor correspondência durante a etapa de instrumentação, devemos consultar dois arquivos, o arquivo *bs_alf_to_C_identified_full.txt* ou *bs_alf_to_C_identified_full.csv* que representa o mapeamento do código C para ALF, e o arquivo bs.alf que é a representação intermediaria ALF do código bs.c e posteriormente utilizado pelo SWEET.
 
-Vejamos os primeiros dois blocos listados em bs_alf_to_C_identified_full.txt:
+Vejamos os primeiros dois blocos listados em *bs_alf_to_C_identified_full.txt*:
 
 ```
 Basic Block binary_search bb0
@@ -369,7 +373,10 @@ bb0::4:::2 Line 39   while (low <= up) {
 Basic Block binary_search bb1
 bb1 Line 39   while (low <= up) {
 ```
-A representação ALF considera que ambos os blocos bb0 e bb1 representam a mesma linha do código source, portanto foi realizado uma análise no código ALF, onde temos:
+
+É importante notar que uma linguagem de alto nível como a C abstrai o comportamento das estruturas para o programador e as simplifica. Por exemplo, isso pode ocorrer com a operação de multiplicação, caso o processador não forneça instrução específica de multiplicação é uma atividade do compilador transformá-la em uma somatória para atingir o objetivo do código. Isso ocorre em alguma medida na conversão do C para o ALF. Como comentado o ALF é uma linguagem de nível intermediário, que implementa seus próprios operadores e funcionalidades, assim a conversão de C para ALF nem sempre proporciona equivalências "um para um" entre as estruturas.
+
+Nesse caso, a representação ALF considera que ambos os blocos bb0 e bb1 representam a mesma linha do código source, o cabeçalho do *while (low <= up)*. Vamos analisar o código ALF para entender o porquê:
 
 ```
      /* --------- BASIC BLOCK bb ---------- */
@@ -402,9 +409,29 @@ A representação ALF considera que ambos os blocos bb0 e bb1 representam a mesm
      }
 ```
 
+O bloco BB ou BB0, através da instrução do tipo *store* é responsável por armazenar os valores nos frames *%low*, *%up* e *%fvalue* na memória, então corresponde as instruções de atribuição do código C para as variáveis que serão utilizadas no loop while.
+
+
+| Código C   | Código ALF      |    
+| ------- | --------------------- | 
+| low = 0; | { store { addr 64 { fref 64 "%low.0" } { dec_unsigned 64 0 } } with { dec_unsigned 32 0 } }
+| up = 14; | { store { addr 64 { fref 64 "%up.0" } { dec_unsigned 64 0 } } with { dec_unsigned 32 14 } } 
+| fvalue = -1; | { store { addr 64 { fref 64 "%fvalue.0" } { dec_unsigned 64 0 } } with { dec_signed 32 { minus 1 }
+
+
+Já o bloco BB1, é efetivamente a comparação de decisão característica do while. No ALF esse tipo de estrutura é implementado com o tipo de instrução *switch*. Note que dentro do switch há a operação de comparação de *"inteiros maior que": s_gt* que é responsável pela comparação de grandeza dos frames *%low* e *%up*. Mediante o resultado da comparação o *switch* segue para um *target* dado por uma Label do ALF, que por padrão (default) é a seguinte (o ato de entrar no loop, nesse caso na label "binary_search::bb2") e caso a comparação seja falsa a Label seguinte ao loop (nessa caso a label "binary_search::bb25" que corresponde ao BB25). Abaixo a relação "de para" explicada.
+
+| Código C   | Código ALF      |    
+| ------- | --------------------- | 
+| low <= up | s_gt 32 { load 32 { addr 64 { fref 64 "%low.0" } { dec_unsigned 64 0 } } } { load 32 { addr 64 { fref 64 "%up.0" } { dec_unsigned 64 0 } } } }
+| while() | {switch Expressão {target Valor01 Label01}{ target Valor02 Label02} ...}
+
+
+A conclusão dessa breve análise é que medir o cabeçalho do while(low <= up) resultará no tempo do BB1, enquanto que a medição das atribuições das variáveis prévias ao cabeçalho resultarão no tempo do BB0.
 
 
 
+Maiores detalhes sobre a síntaxe do ALF pode ser consultado nos artigos de referência [ALF – A Language for WCET Flow Analysis](https://github.com/sw3luke/PES_TCC_WCET-Estrategia_Hibrida_Modular/blob/master/ALF_A_Language_for_WCET_Flow_Analysis.pdf) e [ALF (ARTIST2 Language for Flow Analysis) Specification](https://github.com/sw3luke/PES_TCC_WCET-Estrategia_Hibrida_Modular/blob/master/ALF_ARTIST2_Language_for_Flow_Analysis_Specification.pdf).
 
 
 
