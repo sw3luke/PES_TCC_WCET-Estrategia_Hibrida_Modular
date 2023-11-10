@@ -38,7 +38,7 @@ Obter o repositório oficial do ALF-LLVM.
     git clone https://github.com/visq/ALF-llvm.git
 ~~~
 
-Caso haja algum problema com o repositório do ALF-LLVM o código fonte utilizado no trabalho também está disponível nesse repositório na pasta _Programas do Framework_:
+Caso haja algum problema com o repositório do ALF-LLVM o código fonte utilizado no trabalho também está disponível nesse repositório na pasta _Variabilidade de Software/Programas_:
 
 Realizar a build do ALF-llvm, a conclusão pode levar alguns minutos.
 
@@ -97,7 +97,7 @@ Para funcionar com a versão atual 3.4 do ALF-LLVM, o Clang também precisa esta
 
 [Releases LLVM](https://releases.llvm.org/download.html)
 
-Os binários para o Clang utilizados no trabalho foram obtidos no link abaixo mas também estão disponíveis nesse repositório na pasta _Programas do Framework_:
+Os binários para o Clang utilizados no trabalho foram obtidos no link abaixo mas também estão disponíveis nesse repositório na pasta _Variabilidade de Software/Programas_:
 
 [Clang 3.4](https://releases.llvm.org/3.4/clang+llvm-3.4-x86_64-unknown-ubuntu12.04.tar.xz)
 
@@ -124,7 +124,7 @@ Thread model: posix
 
 ## Tutorial Instalação SWEET
 
-O código fonte do SWEET se encontra no seguinte link mas também está disponível nesse repositório na pasta _Programas do Framework_:
+O código fonte do SWEET se encontra no seguinte link mas também está disponível nesse repositório na pasta _Variabilidade de Software/Programas_:
 
 http://www.mrtc.mdh.se/projects/wcet/sweet/sweet.zip
 
