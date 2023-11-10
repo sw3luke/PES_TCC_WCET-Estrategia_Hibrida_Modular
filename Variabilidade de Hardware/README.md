@@ -210,3 +210,308 @@ cd ~/bareMetal/AM335X_StarterWare_02_00_01_01/binary/armv7a/gcc/am335x/beaglebon
 ~~~
 
 ### Build dos Benchmarks
+
+Até agora vimos como configurar o ambiente e buildar os exemplos básicos já presentes no projeto StarterWare. Nesta seção, trataremos de como realizar o build de nossos próprios códigos, utilizando a estrutura já disponibilizada pelo StarterWare.
+
+1. Acessar a pasta de exemplos, onde o código, alvo do build, deverá ser colocado
+~~~
+cd ~/bareMetal/AM335X_StarterWare_02_00_01_01/examples/
+~~~
+
+2. Criar uma pasta para o código alvo
+~~~
+mkdir <NomeDoExemplo>
+~~~
+3. Colocar o arquivo <NomeDoExemplo>.c dentro da pasta criada
+4. Criar o arquivo link e o arquivo makefile
+~~~
+cd ~bareMetal/AM335X_StarterWare_02_00_01_01/build/armv7a/gcc/am335x/beaglebone
+mkdir <NomeDoExemplo>
+cd <NomeDoExemplo>
+~~~
+
+5. Com a pasta criada, devemos criar 2 arquivos dentro dela, o arquivo de link do source e o arquivo de makefile. Aqui reutilizaremos o .lds dos outros exemplos, disponibilizado pelo projeto StarterWare para o AM335x, que será o mesmo para todos os códigos.
+
+<NomeDoExemplo>.lds :
+
+~~~
+/*
+* Copyright (C) 2010 Texas Instruments Incorporated - http://www.ti.com/ 
+*/
+/* 
+*  Redistribution and use in source and binary forms, with or without 
+*  modification, are permitted provided that the following conditions 
+*  are met:
+*
+*    Redistributions of source code must retain the above copyright 
+*    notice, this list of conditions and the following disclaimer.
+*
+*    Redistributions in binary form must reproduce the above copyright
+*    notice, this list of conditions and the following disclaimer in the 
+*    documentation and/or other materials provided with the   
+*    distribution.
+*
+*    Neither the name of Texas Instruments Incorporated nor the names of
+*    its contributors may be used to endorse or promote products derived
+*    from this software without specific prior written permission.
+*
+*  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 
+*  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT 
+*  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+*  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT 
+*  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+*  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT 
+*  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+*  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+*  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT 
+*  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
+*  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*
+*/
+
+/* ld script for StarterWare AM335x */
+
+/*
+** The stack is kept at end of the image, and its size is 128 MB.
+** The heap section is placed above the stack to support I/O
+** operations using semihosting. The size of the section is 2KB.
+*/
+
+MEMORY
+{
+    DDR0 :   o = 0x80000000,  l = 0x10000000  /* 256MB external DDR Bank 0 */
+}
+
+OUTPUT_FORMAT("elf32-littlearm", "elf32-littlearm", "elf32-littlearm")
+OUTPUT_ARCH(arm)
+
+SECTIONS
+{
+
+        .startcode :
+        {
+            . = ALIGN(4);
+            *init.o      (.text)
+        } >DDR0
+
+        .text :
+        {
+            . = ALIGN(4);
+            *(.text*)
+            *(.rodata*)
+        } >DDR0
+
+        .data :
+        {
+            . = ALIGN(4);
+            *(.data*)
+        } >DDR0
+
+        .bss :
+        {
+            . = ALIGN(4);
+            _bss_start = .;
+            *(.bss*)
+            *(COMMON)
+            _bss_end = .;
+        } >DDR0
+
+        .heap :
+        {
+            . = ALIGN(4);
+            __end__ = .;
+            end = __end__;
+            __HeapBase = __end__;
+            *(.heap*)
+            . = . + 0x800;
+            __HeapLimit = .;
+        } >DDR0
+
+        .stack :
+        {
+            . = ALIGN(4);
+            __StackLimit = . ;
+            *(.stack*)
+            . = . + 0x7FFFFF8;
+            __StackTop = .;
+        } >DDR0
+        _stack = __StackTop;
+
+}
+
+~~~
+
+Criar e alterar o arquivo makefile substituindo <NomeDoExemplo> pelo escolhido.
+
+makefile :
+~~~
+#
+# Copyright (C) 2010 Texas Instruments Incorporated - http://www.ti.com/ 
+#
+# 
+#  Redistribution and use in source and binary forms, with or without 
+#  modification, are permitted provided that the following conditions 
+#  are met:
+#
+#    Redistributions of source code must retain the above copyright 
+#    notice, this list of conditions and the following disclaimer.
+#
+#    Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions and the following disclaimer in the 
+#    documentation and/or other materials provided with the   
+#    distribution.
+#
+#    Neither the name of Texas Instruments Incorporated nor the names of
+#    its contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 
+#  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT 
+#  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+#  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT 
+#  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT 
+#  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+#  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+#  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT 
+#  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
+#  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#
+#******************************************************************************
+
+#
+# Locating the root directory
+#
+ROOT=../../../../../../
+
+#
+# Device and EVM definitions
+#
+DEVICE=am335x
+EVM=beaglebone
+
+#
+# Include the makefile definitions. This contains compiler, linker and
+# archiver definitions and options
+#
+include ${ROOT}/build/armv7a/gcc/makedefs
+
+#
+# Target Directories that need to be built
+#
+DIRS=${DRIVERS_BLD} ${PLATFORM_BLD} ${SYSCONFIG_BLD} ${UTILITY_BLD}
+
+#
+# The application directory and name
+#
+APPDIR=<NomeDoExemplo>
+APPNAME=<NomeDoExemplo>
+
+#
+# Where the application will be loaded to. This is required to generate
+# image with Header (Load Address and Size)
+#
+IMG_LOAD_ADDR = 0x80000000
+
+#
+# Application Location
+#
+APP=${ROOT}examples/${EVM}/$(APPDIR)/
+APP_BIN=${ROOT}/binary/${TARGET}/${COMPILER}/${DEVICE}/${EVM}/$(APPDIR)
+
+#
+# Application source files
+#
+APP_SRC=$(APP)/*.c
+
+#
+# Required library files
+#
+APP_LIB=-ldrivers  \
+	-lutils    \
+	-lplatform \
+	-lsystem_config
+
+#
+# Rules for building the application and library
+#
+all: debug release
+
+debug:
+	make TARGET_MODE=debug lib
+	make TARGET_MODE=Debug bin
+
+release:
+	make TARGET_MODE=release lib
+	make TARGET_MODE=Release bin
+
+lib:
+	@for i in ${DIRS};				\
+	do						\
+		if [ -f $${i}/makefile ] ;		    \
+		then					  \
+			make $(TARGET_MODE) -C $${i} || exit $$?; \
+		fi;					   \
+	done;
+
+
+bin:
+	$(CC)  $(CFLAGS) $(APP_SRC)
+	@mkdir -p $(TARGET_MODE)/
+	@mv *.o* $(TARGET_MODE)/
+	$(LD) ${LDFLAGS} ${LPATH} -o $(TARGET_MODE)/$(APPNAME).out \
+          -Map $(TARGET_MODE)/$(APPNAME).map $(TARGET_MODE)/*.o* \
+          $(APP_LIB) -lc -lgcc $(APP_LIB) $(RUNTIMELIB) -T $(APPNAME).lds
+	@mkdir -p $(APP_BIN)/$(TARGET_MODE)
+	@cp $(TARGET_MODE)/$(APPNAME).out $(APP_BIN)/$(TARGET_MODE)/$(APPNAME).out
+	$(BIN) $(BINFLAGS) $(APP_BIN)/$(TARGET_MODE)/$(APPNAME).out \
+               $(APP_BIN)/$(TARGET_MODE)/$(APPNAME).bin 
+	cd $(ROOT)/tools/ti_image/; gcc tiimage.c -o a.out; cd - 
+	       $(ROOT)/tools/ti_image/a.out $(IMG_LOAD_ADDR) NONE \
+               $(APP_BIN)/$(TARGET_MODE)/$(APPNAME).bin \
+               $(APP_BIN)/$(TARGET_MODE)/$(APPNAME)_ti.bin; rm -rf $(ROOT)/tools/ti_image/a.out;
+
+
+#
+# Rules for cleaning
+#
+clean:
+	@rm -rf Debug Release $(APP_BIN)/Debug $(APP_BIN)/Release
+
+clean+: clean
+	@make TARGET_MODE=clean lib
+
+
+~~~
+
+6. Adicionar novo diretório criado no arquivo makefile para que o build seja realizado.
+
+~~~
+gedit ~bareMetal/AM335X_StarterWare_02_00_01_01/build/armv7a/gcc/am335x/beaglebone/makefile
+~~~
+
+7. Com o makefile aberto adicionar o novo diretorio na seção DIRS e salvar
+~~~
+DIRS=platform \
+	.
+	.
+	.
+    <NomeDoExemplo> \
+	.
+	.
+	.
+     binary_search \
+~~~
+
+8. Agora basta realizar o build novamente do projeto e, caso não haja erros de sintaxe, o arquivo .bin será gerado na pasta de binarios vista anteriormente.
+
+~~~
+cd ~/bareMetal/AM335X_StarterWare_02_00_01_01/build/armv7a/gcc/am335x/beaglebone
+make clean
+make
+~~~
+
+## Executando Binário no BBB via microSD
+
+
