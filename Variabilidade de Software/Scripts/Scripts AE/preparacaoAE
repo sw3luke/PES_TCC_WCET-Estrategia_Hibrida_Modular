@@ -16,7 +16,6 @@ echo "Gerando correspondência entre ALF e C"
 python ./Python/bb_identifier_completo.py ./$1.map ./$1.c -f -o=.txt > temporario01
 python ./Python/bb_identifier_completo.py ./$1.map ./$1.c -f -o=.csv > temporario02
 
-
 echo -e "\nApós preencher o arquivo $1.tdb e criar o arquivo de anotações $1.ann\nVocê pode prosseguir a execução abstrata com o comando abaixo:\n"
 echo -e "sweet -i=$1.alf annot=./ANN/$1.ann -ae pu bbc=./TDB/$1.tdb merge=none bbcpaths -do floats=est\n"
 
