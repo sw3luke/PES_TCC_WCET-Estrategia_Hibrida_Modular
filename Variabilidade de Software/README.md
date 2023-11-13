@@ -20,6 +20,8 @@ A metodologia detalhada do trabalho pode ser encontrada no artigo [WCET Estraté
 
 - [Comandos úteis do SWEET](#comandos-úteis-do-sweet-e-alf-backend)
 
+- [Script Python](#script-python)
+
 - [Comentários sobre os scripts de Linux](#comentários-sobre-os-scripts-de-linux)
 
 - [Tutorial Instalação SimulAVR](#comentários-sobre-os-scripts-de-linux)
@@ -242,13 +244,104 @@ sweet -i=arquivo.alf annot=arquivo.ann -ae pu bbc=arquivo.tdb merge=none bbcpath
 
 A saída será os tempos BCET e WCET, junto dos caminhos BCEP e WCEP relacionados.
 
-## Comentários sobre os scripts de Linux
+## Script Python
 
 - Antes da utilização do script que será explicado a seguir, é necessário possuir o Python instalado na máquina, normalmente as distribuições recentes de Linux já possuem o Python instalado.
 
-- O script em python utilizado nessa etapa se chama _bb\_identifier\_completo.py_ e é responsável por gerar a partir do _arquivo de mapeamento_ gerado pelo Alf-Backend e do _código em C_ uma equivalência mais simples de ser trabalhada nos formatos txt e csv, o último útil quando utilizado com softwares como Libre Office Calc ou Excel.
+- O script em python utilizado nessa etapa se chama _bb\_identifier\_completo\.py_ e é responsável por gerar a partir do _arquivo de mapeamento_ gerado pelo Alf-Backend e do _código em C_ uma equivalência mais simples de ser trabalhada nos formatos txt e csv, o último útil quando utilizado com softwares como Libre Office Calc ou Excel.
 
-- Foi escrito um script chamado **preparacaoAE** que realiza as etapas de conversão do C para ALF, a criação do arquivo de mapeamento, a criação dos templates a serem preenchidos antes de prosseguir com a **Execução Abstrata** e a correspondência de blocos básicos do C para ALF em maiores detalhes com o auxílio de um script em Python. Para utilizá-lo basta chamá-lo junto do caminho do arquivo em C a ser estudado.
+- Um dos usos é criar a correspondência completa lado a lado entre as labels dos blocos básicos no ALF e as instruções correspondentes da linguagem C:
+
+~~~
+python bb_identifier_completo.py arquivo.map arquivo.c -f -o=.txt
+~~~
+
+~~~
+python bb_identifier_completo.py arquivo.map arquivo.c -f -o=.csv
+~~~
+
+Por exemplo, o resultado da correspondência completa no formato txt do arquivo bs.c
+
+```
+Basic Block binary_search bb0
+bb0 Line 39   while (low <= up) {
+bb0::4:::1 Line 39   while (low <= up) {
+bb0::4:::2 Line 39   while (low <= up) {
+Basic Block binary_search bb1
+bb1 Line 39   while (low <= up) {
+```
+- Outro uso é criar a correspondência simples lado a lado entre as labels dos blocos básicos no ALF e as instruções correspondentes da linguagem C:
+
+~~~
+python bb_identifier_completo.py arquivo.map arquivo.c -c -o=.txt
+~~~
+
+Por exemplo, o resultado da correspondência simples no formato txt do arquivo bs.c
+
+```
+Basic Block binary_search bb0
+Line 39   while (low <= up) {
+Line 39   while (low <= up) {
+Line 39   while (low <= up) {
+Basic Block binary_search bb1
+Line 39   while (low <= up) {
+```
+
+Através da flag **-help** informações sobre outras funcionalidades do script são informadas:
+
+~~~
+This code has 2 main functionalities:
+        - To make a correspondence between .alf BB code and a .c BB code;
+        - To give the WCEP (Worst Case Execution Path) given a .alf path to the corresponding
+        instruction in .c code.
+
+    Arguments (*args):
+        - map_path : The absolute path of a map file (file with ALF Basic Blocks and the
+        corresponding line and column of C instructions (.map);
+        - c_path : The absolute path of a C file (.c);
+        - -o : Output format file (.txt/.csv). If not passed, by default, -o=.txt;
+        - -c : Simplified Correspondence between .alf BB code and a .c BB code. If this flag is passed,
+        -f flag must not be passed;
+        - -f : Full Correspondence between .alf BB code and a .c BB code. If this flag is passed,
+        -c flag must not be passed;
+        - -p (optional) : Worst Path with C instructions;
+        - AE_path (optional) : The absolute path of a text file with the WCEP info. If -p flag is raised,
+        AE_path must be given.
+~~~
+
+### Outros usos:
+
+ - Visualizar o caminho crítico tanto em Labels ALF quanto nas instruções em C.
+
+~~~
+python ./bb_identifier_completo.py bs.map bs.c -p WCEP.txt
+~~~
+
+Após a execução, um arquivo chamado *arquivo_wcep.txt*  é criado no diretório atual. Abaixo parte do conteúdo relativo ao binary search:
+
+```
+mainbb0	binary_search(a);
+binary_searchbb0  while (low <= up) {
+binary_searchbb0::4:::1  while (low <= up) {
+binary_searchbb0::4:::2  while (low <= up) {
+binary_searchbb1  while (low <= up) {
+binary_searchbb2    mid = (low + up) >> 1;
+binary_searchbb2::5    if ( data[mid].key == x ) {  /*  found  */
+binary_searchbb2::7    if ( data[mid].key == x ) {  /*  found  */
+binary_searchbb14      if ( data[mid].key > x ) 	{
+binary_searchbb14::4      if ( data[mid].key > x ) 	{
+binary_searchbb21             	low = mid + 1;
+binary_searchbb24  }
+binary_searchbb24::3:::1  }
+binary_searchbb24::3:::2  }
+binary_searchbb24::3:::3  }
+```
+
+
+## Comentários sobre os scripts de Linux
+
+
+- Foi escrito um script chamado **preparacaoAE** que realiza as etapas de conversão do C para ALF, a criação do arquivo de mapeamento, a criação dos templates a serem preenchidos antes de prosseguir com a **Execução Abstrata** e a correspondência completa de blocos básicos do C para ALF em maiores detalhes com o auxílio do script python _bb\_identifier\_completo\.py_. Para utilizá-lo basta chamá-lo junto do caminho do arquivo em C a ser estudado.
 
 ~~~
 ./preparacaoAE arquivo
