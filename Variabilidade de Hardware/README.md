@@ -611,28 +611,63 @@ Com as duas funções comentadas anteriormente já somos capazes de contabilizar
 
 Tendo em vista que o objetivo é encontrarmos o pior tempo de execução do fluxo estudado, cada execução deve ser realizada nas piores condições do hardware, isto é, no pior cenário da cache para nosso programa alvo. Como comentado no artigo, o pior cenário da cache depende da política de substituição implementada pela mesma, em nosso caso a cache implementa a política *write-back* o que faz com que o pior cenário para a cache seja ela completamente preenchida com dados que não serão úteis para nosso programa estudado.
 
-### void init_cache_garbage_array();
+### void init_cache_garbage_array() e void cache_maintenance();
 
 A função init_cache_garbage_array é responsável por sujar a cache L1 antes da primeira iteração do programa analisado, e pode ser vista no snippet abaixo.
 
 ~~~
 void init_cache_garbage_array(){
 
+	asm volatile("MCR p15, 0, %0, c7, c5, 0" :: "r"(0));//invalida conteudo da cache de instrucoes, etapa encontrada na documentacao do cortex-a8 no site do arm
+
 	int* garbage_array_addr = (int*)0x8009b000; //posicao de inicio do array;
 	int i;
 	for(i = 0; i < 8192; i++){
 		*(garbage_array_addr+(i*4)) = 0; //preenchemos 1 a cada 4 endereços
 		
-		//por que 8192?? Como comentado anteriormente, cada inteiro ocupa 32bits, logo 32 * 8192 = 32KB que e o tamanho de nossa cache e garantira que ela foi substituida
-		//PS: podemos colocar um pouco mais de 1024 como gordura, mas em teoria nao e necessario
 	}
 
 }
 ~~~
 
-Vamos análisar seu funcionamento, Inicialmente definimos uma posição de inicio
+Vamos análisar seu funcionamento, inicialmente executamos a linha:
 
+~~~
+asm volatile("MCR p15, 0, %0, c7, c5, 0" :: "r"(0));
+~~~
 
+Essa linha corresponde a [invalidacao da cache de instrucoes](https://developer.arm.com/documentation/ddi0344/k/system-control-coprocessor/system-control-coprocessor-registers/c7--cache-operations?lang=en). Com a cache de instrucoes invalidada escolhemos um endereco de memoria livre para que as operacoes de substituicao de dados,da cache de dados, se iniciem. Em nosso caso o endereco escolhido foi 0x8009b000, o que da bastante espaco do endereco 0x80000000 para que os benchmarks avaliados sejam carregados e executados sem problemas.
+
+Em seguida realizamos o acesso e a escrita do valor 0 em 8192 enderecos, pulando 4 enderecos entre cada acesso.
+
+~~~
+	int* garbage_array_addr = (int*)0x8009b000; //posicao de inicio do array;
+	int i;
+	for(i = 0; i < 8192; i++){
+		*(garbage_array_addr+(i*4)) = 0; //preenchemos 1 a cada 4 endereços
+		
+	}
+~~~
+
+A rotina de manutenção da cache tem uma grande dependência de sua modelagem, isto é, de seu tamanho total, da quantidade de índices, do número de linhas, do tamanho das linhas e da política de substituição. No cenário estudado, a cache possui um total de 518 linhas, cada uma com um tamanho de 64 bytes. Por ser uma cache 4-way associative, cada índice irá agrupar 4 linhas, o que resultará em uma cache com 128 índices únicos. Levando em consideração que uma word possui 4 bytes, cada linha na cache será capaz de armazenar 16 words, logo a rotina de manutenção da cache deve ser capaz de acessar endereços de memoria suficientes, pertencentes a diferentes blocos, de forma que todos os índices da cache sejam visitados.
+
+Assim sendo, o numero de iteracoes(8192) foi escolhido tendo como base o numero de acessos a cada indice unico que o mesmo proporcionaria. Uma vez que cada linha armazena 16 words, cada bloco da memoria principal sera composto por 16 enderecos, haja visto que cada endereco e capaz de armazenar 4 bytes(1 word), logo se estamos pulando de 4 em 4 enderecos isso faz com que 1 a cada 4 enderecos acessados resulte em um miss na cache, e consequentemente faca com que seu bloco seja carregado na cache. Logo, das 8192 iteracoes, 2048 resultam em um miss, alem disso isso faz com que cada indice unico seja acessado um numero total de 16 vezes.
+
+A funcao cache_maintenance() funciona da mesma forma, e pode ser vista abaixo:
+
+~~~
+void cache_maintenance(){
+	
+	asm volatile("MCR p15, 0, %0, c7, c5, 0" :: "r"(0));
+	
+	int* garbage_array_addr = (int*)0x8009b000;
+	int i;
+	for(i = 0; i < 8192; i++){
+		//*(garbage_array_addr+(i*4)) = *(garbage_array_addr+(i*4)) + 1;
+		*(garbage_array_addr+(i*4)) = *(garbage_array_addr+(i*4)) + 1; //um equivalente de j = j+1 para cada posicao do array
+	}
+}
+~~~
 
 
 
