@@ -706,10 +706,31 @@ int main(){
 
 ## Executando Binário no BBB via microSD
 
-Agora que temos nosso binário gerado, podemos passar para a fase de execução
+Agora que temos nosso binário gerado, podemos passar para a fase de execução no hardware. Para isso basta carregarmos o arquivo <NomeDoExemplo>.bin no microSD previamente configurado na particao ROOTFS. Em seguida, coloque o microSD no BBB e o inicie acessando o terminal do UBoot.
 
-
+Com o terminal liberado, execute o comando:
 
 ~~~
 load mmc 0:2 0x80000000 <NomeDoExemplo>.bin
 ~~~
+O comando acima ira fazer com que aparece no console:
+~~~
+## Starting application at 0x80000000 ... 
+~~~
+
+Indicando que o programa carregado no endereço 0x80000000 está sendo executado. Quando a execução do programa terminar a placa irá reiniciar e o terminal do UBoot será liberado novamente.
+Para acessar as medidas realizadas durante a execução bas utilizar o comando md que irá mostrar o conteúdo da memória, a sintaxe é a seguinte:
+
+~~~
+md <enderecoDeMemoriaInicial> <NumeroDeEnderecosRequisitados>
+~~~
+
+Logo, se quisermos ver o resultado das 50 mil medições o comando ficaria:
+
+~~~
+md 80000000 50000
+~~~
+
+## Conclusão
+
+Com todas as etapas executadas estamos aptos a realizar a instrumentação de novos códigos, assim como a realizar o build dos mesmos nos aproveitando da estrutura provida pelo projeto StarterWare, além disso também foi mostrado como configurar o UBoot e executar o programa .bin na placa. Por fim, mostramos como realizar a extração das medições.
