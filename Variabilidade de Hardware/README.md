@@ -703,27 +703,6 @@ int main(){
 ~~~
 
 
-~~~
-//====================== Hardware Instrumentation Definitions ======================
-
-    unsigned int anotherControlRegister;
-    unsigned int* newRegisterCheck = (unsigned int*)0x8009af70;
-    unsigned int current_mode;
-    unsigned int* currentModeStatus = (unsigned int*)0x8009af80;
-    unsigned int auxiliaryControlRegister;
-    unsigned int* addrAuxiliaryControlRegisterBefore = (unsigned int*)0x8009af90;
-
-
-//====================== Hardware Instrumentation Definitions ======================
-~~~
-
-~~~
-
-~~~
-
-
-
-
 
 ## Executando Binário no BBB via microSD
 
