@@ -25,7 +25,10 @@ A etapa de variabilidade de software abrange 4 macro etapas:
 
 ## [Variabilidade de Hardware](https://github.com/sw3luke/PES_TCC_WCET-Estrategia_Hibrida_Modular/tree/master/Variabilidade%20de%20Hardware)
   1. Medição de início a fim da execução do código em C utilizando as entradas que provocam o WCEP;
-  2. Análise Probabilística Baseada em Medições.
+
+### [Análise Probabilística Baseada em Medições](https://github.com/sw3luke/PES_TCC_WCET-Estrategia_Hibrida_Modular/tree/master/Variabilidade%20de%20Hardware/Análise%20Probabilística%20Baseada%20em%20Medições)
+  1. Utilização da Teoria do Valor Extremo para modelagem de curvas de densidade de probabilidade (PDF) a partir dos blocos de medições para o programa avaliado;
+  2. Definição do WCEP baseado em um pWCET de 1e-9.
 
 
 ## Sobre nós
