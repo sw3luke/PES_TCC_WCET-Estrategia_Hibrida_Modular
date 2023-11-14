@@ -649,9 +649,10 @@ Em seguida realizamos o acesso e a escrita do valor 0 em 8192 enderecos, pulando
 	}
 ~~~
 
-A rotina de manutenção da cache tem uma grande dependência de sua modelagem, isto é, de seu tamanho total, da quantidade de índices, do número de linhas, do tamanho das linhas e da política de substituição. No cenário estudado, a cache possui um total de 518 linhas, cada uma com um tamanho de 64 bytes. Por ser uma cache 4-way associative, cada índice irá agrupar 4 linhas, o que resultará em uma cache com 128 índices únicos. Levando em consideração que uma word possui 4 bytes, cada linha na cache será capaz de armazenar 16 words, logo a rotina de manutenção da cache deve ser capaz de acessar endereços de memoria suficientes, pertencentes a diferentes blocos, de forma que todos os índices da cache sejam visitados.
+A rotina de manutenção da cache tem uma grande dependência de sua modelagem, isto é, de seu tamanho total, da quantidade de índices, do número de linhas, do tamanho das linhas e da política de substituição. No cenário estudado, a cache possui um total de 518 linhas, cada uma com um tamanho de 64 bytes. Por ser uma cache 4-way associative, cada índice irá agrupar 4 linhas, o que resultará em uma cache com 128 índices únicos. Levando em consideração que uma word possui 4 bytes, cada linha na cache será capaz de armazenar 16 words, logo a rotina de manutenção da cache deve ser capaz de acessar endereços de memória suficientes, pertencentes a diferentes blocos, de forma que todos os índices da cache sejam visitados.
 
-Assim sendo, o numero de iteracoes(8192) foi escolhido tendo como base o numero de acessos a cada indice unico que o mesmo proporcionaria. Uma vez que cada linha armazena 16 words, cada bloco da memoria principal sera composto por 16 enderecos, haja visto que cada endereco e capaz de armazenar 4 bytes(1 word), logo se estamos pulando de 4 em 4 enderecos isso faz com que 1 a cada 4 enderecos acessados resulte em um miss na cache, e consequentemente faca com que seu bloco seja carregado na cache. Logo, das 8192 iteracoes, 2048 resultam em um miss, alem disso isso faz com que cada indice unico seja acessado um numero total de 16 vezes.
+Assim sendo, o número de iterações(8192) foi escolhido tendo como base o número de acessos a cada índice único que o mesmo proporciona. Uma vez que cada linha armazena 16 words, cada bloco carregado da memória principal será composto por 16 endereços, haja visto que cada endereço é capaz de armazenar 4 bytes(1 word), logo se estamos pulando de 4 em 4 endereços isso faz com que 1 a cada 4 endereços acessados resulte em um miss na cache, o que consequentemente faz com que seu bloco seja carregado na cache. Logo, das 8192 iterações, 2048 resultam em um miss, além disso isso faz com que cada índice único seja acessado um número total de 16 vezes.
+
 
 A funcao cache_maintenance() funciona da mesma forma, e pode ser vista abaixo:
 
@@ -669,6 +670,37 @@ void cache_maintenance(){
 }
 ~~~
 
+### main()
+
+Com as funções definidas, passamos para a instrumentação da função main, a qual contém o fluxo principal do programa avaliado, tendo como primeira etapa a inicialização dos contadores através da chamada da função init_perfcounters() e a definição do endereço inicial de armazenamento das medidas, assim como o cálculo do overhead da chamada da funcao get_cyclecount(). Uma vez que desejamos gerar uma amostra de 50000 medidas, que posteriormente será analisada utilizando o método MBPTA, colocamos todo o fluxo do programa dentro de um loop, o qual será executado 50000 vezes. No corpo do loop, inicialmente, armazenamos o retorno da função get_cyclecount() apresentada anteriormente, que corresponde ao número de ciclos inicial, seguido de todo o fluxo do programa principal e por fim uma nova chamada da funcao get_cyclecount() que indicará o número de ciclos final.
+
+Com o número de ciclos final e inicial armazenado, calculamos a diferença entre os dois a fim de obter o número de ciclos decorridos da execução do fluxo principal, além disso, do resultado final calculamos também a diferença entre o número de ciclos obtido e o overhead da chamada da função get_cyclecount(). Por fim, armazenamos o valor da medição em um endereço de memória livre que em nosso caso se inicia em 0x80069FF0 e é aumentado a cada iteração. Antes que nosso programa passe para a próxima iteração e realize uma nova medida, fazemos uma chamada para a função cache_maintenance() a qual irá se encarregar de desfavorecer nossa cache de dados e invalidar a cache de instruções.
+
+
+Um exemplo do código instrumentado do fluxo principal pode ser visto abaixo:
+
+~~~
+int main(){
+    init_perfcounters (1, 0);
+    unsigned int numCycles = 0;
+    unsigned int overhead = get_cyclecount();
+    overhead = get_cyclecount() - overhead;
+    unsigned int t = 0;
+    int* addr = (int*)0x80069FF0;
+    init_cache_garbage_array();
+    int i;
+    for(i = 0; i < 50000; i++){
+	
+	t = get_cyclecount();
+	binary_search(0);
+	t = get_cyclecount() - t;
+	numCycles = t - overhead;
+	*(addr+(i))= numCycles;
+	cache_maintenance();
+    }
+    return 0;
+}
+~~~
 
 
 ~~~
