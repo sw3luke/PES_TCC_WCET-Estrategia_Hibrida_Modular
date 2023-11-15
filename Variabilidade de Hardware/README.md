@@ -45,7 +45,7 @@ sudo minicom -s
 
 Agora basta acessarmos a opção _Serial port setup_ e configurarmos seguindo a imagem abaixo:
 
-**IMAGEM DO TERMINAL DO MINICOM**
+<img src="./Exemplo/Imagens/Minicom-Serial-Config.jpeg" alt="Texto Alternativo">
 
 Com o minicom configurado, basta acessarmos seu terminal com o comando
 ~~~
