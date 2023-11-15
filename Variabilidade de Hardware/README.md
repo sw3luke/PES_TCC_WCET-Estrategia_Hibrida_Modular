@@ -52,8 +52,6 @@ Com o minicom configurado, basta acessarmos seu terminal com o comando
 sudo minicom
 ~~~
 
-**Imagem do minicom escutando a serial**
-
 **\*OBS**: Caso o cabo USB Serial não esteja sendo reconhecido pela máquina, o resultado da imagem acima não será alcançado.
 
 
@@ -66,12 +64,11 @@ Com o UBoot já no microSD e o minicom corretamente configurado, precisamos cone
 Agora devemos conectar o cabo no BBB seguindo a seguinte configuração:
 
 <img src="./Exemplo/Imagens/Conexão-Conversor-Placa.jpeg" alt="Texto Alternativo">
-**Imagem da conexao do cabo no BBB**
 
 
 Com o cabo corretamente conectado, basta energizarmos o BBB com o botão de boot pressionado, fazendo com que o boot seja realizado pelo microSD. Por fim, basta pressionarmos qualquer tecla para que o processo de boot padrão seja cancelado e o terminal do UBoot liberado.
 
-**Imagem do terminal do UBoot**
+<img src="./Exemplo/Imagens/Terminal-UBoot.jpeg" alt="Texto Alternativo">
 
 ## Configurando Ambiente para Build Bare-Metal
 
