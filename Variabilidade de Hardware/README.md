@@ -61,7 +61,7 @@ sudo minicom
 
 Com o UBoot já no microSD e o minicom corretamente configurado, precisamos conectar o BBB na serial, para isso será necessário um cabo conversor USB TTL, como visto na imagem abaixo:
 
-**Imagem Cabo Conversor USB TTL**
+<img src="./Exemplo/Imagens/'Conexão-Conversor-Placa.jpeg'" alt="Texto Alternativo">
 
 Agora devemos conectar o cabo no BBB seguindo a seguinte configuração:
 
