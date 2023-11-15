@@ -580,15 +580,15 @@ Com o codigo instrumentado, podemos entao realizar o cross-compile e a subsequen
 avr-gcc -std=c89 -pedantic -mmcu=atmega328 -o binarySearchInstrumentado.elf binarySearchInstrumentado.c avr-tick-counter.S
 ~~~~
 
-Caso nao hajam problemas com o codigo, a saida devera ser a criacao do arquivo binarySearchInstrumentado.elf no diretorio em que o comando foi executado.
+Caso não haja problemas com o código, a saída deverá ser a criação do arquivo binarySearchInstrumentado.elf no diretório em que o comando foi executado.
 
-Com o arquivo binarySearchInstrumentado.elf gerado, podemos entao passar para a execucao no SimulAVR, para isso basta executarmos o comando:
+Com o arquivo binarySearchInstrumentado.elf gerado, podemos então passar para a execução no SimulAVR, para isso basta executarmos o comando:
 
 ~~~
 simulavr -d atmega328 -f binarySearchInstrumentado.elf -W 0x20,- -T exit
 ~~~
 
-Se tudo estiver corretamente configurado, o simulavr executara o codigo binarySearchInstrumentado.elf simulando um microcontrolador Atmega328 e o retorno de tal execucao serao os prints na estrutura:
+Se tudo estiver corretamente configurado, o SimulAVR executará o código binarySearchInstrumentado.elf simulando um microcontrolador Atmega328 e o retorno de tal execução serão os prints na estrutura:
 ~~~
 binary_search::bbx <NumeroDeCiclos>
 ~~~
