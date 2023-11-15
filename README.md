@@ -13,7 +13,7 @@ Este repositorio tem como objetivo armazenar, organizar e documentar os artefato
 
 Cada qual, possuindo suas próprias documentações, exemplos de uso e tutoriais de instalação.
 
-O projeto foi concebido tendo como objetivo a modularização, motivo esse que resulta na divisão comentada anteriormente. A metodologia detalhada do trabalho pode ser encontrada no artigo [WCET Estratégia Híbrida Modular](https://github.com/sw3luke/PES_TCC_WCET-Estrategia_Hibrida_Modular/blob/master/Artigo_WCET_Estratégia_Híbrida_Modular_RXX.pdf) produzido.
+O projeto foi concebido tendo como objetivo a modularização, motivo esse que resulta na divisão comentada anteriormente. A metodologia detalhada do trabalho pode ser encontrada no artigo [WCET Estratégia Híbrida Modular](https://github.com/sw3luke/PES_TCC_WCET-Estrategia_Hibrida_Modular/blob/master/Explorando%20a%20estrat%C3%A9gia%20h%C3%ADbrida%20modular%20para%20determinar%20o%20Worst-Case%20Execution%20Time.pdf) produzido.
 
 ## [Variabilidade de Software](https://github.com/sw3luke/PES_TCC_WCET-Estrategia_Hibrida_Modular/tree/master/Variabilidade%20de%20Software)
 

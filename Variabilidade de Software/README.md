@@ -4,7 +4,7 @@ Nesse repositório estão os tutoriais de instalação e uso do Alf-Backend, do 
 
 As instruções de instalação para o ALF-Backend e o SWEET se aplicam a distribuição Ubuntu 22.04.3 do Linux.
 
-A metodologia detalhada do trabalho pode ser encontrada no artigo [WCET Estratégia Híbrida Modular](https://github.com/sw3luke/PES_TCC_WCET-Estrategia_Hibrida_Modular/blob/master/Artigo_WCET_Estratégia_Híbrida_Modular_RXX.pdf) produzido.
+A metodologia detalhada do trabalho pode ser encontrada no artigo [WCET Estratégia Híbrida Modular](https://github.com/sw3luke/PES_TCC_WCET-Estrategia_Hibrida_Modular/blob/master/Explorando%20a%20estrat%C3%A9gia%20h%C3%ADbrida%20modular%20para%20determinar%20o%20Worst-Case%20Execution%20Time.pdf) produzido.
 
 # Variabilidade de Software
 
