@@ -593,6 +593,10 @@ Se tudo estiver corretamente configurado, o SimulAVR executará o código binary
 binary_search::bbx <NumeroDeCiclos>
 ~~~
 
+## Conclusão
+
+Nesse arquivo abordamos, de maneira técnica, a realização de todas as etapas referentes a seção de variabilidade de software, assim como todo o processo de instalação e configuração das dependências, até por fim chegarmos as etapas de medição dos blocos básicos.
+
 ## Leituras complementares
 
 Uma referência importante para o método de execução abstrata é o artigo [Deriving WCET Bounds By Abstract_Execution](https://github.com/sw3luke/PES_TCC_WCET-Estrategia_Hibrida_Modular/blob/master/Variabilidade%20de%20Software/Referências/Deriving_WCET_Bounds_By_Abstract_Execution.pdf) dos autores Andreas Ermedahl, Jan Gustafsson e Bjorn Lisper.
