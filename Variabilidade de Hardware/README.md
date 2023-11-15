@@ -61,11 +61,13 @@ sudo minicom
 
 Com o UBoot já no microSD e o minicom corretamente configurado, precisamos conectar o BBB na serial, para isso será necessário um cabo conversor USB TTL, como visto na imagem abaixo:
 
-<img src="./Exemplo/Imagens/'Conexão-Conversor-Placa.jpeg'" alt="Texto Alternativo">
+<img src="./Exemplo/Imagens/Conversor-USB-TTL.jpeg" alt="Texto Alternativo">
 
 Agora devemos conectar o cabo no BBB seguindo a seguinte configuração:
 
+<img src="./Exemplo/Imagens/Conexão-Conversor-Placa.jpeg" alt="Texto Alternativo">
 **Imagem da conexao do cabo no BBB**
+
 
 Com o cabo corretamente conectado, basta energizarmos o BBB com o botão de boot pressionado, fazendo com que o boot seja realizado pelo microSD. Por fim, basta pressionarmos qualquer tecla para que o processo de boot padrão seja cancelado e o terminal do UBoot liberado.
 
