@@ -526,6 +526,72 @@ Já o bloco BB1, é efetivamente a comparação de decisão característica do w
 
 A conclusão dessa breve análise é que medir o cabeçalho do while(low <= up) resultará no tempo do BB1, enquanto que a medição das atribuições das variáveis prévias ao cabeçalho resultarão no tempo do BB0.
 
+Logo a instrumentação do bloco detalhado acima resultará em:
+
+~~~
+.
+.
+.
+.
+
+int binary_search(int x)
+{
+  int fvalue, mid, up, low ;
+/*---------- BB0 Instrumentado ----------*/
+  StartTickCounter();
+  low = 0;
+  up = 14;
+  fvalue = -1 /* all data are positive */ ;
+  StopTickCounter();
+  printf("binary_search::bb1 %u\r\n", GetTicks());
+  ResetTickCounter();
+/*---------- BB0 Instrumentado ----------*/
+
+
+/*---------- BB1 Instrumentado ----------*/
+  StartTickCounter();
+  while (low <= up) {
+    StopTickCounter();
+    printf("binary_search::bb1 %u\r\n", GetTicks());
+    ResetTickCounter();
+/*---------- BB1 Instrumentado ----------*/
+    mid = (low + up) >> 1;
+    if ( data[mid].key == x ) {  /*  found  */
+      up = low - 1;
+      fvalue = data[mid].value;
+    }
+    else  /* not found */
+      if ( data[mid].key > x ) 	{
+	up = mid - 1;
+      }
+      else   {
+             	low = mid + 1;
+      }
+  }
+  return fvalue;
+}
+~~~
+
+De maneira análoga, é necessário realizar o processo para os demais blocos básicos listados pelo arquivo de mapeamento gerado pelo ALFBackend, assim como pelo arquivo .alf. Vale ressaltar que concessões poderão ser necessárias ao longo da instrumentação.
+
+Com o codigo instrumentado, podemos entao realizar o cross-compile e a subsequente execucao do mesmo no simulador SimulAVR. Com o ambiente previamente configurado, devemos primeiro compilar nosso programa visando o microcontrolador atmega328:
+
+~~~~
+avr-gcc -std=c89 -pedantic -mmcu=atmega328 -o binarySearchInstrumentado.elf binarySearchInstrumentado.c avr-tick-counter.S
+~~~~
+
+Caso nao hajam problemas com o codigo, a saida devera ser a criacao do arquivo binarySearchInstrumentado.elf no diretorio em que o comando foi executado.
+
+Com o arquivo binarySearchInstrumentado.elf gerado, podemos entao passar para a execucao no SimulAVR, para isso basta executarmos o comando:
+
+~~~
+simulavr -d atmega328 -f binarySearchInstrumentado.elf -W 0x20,- -T exit
+~~~
+
+Se tudo estiver corretamente configurado, o simulavr executara o codigo binarySearchInstrumentado.elf simulando um microcontrolador Atmega328 e o retorno de tal execucao serao os prints na estrutura:
+~~~
+binary_search::bbx <NumeroDeCiclos>
+~~~
 
 ## Leituras complementares
 
